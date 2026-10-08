@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand bg-light p-3">
+    <div class="container">
+    <a class="navbar-brand" href="admin.html">HUMAIN Admin</a>
+    <a class="nav-link" href="#clients">Clients</a>
+    <a class="nav-link" href="#requests">Requests</a>
+    <a class="nav-link" href="index.html">Log Out</a>
+    </div>
+    </nav>
+
+    <div class="container mt-5">
+    <h1>Admin Portal</h1>
+    <p class="text-gray">Manage clients and their requests.</p>
+
+
+    <!-- Statistics -->
+    <div class="row mt-4">
+    <div class="col-md-3">
+    <div class="section-light p-3">
+    <h2>12</h2>
+    <p>Active Clients</p>
+    </div>
+    </div>
+
+    <div class="col-md-3">
+    <div class="section-light p-3">
+    <h2>68%</h2>
+    <p>Average Setup</p>
+    </div>
+    </div>
+
+    <div class="col-md-3">
+    <div class="section-light p-3">
+<h2>7</h2>
+<p>Pending Requests</p>
+    </div>
+    </div>
+
+    <div class="col-md-3">
+    <div class="section-light p-3">
+    <h2>4</h2>
+    <p>Open Tickets</p>
+    </div>
+    </div>
+    </div>
+
+
+    <!-- Clients -->
+    <h2 class="mt-5" id="clients">All Clients</h2>
+    <table class="table table-bordered table-striped">
+    <tr>
+    <th>Client</th>
+    <th>Sector</th>
+    <th>Setup</th>
+    <th>Plan</th>
+    </tr>
+
+    <tr>
+    <td>Najd Bank</td>
+    <td>Banking</td>
+    <td>75%</td>
+    <td>Growth</td>
+    </tr>
+
+    <tr>
+    <td>Ministry of Housing</td>
+    <td>Government</td>
+    <td>50%</td>
+    <td>Enterprise</td>
+    </tr>
+
+    <tr>
+    <td>Gulf Health Group</td>
+    <td>Healthcare</td>
+    <td>100%</td>
+    <td>Enterprise</td>
+    </tr>
+
+    <tr>
+    <td>Tariq Telecom</td>
+    <td>Telecom</td>
+    <td>25%</td>
+    <td>Growth</td>
+    </tr>
+    </table>
+
+    <!-- Requests -->
+    <h2 class="mt-5" id="requests">Requests Waiting for Approval</h2>
+    <table class="table table-bordered">
+    <tr>
+    <th>ID</th>
+    <th>Client</th>
+    <th>Request</th>
+    <th>Action</th>
+    </tr>
+
+    <tr>
+    <td>101</td>
+    <td>Najd Bank</td>
+    <td>Customer Service Assistant</td>
+    <td>
+    <button class="btn btn-dark" disabled>Approve</button>
+    <button class="btn btn-outline-dark" disabled>Decline</button>
+    </td>
+    </tr>
+
+    <tr>
+    <td>102</td>
+    <td>Tariq Telecom</td>
+    <td>Extra Data Source</td>
+    <td>
+    <button class="btn btn-dark" disabled>Approve</button>
+
+    <button class="btn btn-outline-dark" disabled>Decline</button>
+    </td>
+    </tr>
+    </table>
+    </div>
+</body>
+</html>
