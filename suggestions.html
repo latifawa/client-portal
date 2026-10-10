@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Suggestions</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@200;300;400;500;600&display=swap">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+
+
+    <div class="container-fluid">
+      <div class="row">
+
+    <!-- ===== SIDEBAR ===== -->
+    <aside class="col-md-3 col-lg-2 sidebar p-3">
+
+      <!-- Brand + menu button (button shows on phones only) -->
+      <div class="d-flex justify-content-between align-items-center">
+        <a class="navbar-brand" href="dashboard.html">
+          <span class="brand-name">HUMAIN</span>
+          <span class="brand-sub">Fabric</span>
+        </a>
+        <button class="btn btn-outline-dark btn-sm d-md-none" type="button"
+                data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-label="Open menu">
+          <i class="bi bi-list"></i>
+        </button>
+      </div>
+
+      <!-- Everything below hides on phones until ☰ is clicked -->
+      <div class="collapse d-md-block" id="sidebarMenu">
+
+        <!-- Organization -->
+        <div class="section-light p-3 my-4">
+          <p class="label-small mb-1">Organization</p>
+          <p class="fw-semibold mb-0">Najd Bank</p>
+          <p class="text-gray small mb-0">Growth plan</p>
+        </div>
+
+        <!-- Main menu (vertical nav pills) -->
+        <nav aria-label="Main menu">
+          <ul class="nav nav-pills flex-column">
+            <li class="nav-item">
+              <a class="nav-link" href="dashboard.html">
+                <i class="bi bi-grid me-2"></i>Overview</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="setup.html">
+                <i class="bi bi-list-check me-2"></i>Getting started</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="catalog.html">
+                <i class="bi bi-layers me-2"></i>Catalog</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="suggestions.html">
+                <i class="bi bi-stars me-2"></i>Suggestions
+                <span class="badge rounded-pill bg-dark float-end">4</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="requests.html">
+                <i class="bi bi-inbox me-2"></i>My requests
+                <span class="badge rounded-pill bg-dark float-end">1</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="support.html">
+                <i class="bi bi-chat-left-text me-2"></i>Support</a>
+            </li>
+          </ul>
+        </nav>
+
+        <hr>
+
+        <!-- Account link -->
+        <ul class="nav nav-pills flex-column">
+          <li class="nav-item">
+            <a class="nav-link" href="account.html">
+              <i class="bi bi-gear me-2"></i>Account settings</a>
+          </li>
+        </ul>
+
+        <!-- User dropdown (opens upward) -->
+        <div class="dropup mt-3">
+          <button type="button" class="btn btn-light w-100 text-start dropdown-toggle"
+                  data-bs-toggle="dropdown">
+            <i class="bi bi-person-circle me-2"></i>Layan A.
+          </button>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="account.html">Profile</a></li>
+            <li><a class="dropdown-item" href="account.html">Team</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="index.html">Log out</a></li>
+          </ul>
+        </div>
+
+      </div>
+    </aside>
+
+    <!-- ===== RIGHT SIDE ===== -->
+    <div class="col-md-9 col-lg-10 section-light p-0">
+
+      <!-- Top bar -->
+      <header class="topbar d-flex justify-content-between align-items-center px-4 py-3">
+        <input type="search" class="form-control topbar-search"
+               placeholder="Search features, requests, help" aria-label="Search">
+        <div class="d-flex align-items-center gap-4">
+          <a href="support.html" class="text-decoration-none">Help</a>
+          <a href="#" class="position-relative" aria-label="Notifications">
+            <i class="bi bi-bell fs-5"></i>
+            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-dark">3</span>
+          </a>
+          <span>EN | ع</span>
+        </div>
+      </header>
+      
+
+      <!-- PAGE CONTENT: كل وحده تبني البيج حقها هنا -->
+      <main class="p-4 p-lg-5">
+        <!-- ==== SMART SUGGESTIONS ==== -->
+        <p class="label-small">Stage 5</p>
+        <h1>Smart Suggestions</h1>
+        <p class="text-gray">Based on how Najd Bank used HUMAIN Fabric in the last 30 days.</p>
+
+        <!-- ==== SUGGESTIONS FILTERS ==== -->
+         <ul class="nav nav-tabs mt-4 mb-4">
+            <li class="nav-item">
+                <a class="nav-link active" href="#">All · 4</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Upgrades · 1</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">New features · 1</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Setup and tips · 2</a>
+            </li>
+         </ul>
+
+         <!-- ==== SUGGESTIONS CONTENT ==== -->
+          <div class="row mt-4">
+
+            <!-- ==== LEFT SIDE: SUGGESTION CARDS ==== -->
+             <div class="col-md-8">
+
+                <!-- ==== SUGGESTION 1: UPGRADE ==== -->
+                 <section class="bg-white p-4 mb-3">
+                    <p class="label-small">UPGRADE</p>
+                    <h4>Your usage is growing</h4>
+                    <p class="text-gray">Chat assistant messages grew 42% this month. At this rate you will reach 90% of your plan limit around 20 Oct 2026.</p>
+
+                    <!-- Reason for suggestion -->
+                     <div class="section-light p-3 mb-3">
+                        <p class="small mb-0">
+                            <strong>Why am I seeing this?</strong>
+                            Because usage grew more than 30% and more than 75% of the limit is used. 
+                        </p>
+                     </div>
+                     <!-- Actions -->
+                      <a href="requests.html" class="btn btn-dark">Request Upgrade →</a>
+                      <a href="#" class="btn btn-link text-dark">Dismiss</a>
+                 </section>
+             
+
+             <!-- ==== SUGGESTION 2: NEW FEATURE ==== -->
+              <section class="bg-white p-4 mb-3">
+                <p class="label-small">NEW FEATURE</p>
+                <h4>Other banks like you also use Fraud pattern detection</h4>
+                <p class="text-gray">7 of 10 banking clients on HUMAIN Fabric use it with the same data sources you connected.</p>
+
+                <!-- Reason for suggestion -->
+                <div class="section-light p-3 mb-3">
+                    <p class="small mb-0">
+                        <strong>Why am I seeing this?</strong>
+                        Because more than half of clients in your sector use it.
+                    </p>
+                </div>
+                <!-- Actions -->
+                <a href="catalog.html" class="btn btn-dark">View in catalog →</a>
+                <a href="#" class="btn btn-link text-dark">Dismiss</a>
+              </section>
+
+              <!-- ==== SUGGESTION 3: SETUP ==== -->
+                <section class="bg-white p-4 mb-3">
+                    <p class="label-small">SETUP</p>
+                    <h4>Finish your access rules</h4>
+                    <p class="text-gray">This step has been open for 9 days. Your first AI use case unlocks after it.</p>
+
+                    <!-- Reason for suggestion -->
+                     <div class="section-light p-3 mb-3">
+                        <p class="small mb-0">
+                            <strong>Why am I seeing this?</strong>
+                            Because a checklist step has been open for more than 7 days.
+                        </p>
+                     </div>
+                     <!-- Actions -->
+                      <a href="setup.html" class="btn btn-dark">Go to checklist→</a>
+                      <a href="#" class="btn btn-link text-dark">Dismiss</a>
+                 </section>
+
+                 <!-- ==== SUGGESTION 4: TIP ==== -->
+                    <section class="bg-white p-4 mb-3">
+                        <p class="label-small">TIP</p>
+                        <h4>Reports is barely used</h4>
+                        <p class="text-gray">Only 10,300 report views this month. A 30-minute session could help your analysts get more from it.</p>
+    
+                        <!-- Reason for suggestion -->
+                        <div class="section-light p-3 mb-3">
+                            <p class="small mb-0">
+                                <strong>Why am I seeing this?</strong>
+                                Because a feature stayed under 15% of its limit for 30 days.
+                            </p>
+                        </div>
+                        <!-- Actions -->
+                        <a href="support.html" class="btn btn-dark">Book a session →</a>
+                        <a href="#" class="btn btn-link text-dark">Dismiss</a>
+                    </section>
+             </div>
+
+            <!-- ==== HOW SUGGESTIONS WORK ==== -->
+             <div class="col-md-4">
+                <section class="bg-light p-4">
+                    <p class="label-small">HOW SUGGESTIONS WORK</p>
+                    <p class="text-gray">Every night the hub checks your usage against simple rules:</p>
+                    <ol>
+                        <li class="mb-3">Usage growth and plan limits</li>
+                        <li class="mb-3">What similar clients use</li>
+                        <li class="mb-3">Checklist steps left open</li>
+                        <li class="mb-3">Features you rarely use</li>
+                    </ol>
+                    <p class="text-gray small mt-4">When a rule matches, a card appears here and on your overview. Dismissed cards stay hidden for 30 days.</p>
+                </section>
+             </div>
+          </div>
+      </main>
+
+    </div>
+
+  </div>
+</div>
+
+   
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+</body>
+</html>

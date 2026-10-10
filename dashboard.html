@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Overview Dashboard</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@200;300;400;500;600&display=swap">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+
+
+    <div class="container-fluid">
+      <div class="row">
+
+    <!-- ===== SIDEBAR ===== -->
+    <aside class="col-md-3 col-lg-2 sidebar p-3">
+
+      <!-- Brand + menu button (button shows on phones only) -->
+      <div class="d-flex justify-content-between align-items-center">
+        <a class="navbar-brand" href="dashboard.html">
+          <span class="brand-name">HUMAIN</span>
+          <span class="brand-sub">Fabric</span>
+        </a>
+        <button class="btn btn-outline-dark btn-sm d-md-none" type="button"
+                data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-label="Open menu">
+          <i class="bi bi-list"></i>
+        </button>
+      </div>
+
+      <!-- Everything below hides on phones until ☰ is clicked -->
+      <div class="collapse d-md-block" id="sidebarMenu">
+
+        <!-- Organization -->
+        <div class="section-light p-3 my-4">
+          <p class="label-small mb-1">Organization</p>
+          <p class="fw-semibold mb-0">Najd Bank</p>
+          <p class="text-gray small mb-0">Growth plan</p>
+        </div>
+
+        <!-- Main menu (vertical nav pills) -->
+        <nav aria-label="Main menu">
+          <ul class="nav nav-pills flex-column">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="dashboard.html">
+                <i class="bi bi-grid me-2"></i>Overview</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="setup.html">
+                <i class="bi bi-list-check me-2"></i>Getting started</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="catalog.html">
+                <i class="bi bi-layers me-2"></i>Catalog</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="suggestions.html">
+                <i class="bi bi-stars me-2"></i>Suggestions
+                <span class="badge rounded-pill bg-dark float-end">4</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="requests.html">
+                <i class="bi bi-inbox me-2"></i>My requests
+                <span class="badge rounded-pill bg-dark float-end">1</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="support.html">
+                <i class="bi bi-chat-left-text me-2"></i>Support</a>
+            </li>
+          </ul>
+        </nav>
+
+        <hr>
+
+        <!-- Account link -->
+        <ul class="nav nav-pills flex-column">
+          <li class="nav-item">
+            <a class="nav-link" href="account.html">
+              <i class="bi bi-gear me-2"></i>Account settings</a>
+          </li>
+        </ul>
+
+        <!-- User dropdown (opens upward) -->
+        <div class="dropup mt-3">
+          <button type="button" class="btn btn-light w-100 text-start dropdown-toggle"
+                  data-bs-toggle="dropdown">
+            <i class="bi bi-person-circle me-2"></i>Layan A.
+          </button>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="account.html">Profile</a></li>
+            <li><a class="dropdown-item" href="account.html">Team</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="index.html">Log out</a></li>
+          </ul>
+        </div>
+
+      </div>
+    </aside>
+
+    <!-- ===== RIGHT SIDE ===== -->
+    <div class="col-md-9 col-lg-10 section-light p-0">
+
+      <!-- Top bar -->
+      <header class="topbar d-flex justify-content-between align-items-center px-4 py-3">
+        <input type="search" class="form-control topbar-search"
+               placeholder="Search features, requests, help" aria-label="Search">
+        <div class="d-flex align-items-center gap-4">
+          <a href="support.html" class="text-decoration-none">Help</a>
+          <a href="#" class="position-relative" aria-label="Notifications">
+            <i class="bi bi-bell fs-5"></i>
+            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-dark">3</span>
+          </a>
+          <span>EN | ع</span>
+        </div>
+    </header>
+
+      <!-- PAGE CONTENT: كل وحده تبني البيج حقها هنا -->
+      <main class="p-4 p-lg-5">
+
+        <!-- Dashboard heading -->
+        <p class="label-small">Stage 3</p>
+        <h1>Good morning, Layan</h1>
+        <p class="text-gray">Here's what's happening with your workspace.</p>
+
+        <!-- Setup progress -->
+         <section class="bg-white p-4 mt-4">
+            <h5>Setup progress</h5>
+            <p class="text-gray">You're 60% of the way to completing your setup.</p>
+            <div class="progress">
+              <div class="progress-bar bg-dark" style="width: 60%;">60%</div>
+            </div>
+          </section>
+
+          <!-- ==== USAGE STATISTICS ==== --> 
+           <div class="row mt-4">
+
+            <!-- API calls -->
+              <div class="col-md-3 mb-3">
+                 <div class="bg-white p-3">
+                    <p class="text-gray">API calls this month</p>
+                    <h3>128,400</h3>
+                 </div>
+              </div>
+
+              <!-- Active users -->
+                <div class="col-md-3 mb-3">
+                   <div class="bg-white p-3">
+                      <p class="text-gray">Active users</p>
+                      <h3>64</h3>
+                   </div>
+           </div>
+
+           <!-- Data sources-->
+                <div class="col-md-3 mb-3">
+                    <div class="bg-white p-3">
+                        <p class="text-gray">Data sources</p>
+                        <h3>3</h3>
+                    </div>
+                </div>
+
+                <!-- Features in use -->
+                <div class="col-md-3 mb-3">
+                    <div class="bg-white p-3">
+                        <p class="text-gray">Features in use</p>
+                        <h3>12</h3>
+                    </div>
+                </div>
+           </div>
+
+           <!-- ==== Dashboard Charts ==== -->
+            <div class="row mt-4">
+
+           <!-- ===== API CALLS PER WEEK ===== -->
+            <section class="col-md-6 mb-3">
+                <div class="bg-white p-4 h-100">
+                <h5>API calls per week</h5>
+                <p class="text-gray">Weekly API usage this month</p>
+
+                 <!-- Weekly usage line chart -->
+                  <canvas id="apiChart"></canvas>
+                  </div>
+                </section>
+
+
+                <!-- ==== USAGE BY FEATURES ==== -->
+                 <section class="col-md-6 mb-3">
+                    <div class="bg-white p-4 h-100">
+                    <h5>Usage by Features</h5>
+                    <p class="text-gray">Most used features this month.</p>
+
+                    <!-- Document search -->
+                     <p>Document search</p>
+                    <div class="progress mb-3">
+                      <div class="progress-bar bg-dark" style="width: 80%;">80%</div>
+                    </div>
+
+                    <!-- Arabic chat assistant -->
+                    <p>Arabic chat assistant</p>
+                    <div class="progress mb-3">
+                        <div class="progress-bar bg-dark" style="width: 65%;">65%</div>
+                    </div>
+
+                    <!-- Data pipelines -->
+                    <p>Data pipelines</p>
+                    <div class="progress mb-3">
+                        <div class="progress-bar bg-dark" style="width: 45%;">45%</div>
+                    </div>
+
+                    <!-- Reports -->
+                    <p>Reports</p>
+                    <div class="progress mb-3">
+                        <div class="progress-bar bg-dark" style="width: 30%;">30%</div>
+                    </div>
+                  </div>
+                 </section>
+                 </div>
+
+                <!-- ==== FEATURES IN USE ==== -->
+                 <section class="bg-white p-4 mt-4">
+                    <h5>Features in use</h5>
+                    <p class="text-gray">Features currently active in your workspace</p>
+
+                    <!-- Features Table -->
+                     <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Feature</th>
+                                    <th>Status</th>
+                                    <th>Usage this month</th>    
+                                    <th>Plan Limit</th>    
+                                    <th>% of Limit</th>                       
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                <tr>
+                                    <td>Document search</td>
+                                    <td>Active</td>
+                                    <td>59,000 queries</td>
+                                    <td>80,000</td>
+                                    <td>74%</td>
+                                </tr>
+                                <tr>
+                                    <td>Arabic chat assistant</td>
+                                    <td>Active</td>
+                                    <td>36,500 messages</td>
+                                    <td>50,000</td>
+                                    <td>73%</td>
+                                </tr>
+                                <tr>
+                                    <td>Data pipelines</td>
+                                    <td>Active</td>
+                                    <td>19,300 runs</td>
+                                    <td>40,000</td>
+                                    <td>48%</td>
+                                </tr>
+                                <tr>
+                                    <td>Reports</td>
+                                    <td>Low use</td>
+                                    <td>10,300 views</td>
+                                    <td>Unlimited</td>
+                                    <td>10%</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                     </div>
+                
+                 </section>
+
+                 <!-- ==== SUGGESTED FOR YOU ==== -->
+                  <section class="d-block mt-4">
+                    <h5>Suggested for you</h5>
+                    <p class="text-gray">Explore features that may help your team.</p>
+
+                    <div class="row g-3">
+
+                        <!-- Smart document processing -->
+                         <div class="col-md-6 mb-3">
+                            <div class="bg-white p-4 h-100">
+                                <h5>Your usage is growing</h5>
+                                <p class="text-gray">You may reach your chat assistant limit around 20 Oct.</p>
+                                <a href="suggestions.html" class="btn btn-outline-dark">View upgrade options</a>
+                            </div>
+                         </div>
+
+                         <!-- Advanced analytics -->
+                          <div class="col-md-6 mb-3">
+                            <div class="bg-white p-4 h-100">
+                                <h5>Banks like you also use Fraud detection</h5>
+                                <p class="text-gray">7 of 10 banking clients use it.</p>
+                                <a href="suggestions.html" class="btn btn-outline-dark">View in catalog</a>
+                            </div>
+                          </div>
+                    </div>
+                  </section>
+
+      </main>
+
+    </div>
+  </div>
+</div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Chart.js-->
+     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+     <!-- API calls line chart -->
+      <script>
+        const apiChart = document.getElementById('apiChart');
+        new Chart(apiChart, {
+            type: 'line',
+            data: {
+                labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4'],
+                datasets: [{
+                    label: 'API Calls',
+                    data: [20000, 35000, 28000, 45400],
+                    borderColor: '#3A869D',
+                    backgroundColor: '#3A869D',
+                    tension: 0.3
+                     }]
+                      },
+                      options: {
+                        responsive: true,
+                        plugins: {
+                            legend: {
+                                display: false
+                                    }
+                                 }
+                               }
+                    });       
+
+      </script>
+        
+</body>
+</html>
