@@ -101,39 +101,42 @@ a {
 }
 
 
-/* 5. Form fields */
-
+/* ===== 5. Forms ===== */
 .form-label {
-  font-weight: 500;
-  margin-bottom: 8px;
+    font-size: 13px;
+    font-weight: 500;
+    color: #666;
+    margin-bottom: 8px;
 }
 
 .form-control,
 .form-select {
-  background-color: #ffffff;
-  border: 1px solid #b9b9b9;
-  border-radius: 12px;
-  padding: 14px 18px;
-  font-size: 16px;
+    background-color: #f4f4f4;
+    border: 1px solid #f4f4f4;
+    border-radius: 0;
+    padding: 13px 14px;
+    font-size: 15px;
 }
 
 .form-select {
-  padding-right: 44px;
+    padding-right: 44px;
 }
 
 .form-control:focus,
 .form-select:focus {
-  border-color: #141416;
-  box-shadow: none;
+    background-color: #f4f4f4;
+    border-color: #141416;
+    box-shadow: none;
 }
 
 .input-group-text {
-  background-color: #ffffff;
-  border: 1px solid #b9b9b9;
-  border-radius: 12px;
-  padding: 14px 18px;
-  font-size: 16px;
+    background-color: #e9e9e9;
+    border: 1px solid #e9e9e9;
+    border-radius: 0;
+    padding: 13px 14px;
+    font-size: 15px;
 }
+
 
 /* 6. Navbar */
 
@@ -304,4 +307,44 @@ a {
   border-radius: 32px;
   -webkit-mask-image: radial-gradient(ellipse at center, black 60%, transparent 100%);
   mask-image: radial-gradient(ellipse at center, black 60%, transparent 100%);
+}
+/* Tabs: thin underline like the wireframe */
+.nav-tabs {
+    border-bottom: 1px solid #e4e4e4;
+    gap: 32px;
+}
+
+.nav-tabs .nav-link {
+    color: #666;
+    border: 0;
+    border-bottom: 2px solid transparent;
+    border-radius: 0;
+    padding: 0 0 14px;
+    font-size: 15px;
+}
+
+.nav-tabs .nav-link:hover {
+    color: #141416;
+}
+
+.nav-tabs .nav-link.active {
+    color: #141416;
+    font-weight: 500;
+    background: none;
+    border-bottom-color: #141416;
+}
+
+/* Login headings: big and thin */
+.login-box h2 {
+    font-size: 40px;
+    font-weight: 200;
+    letter-spacing: -0.02em;
+}
+
+/* Login buttons: square, not pill */
+.login-box .btn {
+    border-radius: 0;
+    padding: 16px 22px;
+    font-size: 15px;
+    font-weight: 500;
 }

@@ -41,9 +41,6 @@
                         <li class="nav-item">
                             <a class="nav-link" href="index.html#platform">Platform</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#footer">Contact</a>
-                        </li>
                     </ul>
                     <a class="nav-link nav-login me-3" href="login.html">Log in</a>
                     <a class="btn btn-lime btn-sm" href="login.html">Request access</a>
@@ -78,13 +75,17 @@
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" data-bs-toggle="tab" href="#requestTab">Request access</a>
+                            </li>                            
+                            <li class="nav-item">
+                                <a class="nav-link" data-bs-toggle="tab" href="#staffTab">HUMAIN staff</a>
                             </li>
                         </ul>
 
                         <div class="tab-content">
 
                             <!-- Tab 1: Log in -->
-                            <div class="tab-pane active" id="loginTab">
+                                                        
+                            <div class="tab-pane fade show active" id="loginTab">
 
                                 <h2 class="h4 fw-normal mb-1">Welcome back</h2>
                                 <p class="text-gray mb-4">Log in with your work email.</p>
@@ -195,6 +196,28 @@
                                 </form>
 
                             </div>
+                                                        
+                            <!-- Tab 3: HUMAIN staff -->
+                            <div class="tab-pane fade" id="staffTab">
+
+                                <h2 class="h4 fw-normal mb-1">HUMAIN staff</h2>
+                                <p class="text-gray mb-4">Log in to the admin portal with your HUMAIN email.</p>
+
+                                <!-- Form: Staff log in -->
+                                <!-- Phase 4: change to method="post" and send to the Node.js server -->
+                                <form action="admin.html">
+                                    <div class="mb-3">
+                                        <label for="staffEmail" class="form-label">HUMAIN email:</label>
+                                        <input type="email" class="form-control" id="staffEmail" placeholder="name@humain.com" name="staffEmail" required>
+                                    </div>
+                                    <div class="mb-4">
+                                        <label for="staffPwd" class="form-label">Password:</label>
+                                        <input type="password" class="form-control" id="staffPwd" placeholder="Enter password" name="staffPwd" required>
+                                    </div>
+                                    <button type="submit" class="btn btn-dark w-100">Log in to admin portal</button>
+                                </form>
+
+                            </div>
 
                         </div>
 
@@ -207,55 +230,41 @@
     </main>
 
 
-    <!-- FOOTER -->
-    <footer id="footer" class="section-light py-5">
+        <!-- FOOTER -->
+    <footer class="section-light py-5">
         <div class="container">
-            <div class="row">
 
-                <!-- Brand -->
-                <div class="col-md-6 mb-4">
+            <!-- Top row: brand + links -->
+            <div class="row align-items-center">
+                <div class="col-md-6 mb-3 mb-md-0">
                     <a class="navbar-brand" href="index.html">
                         <span class="brand-name">HUMAIN</span>
                         <span class="brand-sub">Fabric Client Hub</span>
                     </a>
-                    <br>
-                    <a href="https://www.pif.gov.sa/en/">
-                        <img src="images/pif-logo.webp" width="200" alt="PIF logo">
-                    </a>
-                    <p class="text-gray small mt-2">© 2026 · IS311 course project with HUMAIN</p>
                 </div>
-
-                <!-- Links: Hub -->
-                <div class="col-4 col-md-2">
-                    <p class="label-small">Hub</p>
-                    <ul class="list-unstyled footer-links">
-                        <li class="mb-2"><a href="login.html">Log in</a></li>
-                        <li class="mb-2"><a href="catalog.html">Catalog</a></li>
-                        <li class="mb-2"><a href="support.html">Support</a></li>
+                <div class="col-md-6">
+                    <ul class="list-inline footer-links text-md-end mb-0">
+                        <li class="list-inline-item me-4"><a href="index.html">Home</a></li>
+                        <li class="list-inline-item me-4"><a href="index.html#stages">How it works</a></li>
+                        <li class="list-inline-item"><a href="index.html#platform">Platform</a></li>
                     </ul>
                 </div>
-
-                <!-- Links: Company -->
-                <div class="col-4 col-md-2">
-                    <p class="label-small">Company</p>
-                    <ul class="list-unstyled footer-links">
-                        <li class="mb-2"><a href="#">About HUMAIN</a></li>
-                        <li class="mb-2"><a href="#">Careers</a></li>
-                        <li class="mb-2"><a href="#">Newsroom</a></li>
-                    </ul>
-                </div>
-
-                <!-- Links: Legal -->
-                <div class="col-4 col-md-2">
-                    <p class="label-small">Legal</p>
-                    <ul class="list-unstyled footer-links">
-                        <li class="mb-2"><a href="#">Privacy</a></li>
-                        <li class="mb-2"><a href="#">Terms</a></li>
-                        <li class="mb-2"><a href="#">Data residency</a></li>
-                    </ul>
-                </div>
-
             </div>
+
+            <hr class="my-4">
+
+            <!-- Bottom row: PIF logo + copyright -->
+            <div class="row align-items-center">
+                <div class="col-md-6 mb-3 mb-md-0">
+                    <a href="https://www.pif.gov.sa/en/" target="_blank">
+                        <img src="images/pif-logo.webp" width="180" alt="PIF logo">
+                    </a>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p class="text-gray small mb-0">© 2026 · IS311 course project with HUMAIN</p>
+                </div>
+            </div>
+
         </div>
     </footer>
 
