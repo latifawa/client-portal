@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,14 +6,14 @@
 
     <title>Admin Portal | HUMAIN Fabric</title>
 
+    <!-- Favicon -->
+    <link rel="icon" type="image/webp" href="images/humain-favicon.webp">
+
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
 
     <!-- Google Font -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@200;300;400;500;600&display=swap">
-
-    <!-- Bootstrap Icons -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
     <!-- Teammates' CSS -->
     <link rel="stylesheet" href="css/style.css">
@@ -23,420 +22,392 @@
 
 <body>
 
-    <div class="container-fluid">
-        <div class="row">
+    <!-- HEADER: simple black navbar for HUMAIN staff -->
+    <header>
+        <nav class="navbar section-black py-3" data-bs-theme="dark">
+            <div class="container">
 
-            <!-- SIDEBAR -->
-            <aside class="col-md-3 col-lg-2 sidebar p-3">
+                <a class="navbar-brand" href="admin.html">
+                    <span class="brand-name">HUMAIN</span>
+                    <span class="brand-sub">Admin portal</span>
+                </a>
 
-                <!-- HUMAIN Logo -->
-                <div class="d-flex justify-content-between align-items-center">
+                <a class="btn btn-lime btn-sm" href="index.html">Log out</a>
 
-                    <a class="navbar-brand" href="admin.html">
-                        <span class="brand-name">HUMAIN</span>
-                        <span class="brand-sub">Fabric</span>
-                    </a>
+            </div>
+        </nav>
+    </header>
 
-                    <!-- Menu button for phones -->
-                    <button class="btn btn-outline-dark btn-sm d-md-none"
-                            type="button"
-                            data-bs-toggle="collapse"
-                            data-bs-target="#sidebarMenu"
-                            aria-label="Open menu">
 
-                        <i class="bi bi-list"></i>
+    <!-- ADMIN PAGE -->
+    <!-- Sample data for Phase 2. In Phase 4 these values will come from the database. -->
+    <main class="section-light py-5">
+        <div class="container">
 
-                    </button>
+            <!-- 1: Page title -->
+            <p class="label-small">HUMAIN Fabric</p>
+            <h1>Admin Portal</h1>
+            <p class="text-gray mb-4">Answer everything clients send to the HUMAIN team.</p>
 
+
+            <!-- 2: Summary cards (what needs attention) -->
+            <div class="row mb-4">
+
+                <div class="col-6 col-lg-3 mb-3">
+                    <div class="bg-white p-4 h-100">
+                        <h2 class="text-gradient">3</h2>
+                        <p class="text-gray mb-0">Requests to review</p>
+                    </div>
                 </div>
 
-                <div class="collapse d-md-block" id="sidebarMenu">
+                <div class="col-6 col-lg-3 mb-3">
+                    <div class="bg-white p-4 h-100">
+                        <h2 class="text-gradient">1</h2>
+                        <p class="text-gray mb-0">New message</p>
+                    </div>
+                </div>
 
-                    <!-- Admin Information -->
-                    <div class="section-light p-3 my-4">
+                <div class="col-6 col-lg-3 mb-3">
+                    <div class="bg-white p-4 h-100">
+                        <h2 class="text-gradient">2</h2>
+                        <p class="text-gray mb-0">Open tickets</p>
+                    </div>
+                </div>
 
-                        <p class="label-small mb-1">
-                            HUMAIN Staff
-                        </p>
+                <div class="col-6 col-lg-3 mb-3">
+                    <div class="bg-white p-4 h-100">
+                        <h2 class="text-gradient">4</h2>
+                        <p class="text-gray mb-0">Clients in setup</p>
+                    </div>
+                </div>
 
-                        <p class="fw-semibold mb-0">
-                            Admin Portal
-                        </p>
+            </div>
 
-                        <p class="text-gray small mb-0">
-                            Management dashboard
-                        </p>
+
+            <!-- 3: One box with 4 Bootstrap tabs -->
+            <div class="bg-white p-4">
+
+                <!-- Bootstrap Tabs -->
+                <ul class="nav nav-tabs mb-4">
+                    <li class="nav-item">
+                        <button class="nav-link active" type="button" data-bs-toggle="tab"
+                            data-bs-target="#requests">Requests</button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="nav-link" type="button" data-bs-toggle="tab"
+                            data-bs-target="#messages">Messages</button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="nav-link" type="button" data-bs-toggle="tab"
+                            data-bs-target="#tickets">Tickets</button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="nav-link" type="button" data-bs-toggle="tab"
+                            data-bs-target="#clients">Clients</button>
+                    </li>
+                </ul>
+
+
+                <div class="tab-content">
+
+                    <!-- TAB 1: REQUESTS (from Catalog "Request this" and Suggestions "Request upgrade") -->
+                    <div class="tab-pane fade show active" id="requests">
+
+                        <h2 class="h5">Requests waiting for a decision</h2>
+                        <p class="text-gray">Clients see your decision and note in My requests.</p>
+
+                        <div class="table-responsive mb-4">
+                            <table class="table table-hover align-middle">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Client</th>
+                                        <th>Request</th>
+                                        <th>Date</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>R-1042</td>
+                                        <td>Najd Bank</td>
+                                        <td>Customer service assistant</td>
+                                        <td>24 Sep 2026</td>
+                                        <td><span class="badge bg-secondary">Pending</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>R-1043</td>
+                                        <td>Riyadh Health</td>
+                                        <td>Extra data storage</td>
+                                        <td>25 Sep 2026</td>
+                                        <td><span class="badge bg-secondary">Pending</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>R-1044</td>
+                                        <td>Gulf Retail</td>
+                                        <td>Analytics upgrade</td>
+                                        <td>26 Sep 2026</td>
+                                        <td><span class="badge bg-secondary">Pending</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <!-- Form: decide on a request -->
+                        <h3 class="h6 mb-3">Review a request</h3>
+                        <!-- Phase 4: change to method="post" and send to the Node.js server -->
+                        <form action="admin.html">
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="requestId" class="form-label">Request</label>
+                                    <select class="form-select" id="requestId" name="requestId">
+                                        <option>R-1042 · Najd Bank</option>
+                                        <option>R-1043 · Riyadh Health</option>
+                                        <option>R-1044 · Gulf Retail</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="decision" class="form-label">Decision</label>
+                                    <select class="form-select" id="decision" name="decision">
+                                        <option>Approved</option>
+                                        <option>In progress</option>
+                                        <option>Declined</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="requestNote" class="form-label">Note for the client</label>
+                                <input type="text" class="form-control" id="requestNote" name="requestNote"
+                                    placeholder="For example: Live from 1 Nov" required>
+                            </div>
+                            <button type="submit" class="btn btn-dark">Save decision</button>
+                        </form>
 
                     </div>
 
-                    <!-- Navigation -->
-                    <nav aria-label="Admin menu">
 
-                        <ul class="nav nav-pills flex-column">
+                    <!-- TAB 2: MESSAGES (from the client Support page) -->
+                    <div class="tab-pane fade" id="messages">
 
-                            <li class="nav-item">
-                                <a class="nav-link active"
-                                   href="admin.html"
-                                   aria-current="page">
+                        <h2 class="h5">Client messages</h2>
+                        <p class="text-gray">Messages clients send from their Support page.</p>
 
-                                    <i class="bi bi-grid me-2"></i>
-                                    Overview
+                        <div class="table-responsive mb-4">
+                            <table class="table table-hover align-middle">
+                                <thead>
+                                    <tr>
+                                        <th>Client</th>
+                                        <th>From</th>
+                                        <th>Last message</th>
+                                        <th>Date</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Riyadh Health</td>
+                                        <td>Omar K.</td>
+                                        <td>Can we add two more team members?</td>
+                                        <td>27 Sep 2026</td>
+                                        <td><span class="badge bg-secondary">New</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Najd Bank</td>
+                                        <td>Layan A.</td>
+                                        <td>I would like an update on our customer service assistant request.</td>
+                                        <td>24 Sep 2026</td>
+                                        <td><span class="badge bg-teal">Replied</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
 
-                                </a>
-                            </li>
+                        <!-- Form: reply to a client -->
+                        <h3 class="h6 mb-3">Reply to a client</h3>
+                        <!-- Phase 4: change to method="post" and send to the Node.js server -->
+                        <form action="admin.html">
+                            <div class="mb-3">
+                                <label for="replyClient" class="form-label">Client</label>
+                                <select class="form-select" id="replyClient" name="replyClient">
+                                    <option>Riyadh Health · Omar K.</option>
+                                    <option>Najd Bank · Layan A.</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="replyText" class="form-label">Your reply</label>
+                                <textarea class="form-control" id="replyText" name="replyText" rows="3"
+                                    placeholder="Write your reply here..." required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-dark">Send reply</button>
+                        </form>
 
-                            <li class="nav-item">
-                                <a class="nav-link" href="#clients">
+                    </div>
 
-                                    <i class="bi bi-people me-2"></i>
-                                    Clients
 
-                                </a>
-                            </li>
+                    <!-- TAB 3: TICKETS (from the client Support page) -->
+                    <div class="tab-pane fade" id="tickets">
 
-                            <li class="nav-item">
-                                <a class="nav-link" href="#requests">
+                        <h2 class="h5">Support tickets</h2>
+                        <p class="text-gray">Clients see the new status in their Support tickets tab.</p>
 
-                                    <i class="bi bi-inbox me-2"></i>
-                                    Requests
+                        <div class="table-responsive mb-4">
+                            <table class="table table-hover align-middle">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Client</th>
+                                        <th>Subject</th>
+                                        <th>Date</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>T-203</td>
+                                        <td>Najd Bank</td>
+                                        <td>Access permissions</td>
+                                        <td>25 Sep 2026</td>
+                                        <td><span class="badge bg-secondary">Open</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>T-202</td>
+                                        <td>Najd Bank</td>
+                                        <td>Data connection issue</td>
+                                        <td>22 Sep 2026</td>
+                                        <td><span class="badge bg-dark">In progress</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>T-201</td>
+                                        <td>Najd Bank</td>
+                                        <td>Login problem</td>
+                                        <td>18 Sep 2026</td>
+                                        <td><span class="badge bg-teal">Resolved</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
 
-                                    <span class="badge rounded-pill bg-dark float-end">
-                                        3
-                                    </span>
+                        <!-- Form: update a ticket -->
+                        <h3 class="h6 mb-3">Update a ticket</h3>
+                        <!-- Phase 4: change to method="post" and send to the Node.js server -->
+                        <form action="admin.html">
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="ticketId" class="form-label">Ticket</label>
+                                    <select class="form-select" id="ticketId" name="ticketId">
+                                        <option>T-203 · Access permissions</option>
+                                        <option>T-202 · Data connection issue</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="ticketStatus" class="form-label">New status</label>
+                                    <select class="form-select" id="ticketStatus" name="ticketStatus">
+                                        <option>In progress</option>
+                                        <option>Resolved</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-dark">Update ticket</button>
+                        </form>
 
-                                </a>
-                            </li>
+                    </div>
 
-                        </ul>
 
-                    </nav>
+                    <!-- TAB 4: CLIENTS (setup progress clients see on Getting started) -->
+                    <div class="tab-pane fade" id="clients">
 
-                    <hr>
+                        <h2 class="h5">Clients</h2>
+                        <p class="text-gray">Plans and setup progress. Clients see their progress on Getting started.</p>
 
-                    <!-- Back to Login -->
-                    <ul class="nav nav-pills flex-column">
+                        <div class="table-responsive mb-4">
+                            <table class="table table-hover align-middle">
+                                <thead>
+                                    <tr>
+                                        <th>Client</th>
+                                        <th>Plan</th>
+                                        <th class="w-25">Setup progress</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Najd Bank</td>
+                                        <td>Growth</td>
+                                        <td>
+                                            <div class="progress">
+                                                <div class="progress-bar bg-teal" style="width:60%">60%</div>
+                                            </div>
+                                        </td>
+                                        <td><span class="badge bg-dark">In setup</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Riyadh Health</td>
+                                        <td>Growth</td>
+                                        <td>
+                                            <div class="progress">
+                                                <div class="progress-bar bg-teal" style="width:100%">100%</div>
+                                            </div>
+                                        </td>
+                                        <td><span class="badge bg-teal">Active</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Gulf Retail</td>
+                                        <td>Starter</td>
+                                        <td>
+                                            <div class="progress">
+                                                <div class="progress-bar bg-teal" style="width:100%">100%</div>
+                                            </div>
+                                        </td>
+                                        <td><span class="badge bg-teal">Active</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Desert Logistics</td>
+                                        <td>Growth</td>
+                                        <td>
+                                            <div class="progress">
+                                                <div class="progress-bar bg-teal" style="width:40%">40%</div>
+                                            </div>
+                                        </td>
+                                        <td><span class="badge bg-dark">In setup</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
 
-                        <li class="nav-item">
-                            <a class="nav-link" href="login.html">
-
-                                <i class="bi bi-box-arrow-left me-2"></i>
-                                Log out
-
-                            </a>
-                        </li>
-
-                    </ul>
-
-                    <!-- Admin User -->
-                    <div class="dropup mt-3">
-
-                        <button class="btn btn-light w-100 text-start dropdown-toggle"
-                                type="button"
-                                data-bs-toggle="dropdown">
-
-                            <i class="bi bi-person-circle me-2"></i>
-                            HUMAIN Admin
-
-                        </button>
-
-                        <ul class="dropdown-menu">
-
-                            <li>
-                                <a class="dropdown-item" href="admin.html">
-                                    Admin overview
-                                </a>
-                            </li>
-
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-
-                            <li>
-                                <a class="dropdown-item" href="login.html">
-                                    Log out
-                                </a>
-                            </li>
-
-                        </ul>
+                        <!-- Form: update setup progress -->
+                        <h3 class="h6 mb-3">Update setup progress</h3>
+                        <!-- Phase 4: change to method="post" and send to the Node.js server -->
+                        <form action="admin.html">
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="setupClient" class="form-label">Client</label>
+                                    <select class="form-select" id="setupClient" name="setupClient">
+                                        <option>Najd Bank</option>
+                                        <option>Desert Logistics</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="stepsDone" class="form-label">Steps done</label>
+                                    <select class="form-select" id="stepsDone" name="stepsDone">
+                                        <option>1 of 5 (20%)</option>
+                                        <option>2 of 5 (40%)</option>
+                                        <option>3 of 5 (60%)</option>
+                                        <option>4 of 5 (80%)</option>
+                                        <option>5 of 5 (100%)</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-dark">Save progress</button>
+                        </form>
 
                     </div>
 
                 </div>
-
-            </aside>
-
-
-            <!-- RIGHT SIDE -->
-            <div class="col-md-9 col-lg-10 section-light p-0">
-
-                <!-- Top Bar -->
-                <header class="topbar d-flex justify-content-between align-items-center px-4 py-3">
-
-                    <input type="search"
-                           class="form-control topbar-search"
-                           placeholder="Search clients and requests"
-                           aria-label="Search">
-
-                    <div class="d-flex align-items-center gap-4">
-
-                        <span>Admin Portal</span>
-
-                        <a href="#requests"
-                           class="position-relative"
-                           aria-label="Notifications">
-
-                            <i class="bi bi-bell"></i>
-
-                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-dark">
-                                3
-                            </span>
-
-                        </a>
-
-                        <span>EN | ع</span>
-
-                    </div>
-
-                </header>
-
-
-                <!-- ADMIN PAGE -->
-                <main class="p-4 p-lg-5">
-
-                    <!-- Page Title -->
-                    <div class="mb-4">
-
-                        <p class="label-small">
-                            HUMAIN Fabric
-                        </p>
-
-                        <h1>Admin Portal</h1>
-
-                        <p class="text-gray">
-                            Manage clients, follow setup progress
-                            and review new requests.
-                        </p>
-
-                    </div>
-
-
-                    <!-- SUMMARY CARDS -->
-                    <div class="row mb-4">
-
-                        <!-- Total Clients -->
-                        <div class="col-6 col-lg-3 mb-3">
-
-                            <div class="bg-white p-4 h-100">
-
-                                <h2>12</h2>
-
-                                <p class="text-gray mb-0">
-                                    Total clients
-                                </p>
-
-                            </div>
-
-                        </div>
-
-
-                        <!-- Active Clients -->
-                        <div class="col-6 col-lg-3 mb-3">
-
-                            <div class="bg-white p-4 h-100">
-
-                                <h2>8</h2>
-
-                                <p class="text-gray mb-0">
-                                    Active clients
-                                </p>
-
-                            </div>
-
-                        </div>
-
-
-                        <!-- Clients in Setup -->
-                        <div class="col-6 col-lg-3 mb-3">
-
-                            <div class="bg-white p-4 h-100">
-
-                                <h2>4</h2>
-
-                                <p class="text-gray mb-0">
-                                    In setup
-                                </p>
-
-                            </div>
-
-                        </div>
-
-
-                        <!-- Pending Requests -->
-                        <div class="col-6 col-lg-3 mb-3">
-
-                            <div class="bg-white p-4 h-100">
-
-                                <h2>3</h2>
-
-                                <p class="text-gray mb-0">
-                                    Requests to review
-                                </p>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-
-                    <!-- CLIENTS SECTION -->
-                    <section id="clients" class="mb-5">
-
-                        <div class="mb-3">
-
-                            <h2 class="h4">Clients</h2>
-
-                            <p class="text-gray">
-                                View client plans and setup progress.
-                            </p>
-
-                        </div>
-
-                        <div class="bg-white p-4">
-
-                            <div class="table-responsive">
-
-                                <table class="table table-striped table-hover align-middle">
-
-                                    <!-- Table Headings -->
-                                    <thead>
-
-                                        <tr>
-                                            <th>Client</th>
-                                            <th>Plan</th>
-                                            <th>Setup progress</th>
-                                            <th>Status</th>
-                                        </tr>
-
-                                    </thead>
-
-                                    <!-- Client Information -->
-                                    <tbody>
-
-                                        <tr>
-                                            <td>Najd Bank</td>
-                                            <td>Growth</td>
-                                            <td>60%</td>
-                                            <td>In setup</td>
-                                        </tr>
-
-                                        <tr>
-                                            <td>Riyadh Health</td>
-                                            <td>Growth</td>
-                                            <td>100%</td>
-                                            <td>Active</td>
-                                        </tr>
-
-                                        <tr>
-                                            <td>Gulf Retail</td>
-                                            <td>Basic</td>
-                                            <td>100%</td>
-                                            <td>Active</td>
-                                        </tr>
-
-                                        <tr>
-                                            <td>Desert Logistics</td>
-                                            <td>Growth</td>
-                                            <td>40%</td>
-                                            <td>In setup</td>
-                                        </tr>
-
-                                    </tbody>
-
-                                </table>
-
-                            </div>
-
-                        </div>
-
-                    </section>
-
-
-                    <!-- REQUESTS SECTION -->
-                    <section id="requests">
-
-                        <div class="mb-3">
-
-                            <h2 class="h4">Requests waiting for approval</h2>
-
-                            <p class="text-gray">
-                                Review requests submitted by clients.
-                            </p>
-
-                        </div>
-
-                        <div class="bg-white p-4">
-
-                            <div class="table-responsive">
-
-                                <table class="table table-striped table-hover align-middle">
-
-                                    <!-- Table Headings -->
-                                    <thead>
-
-                                        <tr>
-                                            <th>Request ID</th>
-                                            <th>Client</th>
-                                            <th>Request</th>
-                                            <th>Date</th>
-                                            <th>Status</th>
-                                        </tr>
-
-                                    </thead>
-
-                                    <!-- Request Information -->
-                                    <tbody>
-
-                                        <tr>
-                                            <td>R-1042</td>
-                                            <td>Najd Bank</td>
-                                            <td>Customer service assistant</td>
-                                            <td>24 Sep 2026</td>
-                                            <td>Pending</td>
-                                        </tr>
-
-                                        <tr>
-                                            <td>R-1043</td>
-                                            <td>Riyadh Health</td>
-                                            <td>Extra data storage</td>
-                                            <td>25 Sep 2026</td>
-                                            <td>Pending</td>
-                                        </tr>
-
-                                        <tr>
-                                            <td>R-1044</td>
-                                            <td>Gulf Retail</td>
-                                            <td>Analytics upgrade</td>
-                                            <td>26 Sep 2026</td>
-                                            <td>Pending</td>
-                                        </tr>
-
-                                    </tbody>
-
-                                </table>
-
-                            </div>
-
-                        </div>
-
-                    </section>
-
-                </main>
 
             </div>
 
         </div>
-    </div>
+    </main>
 
 
     <!-- Bootstrap JavaScript -->

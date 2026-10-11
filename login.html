@@ -42,8 +42,7 @@
                             <a class="nav-link" href="index.html#platform">Platform</a>
                         </li>
                     </ul>
-                    <a class="nav-link nav-login me-3" href="login.html">Log in</a>
-                    <a class="btn btn-lime btn-sm" href="login.html">Request access</a>
+                    <a class="btn btn-lime btn-sm" href="login.html">Log in</a>
                 </div>
 
             </div>
@@ -60,7 +59,7 @@
                 <div class="col-lg-5 section-black login-panel p-5">
                     <p class="label-small text-white mb-4">HUMAIN <span class="text-fabric">Fabric</span> | Client Hub</p>
                     <h1 class="display-4 fw-normal text-gradient mb-4">Your HUMAIN Fabric hub</h1>
-                    <p class="lead text-gray mb-5">Log in to follow your setup, usage and requests. New to HUMAIN Fabric? Request access and our team will get in touch.</p>
+                    <p class="lead text-gray mb-5">Log in to follow your setup, usage and requests. Your account is created by HUMAIN when your organization joins Fabric.</p>
                     <p class="label-small text-fabric mt-5 mb-0">The End of Limits</p>
                 </div>
 
@@ -71,11 +70,8 @@
                         <!-- Bootstrap Tabs -->
                         <ul class="nav nav-tabs mb-4">
                             <li class="nav-item">
-                                <a class="nav-link active" data-bs-toggle="tab" href="#loginTab">Log in</a>
+                                <a class="nav-link active" data-bs-toggle="tab" href="#loginTab">Client</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" data-bs-toggle="tab" href="#requestTab">Request access</a>
-                            </li>                            
                             <li class="nav-item">
                                 <a class="nav-link" data-bs-toggle="tab" href="#staffTab">HUMAIN staff</a>
                             </li>
@@ -83,138 +79,50 @@
 
                         <div class="tab-content">
 
-                            <!-- Tab 1: Log in -->
-                                                        
+                            <!-- Tab 1: Client log in -->
                             <div class="tab-pane fade show active" id="loginTab">
 
-                                <h2 class="h4 fw-normal mb-1">Welcome back</h2>
+                                <h2 class="mb-2">Welcome back.</h2>
                                 <p class="text-gray mb-4">Log in with your work email.</p>
 
                                 <!-- Form: Log in -->
                                 <!-- Phase 4: change to method="post" and send to the Node.js server -->
                                 <form action="dashboard.html">
                                     <div class="mb-3">
-                                        <label for="email" class="form-label">Work email:</label>
+                                        <label for="email" class="form-label">Work email</label>
                                         <input type="email" class="form-control" id="email" placeholder="name@company.com" name="email" required>
                                     </div>
                                     <div class="mb-3">
-                                        <label for="pwd" class="form-label">Password:</label>
+                                        <label for="pwd" class="form-label">Password</label>
                                         <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pswd" required>
                                     </div>
-                                    <div class="form-check mb-3">
-                                        <label class="form-check-label">
-                                            <input class="form-check-input" type="checkbox" name="remember"> Remember me
-                                        </label>
-                                    </div>
-                                    <button type="submit" class="btn btn-dark w-100">Log in</button>
-                                </form>
-                                <p class="text-gray small text-center mt-3">HUMAIN staff? <a href="admin.html">Log in to the admin portal</a></p>
-
-                            </div>
-
-                            <!-- Tab 2: Request access -->
-                            <div class="tab-pane fade" id="requestTab">
-
-                                <h2 class="h4 fw-normal mb-1">Request access</h2>
-                                <p class="text-gray mb-4">Tell us about your organization and HUMAIN will contact you with an invite.</p>
-
-                                <!-- Form: Request access (same fields as HUMAIN's contact form) -->
-                                <form action="login.html">
-
-                                    <!-- First and last name side by side -->
-                                    <div class="row">
-                                        <div class="col-sm-6 mb-3">
-                                            <label for="fname" class="form-label">First name *</label>
-                                            <input type="text" class="form-control" id="fname" placeholder="Enter your first name" name="fname" required>
-                                        </div>
-                                        <div class="col-sm-6 mb-3">
-                                            <label for="lname" class="form-label">Last name *</label>
-                                            <input type="text" class="form-control" id="lname" placeholder="Enter your last name" name="lname" required>
-                                        </div>
-                                    </div>
-
-                                    <!-- Contact number with country code -->
-                                    <div class="mb-3">
-                                        <label for="phone" class="form-label">Contact number *</label>
-                                        <div class="input-group">
-                                            <span class="input-group-text">+966</span>
-                                            <input type="tel" class="form-control" id="phone" placeholder="5XXXXXXXX" name="phone" maxlength="9" required>
-                                        </div>
-                                    </div>
-
-                                    <div class="mb-3">
-                                        <label for="cemail" class="form-label">Company email *</label>
-                                        <input type="email" class="form-control" id="cemail" placeholder="Enter your company email" name="cemail" required>
-                                    </div>
-
-                                    <div class="mb-3">
-                                        <label for="cname" class="form-label">Company name</label>
-                                        <input type="text" class="form-control" id="cname" placeholder="Enter your company name" name="cname">
-                                    </div>
-
-                                    <div class="mb-3">
-                                        <label for="sector" class="form-label">Sector</label>
-                                        <select class="form-select" id="sector" name="sector">
-                                            <option value="">Select your industry sector</option>
-                                            <option>Government and Public Sector</option>
-                                            <option>Healthcare and Life Sciences</option>
-                                            <option>Energy and Industrial</option>
-                                            <option>Financial Services</option>
-                                            <option>Media and Broadcasting</option>
-                                            <option>Education and Research</option>
-                                        </select>
-                                    </div>
-
-                                    <div class="mb-3">
-                                        <label for="country" class="form-label">Country</label>
-                                        <select class="form-select" id="country" name="country">
-                                            <option value="">Select your country</option>
-                                            <option>Saudi Arabia</option>
-                                            <option>United Arab Emirates</option>
-                                            <option>Kuwait</option>
-                                            <option>Bahrain</option>
-                                            <option>Qatar</option>
-                                            <option>Oman</option>
-                                            <option>Other</option>
-                                        </select>
-                                    </div>
-
-                                    <div class="mb-3">
-                                        <label for="message" class="form-label">Message</label>
-                                        <textarea class="form-control" rows="4" id="message" name="message" placeholder="Type your message here"></textarea>
-                                    </div>
-
-                                    <!-- Consent checkbox -->
                                     <div class="form-check mb-4">
-                                        <input class="form-check-input" type="checkbox" id="consent" name="consent" required>
-                                        <label class="form-check-label small" for="consent">
-                                            I agree to the use or processing of my personal information by HUMAIN for the purpose of fulfilling this request and in accordance with HUMAIN's Privacy Statement.
-                                        </label>
+                                        <input class="form-check-input" type="checkbox" id="remember" name="remember">
+                                        <label class="form-check-label" for="remember">Remember me</label>
                                     </div>
-
-                                    <button type="submit" class="btn btn-lime w-100">Send request</button>
+                                    <button type="submit" class="btn btn-dark w-100 d-flex justify-content-between align-items-center">Log in <span>&rarr;</span></button>
                                 </form>
 
                             </div>
-                                                        
-                            <!-- Tab 3: HUMAIN staff -->
+
+                            <!-- Tab 2: HUMAIN staff -->
                             <div class="tab-pane fade" id="staffTab">
 
-                                <h2 class="h4 fw-normal mb-1">HUMAIN staff</h2>
+                                <h2 class="mb-2">HUMAIN staff.</h2>
                                 <p class="text-gray mb-4">Log in to the admin portal with your HUMAIN email.</p>
 
                                 <!-- Form: Staff log in -->
                                 <!-- Phase 4: change to method="post" and send to the Node.js server -->
                                 <form action="admin.html">
                                     <div class="mb-3">
-                                        <label for="staffEmail" class="form-label">HUMAIN email:</label>
+                                        <label for="staffEmail" class="form-label">HUMAIN email</label>
                                         <input type="email" class="form-control" id="staffEmail" placeholder="name@humain.com" name="staffEmail" required>
                                     </div>
                                     <div class="mb-4">
-                                        <label for="staffPwd" class="form-label">Password:</label>
+                                        <label for="staffPwd" class="form-label">Password</label>
                                         <input type="password" class="form-control" id="staffPwd" placeholder="Enter password" name="staffPwd" required>
                                     </div>
-                                    <button type="submit" class="btn btn-dark w-100">Log in to admin portal</button>
+                                    <button type="submit" class="btn btn-dark w-100 d-flex justify-content-between align-items-center">Log in to admin portal <span>&rarr;</span></button>
                                 </form>
 
                             </div>

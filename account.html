@@ -1,260 +1,221 @@
+<!-- Page: Account Settings -->
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Account Settings</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@200;300;400;500;600&display=swap">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Account Settings</title>
+  <link rel="icon" type="image/webp" href="images/humain-favicon.webp">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@200;300;400;500;600&display=swap">
+  <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
 
+  <div class="container-fluid">
+    <div class="row">
 
+      <!-- ===== SIDEBAR ===== -->
+      <aside class="col-md-3 col-lg-2 sidebar p-3">
 
-    <div class="container-fluid">
-      <div class="row">
-
-    <!-- ===== SIDEBAR ===== -->
-    <aside class="col-md-3 col-lg-2 sidebar p-3">
-
-      <!-- Brand + menu button (button shows on phones only) -->
-      <div class="d-flex justify-content-between align-items-center">
-        <a class="navbar-brand" href="dashboard.html">
-          <span class="brand-name">HUMAIN</span>
-          <span class="brand-sub">Fabric</span>
-        </a>
-        <button class="btn btn-outline-dark btn-sm d-md-none" type="button"
-                data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-label="Open menu">
-          <i class="bi bi-list"></i>
-        </button>
-      </div>
-
-      <!-- Everything below hides on phones until ☰ is clicked -->
-      <div class="collapse d-md-block" id="sidebarMenu">
-
-        <!-- Organization -->
-        <div class="section-light p-3 my-4">
-          <p class="label-small mb-1">Organization</p>
-          <p class="fw-semibold mb-0">Najd Bank</p>
-          <p class="text-gray small mb-0">Growth plan</p>
+        <!-- Brand + menu button (button shows on phones only) -->
+        <div class="d-flex justify-content-between align-items-center">
+          <a class="navbar-brand" href="dashboard.html">
+            <span class="brand-name">HUMAIN</span>
+            <span class="brand-sub">Fabric</span>
+          </a>
+          <button class="btn btn-outline-light btn-sm d-md-none" type="button" data-bs-toggle="collapse"
+            data-bs-target="#sidebarMenu" aria-label="Open menu">
+            <i class="bi bi-list"></i>
+          </button>
         </div>
 
-        <!-- Main menu (vertical nav pills) -->
-        <nav aria-label="Main menu">
+        <!-- Menu (hides on phones until the button is clicked) -->
+        <div class="collapse d-md-block" id="sidebarMenu">
+
+          <!-- Organization -->
+          <div class="section-light p-3 my-4">
+            <p class="label-small mb-1">Organization</p>
+            <p class="fw-semibold mb-0">Najd Bank</p>
+            <p class="text-gray small mb-0">Growth plan</p>
+          </div>
+
+          <!-- Bootstrap Nav Pills (vertical) -->
           <ul class="nav nav-pills flex-column">
             <li class="nav-item">
-              <a class="nav-link" href="dashboard.html">
-                <i class="bi bi-grid me-2"></i>Overview</a>
+              <a class="nav-link" href="dashboard.html"><i class="bi bi-grid me-2"></i>Overview</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="setup.html">
-                <i class="bi bi-list-check me-2"></i>Getting started</a>
+              <a class="nav-link" href="setup.html"><i class="bi bi-list-check me-2"></i>Getting started</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="catalog.html">
-                <i class="bi bi-layers me-2"></i>Catalog</a>
+              <a class="nav-link" href="catalog.html"><i class="bi bi-layers me-2"></i>Catalog</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="suggestions.html">
-                <i class="bi bi-stars me-2"></i>Suggestions
-                <span class="badge rounded-pill bg-dark float-end">4</span></a>
+              <a class="nav-link" href="suggestions.html"><i class="bi bi-stars me-2"></i>Suggestions</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="requests.html">
-                <i class="bi bi-inbox me-2"></i>My requests
-                <span class="badge rounded-pill bg-dark float-end">1</span></a>
+              <a class="nav-link" href="requests.html"><i class="bi bi-inbox me-2"></i>My requests</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="support.html">
-                <i class="bi bi-chat-left-text me-2"></i>Support</a>
+              <a class="nav-link" href="support.html"><i class="bi bi-chat-left-text me-2"></i>Support</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="account.html"><i class="bi bi-gear me-2"></i>Account settings</a>
             </li>
           </ul>
-        </nav>
 
-        <hr>
+          <!-- Bootstrap Dropup: user menu -->
+          <div class="dropup mt-4">
+            <button type="button" class="btn btn-dark-soft w-100 text-start dropdown-toggle"
+              data-bs-toggle="dropdown">
+              <i class="bi bi-person-circle me-2"></i>Layan A.
+            </button>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="account.html">Account settings</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="index.html">Log out</a></li>
+            </ul>
+          </div>
 
-        <!-- Account link -->
-        <ul class="nav nav-pills flex-column">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="account.html">
-              <i class="bi bi-gear me-2"></i>Account settings</a>
-          </li>
-        </ul>
-
-        <!-- User dropdown (opens upward) -->
-        <div class="dropup mt-3">
-          <button type="button" class="btn btn-light w-100 text-start dropdown-toggle"
-                  data-bs-toggle="dropdown">
-            <i class="bi bi-person-circle me-2"></i>Layan A.
-          </button>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="account.html">Profile</a></li>
-            <li><a class="dropdown-item" href="account.html">Team</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="index.html">Log out</a></li>
-          </ul>
         </div>
+      </aside>
+
+
+      <!-- ===== RIGHT SIDE ===== -->
+      <div class="col-md-9 col-lg-10 section-light p-0">
+
+        <!-- Sample data for Phase 2. In Phase 4 these values will come from the database. -->
+        <main class="p-4 p-lg-5">
+
+          <!-- 1: Heading -->
+          <p class="label-small">Account</p>
+          <h1>Account settings</h1>
+          <p class="text-gray">Manage your profile and see your organization and team.</p>
+
+
+          <div class="row mt-4">
+
+            <!-- 2: Your profile form (left) -->
+            <div class="col-lg-6 mb-4">
+              <section class="bg-white p-4 h-100">
+                <h5 class="mb-4">Your profile</h5>
+
+                <!-- Phase 4: change to method="post" and send to the Node.js server -->
+                <form action="account.html">
+
+                  <div class="mb-3">
+                    <label for="fullName" class="form-label">Full name</label>
+                    <input type="text" class="form-control" id="fullName" name="fullName" value="Layan A.">
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="workEmail" class="form-label">Work email</label>
+                    <input type="email" class="form-control" id="workEmail" name="workEmail"
+                      value="layan@najdbank.com">
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="jobTitle" class="form-label">Job title</label>
+                    <input type="text" class="form-control" id="jobTitle" name="jobTitle" value="Data team lead">
+                  </div>
+
+                  <div class="mb-4">
+                    <label for="phone" class="form-label">Phone</label>
+                    <input type="tel" class="form-control" id="phone" name="phone" placeholder="+966 5X XXX XXXX">
+                  </div>
+
+                  <button type="submit" class="btn btn-lime">Save changes</button>
+                </form>
+              </section>
+            </div>
+
+
+            <!-- 3: Organization info, read-only (right) -->
+            <div class="col-lg-6 mb-4">
+              <section class="bg-white p-4 h-100">
+                <h5 class="mb-4">Organization</h5>
+
+                <p class="label-small mb-1">Organization</p>
+                <p class="mb-3">Najd Bank</p>
+
+                <p class="label-small mb-1">Sector</p>
+                <p class="mb-3">Financial Services</p>
+
+                <p class="label-small mb-1">Plan</p>
+                <p class="mb-3">Growth</p>
+
+                <p class="label-small mb-1">City</p>
+                <p class="mb-4">Riyadh</p>
+
+                <div class="section-light p-3">
+                  <p class="small mb-0">Managed by HUMAIN. To change these, <a href="support.html">message your
+                      account manager</a>.</p>
+                </div>
+              </section>
+            </div>
+
+          </div>
+
+
+          <!-- 4: Team members table -->
+          <section class="bg-white p-4">
+            <h5>Team members</h5>
+            <p class="text-gray">The people who have access to your hub.</p>
+
+            <div class="table-responsive">
+              <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Role</th>
+                    <th>Last active</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Layan A.</td>
+                    <td>layan@najdbank.com</td>
+                    <td><span class="badge bg-teal">Admin</span></td>
+                    <td>Today</td>
+                  </tr>
+                  <tr>
+                    <td>Noura M.</td>
+                    <td>noura@najdbank.com</td>
+                    <td><span class="badge bg-secondary">Member</span></td>
+                    <td>Yesterday</td>
+                  </tr>
+                  <tr>
+                    <td>Latifa B.</td>
+                    <td>latifa@najdbank.com</td>
+                    <td><span class="badge bg-secondary">Member</span></td>
+                    <td>2 days ago</td>
+                  </tr>
+                  <tr>
+                    <td>Johara B.</td>
+                    <td>johara@najdbank.com</td>
+                    <td><span class="badge bg-secondary">Member</span></td>
+                    <td>Last week</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+        </main>
 
       </div>
-    </aside>
-
-    <!-- ===== RIGHT SIDE ===== -->
-    <div class="col-md-9 col-lg-10 section-light p-0">
-
-      <!-- Top bar -->
-      <header class="topbar d-flex justify-content-between align-items-center px-4 py-3">
-        <input type="search" class="form-control topbar-search"
-               placeholder="Search features, requests, help" aria-label="Search">
-        <div class="d-flex align-items-center gap-4">
-          <a href="support.html" class="text-decoration-none">Help</a>
-          <a href="#" class="position-relative" aria-label="Notifications">
-            <i class="bi bi-bell fs-5"></i>
-            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-dark">3</span>
-          </a>
-          <span>EN | ع</span>
-        </div>
-      </header>
-
-      <!-- PAGE CONTENT: كل وحده تبني البيج حقها هنا -->
-      <main class="p-4 p-lg-5">
-        <!-- ==== ACCOUNT SETTINGS CONTENT ==== -->
-        <p class="label-small">Stage 6</p>
-        <h1>Account Settings</h1>
-        <p class="text-gray">Manage your profile, team, and account preferences.</p>
-
-        <!-- ==== ACCOUNT SETTINGS TABS ==== -->
-        <ul class="nav nav-tabs mt-4 mb-4">
-            <li class="nav-item">
-                <a class="nav-link active" href="#">Organization</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Team Members</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Notifications</a>
-            </li>
-        </ul>
-
-        <!-- ==== ACCOUNT SETTINGS COLUMNS ==== -->
-         <div class="row mt-4">
-
-            <!-- ==== LEFT COLUMN: ORGANIZATION ==== -->
-            <div class="col-md-5">
-                <section class="bg-white p-4 mb-4">
-                    <h5>Organization</h5>
-            
-            <form>
-
-                    <!-- Organization name -->
-                    <div class="mb-3">
-                        <label for="organizationName" class="form-label">Organization Name</label>
-                        <input type="text" class="form-control" id="organizationName" value="Najd Bank">
-                    </div>
-                
-                    <!-- Sector -->
-                    <div class="mb-3">
-                        <label for="sector" class="form-label">Sector</label>
-                        <select class="form-select" id="sector">
-                            <option selected>Banking</option>
-                            <option>Healthcare</option>
-                            <option>Technology</option>
-                        </select>
-                    </div>
-
-                    <!-- City -->
-                    <div class="mb-3">
-                        <label for="city" class="form-label">City</label>
-                        <input type="text" class="form-control" id="city" value="Riyadh">
-                    </div>
-
-                    <!-- Plan -->
-                    <div class="mb-3">
-                        <label for="plan" class="form-label">Plan</label>
-                        <select class="form-select" id="plan">
-                            <option selected>Starter</option>
-                            <option>Growth</option>
-                            <option>Enterprise</option>
-                        </select>
-                    </div>
-
-                <button type="button" class="btn btn-dark">Save changes</button>
-            </form>
-         </section>
-         </div>
-    
-
-         <!-- ==== RIGHT COLUMN: TEAM MEMBERS ==== -->
-          <div class="col-md-7">
-
-             <section class="bg-white p-4 mb-4">
-                <h5>Team Members</h5>
-                <p class="text-gray">Manage the people who have access to your space.</p>
-                <!-- Team members table -->
-                 <div class="table-responsive">
-                     <table class="table table-hover">
-                            <thead>
-                             <tr>
-                                  <th scope="col">Name</th>
-                                  <th scope="col">Email</th>
-                                  <th scope="col">Role</th>
-                                  <th scope="col">Last active</th>
-                                  <th scope="col">Action</th>
-                             </tr>
-                            </thead>
-
-                            <tbody>
-                             <tr>
-                                  <td>Layan</td>
-                                  <td>layan@najdbank.com</td>
-                                  <td>Admin</td>
-                                  <td>Today</td>
-                                  <td><a href="#">Edit</a></td>
-                             </tr>
-
-                             <tr>
-                                  <td>Noura</td>
-                                  <td>noura@najdbank.com</td>
-                                  <td>Member</td>
-                                  <td>Yesterday</td>
-                                  <td><a href="#">Edit</a></td>
-                             </tr>
-
-                             <tr>
-                                  <td>Latifa</td>
-                                  <td>latifa@najdbank.com</td>
-                                  <td>Member</td>
-                                  <td>2 days ago</td>
-                                  <td><a href="#">Edit</a></td>
-                             </tr>
-
-                             <tr>
-                                  <td>Johara</td>
-                                  <td>johara@najdbank.com</td>
-                                  <td>Member</td>
-                                  <td>Pending</td>
-                                  <td><a href="#">Resend</a></td>
-                             </tr>
-                            </tbody>
-                        </table>
-                 </div>
-                 <button type="button" class="btn btn-dark">Invite Member</button>
-             </section>
-          </div>
-          </div>
-          
-      </main>
-        
     </div>
-
   </div>
-</div>
-
-   
 
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
+
 </html>
