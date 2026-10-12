@@ -1,0 +1,215 @@
+<!-- Page 4: Getting started (Stages 1 and 2) -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <!-- makes the page fit phone screens -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Getting started | HUMAIN Fabric</title>
+  <!-- small icon in the browser tab -->
+  <link rel="icon" type="image/webp" href="images/humain-favicon.webp">
+  <!-- Bootstrap 5.3.2 CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+  <!-- Bootstrap Icons (the small icons in the sidebar and buttons) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <!-- Google Font: Readex Pro -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@200;300;400;500;600&display=swap">
+  <!-- our own CSS (loaded last so it can change Bootstrap's styles) -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+  <!-- Bootstrap grid: container-fluid = full width, row = the sidebar and the content side by side -->
+  <div class="container-fluid">
+    <div class="row">
+
+      <!-- ===== SIDEBAR (the same on every hub page, only the "active" link changes) ===== -->
+      <!-- col-md-3 col-lg-2: 3 of 12 columns on tablets, 2 of 12 on big screens -->
+      <aside class="col-md-3 col-lg-2 sidebar p-3">
+
+        <!-- Logo + menu button. d-md-none: the button only shows on phones -->
+        <div class="d-flex justify-content-between align-items-center">
+          <a class="navbar-brand" href="dashboard.html">
+            <span class="brand-name">HUMAIN</span>
+            <span class="brand-sub">Fabric</span>
+          </a>
+          <!-- Bootstrap Collapse: this button opens and closes #sidebarMenu -->
+          <button class="btn btn-outline-light btn-sm d-md-none" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu">
+            <i class="bi bi-list"></i>
+          </button>
+        </div>
+
+        <!-- The menu: hidden on phones until the button is clicked (collapse), always shown from medium screens up (d-md-block) -->
+        <div class="collapse d-md-block" id="sidebarMenu">
+
+          <!-- Organization box: which client is logged in -->
+          <div class="section-light p-3 my-4">
+            <p class="label-small mb-1">Organization</p>
+            <p class="fw-semibold mb-0">Najd Bank</p>
+            <p class="text-gray small mb-0">Growth plan</p>
+          </div>
+
+          <!-- Bootstrap Nav Pills (vertical): flex-column puts the links under each other -->
+          <!-- "active" = the page we are on (shown as a lime pill). The <i> tags are Bootstrap Icons -->
+          <ul class="nav nav-pills flex-column">
+            <li class="nav-item">
+              <a class="nav-link" href="dashboard.html"><i class="bi bi-grid me-2"></i>Overview</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="setup.html"><i class="bi bi-list-check me-2"></i>Getting started</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="catalog.html"><i class="bi bi-layers me-2"></i>Catalog</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="suggestions.html"><i class="bi bi-stars me-2"></i>Suggestions</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="requests.html"><i class="bi bi-inbox me-2"></i>My requests</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="support.html"><i class="bi bi-chat-left-text me-2"></i>Support</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="account.html"><i class="bi bi-gear me-2"></i>Account settings</a>
+            </li>
+          </ul>
+
+          <!-- Bootstrap Dropup (a dropdown that opens upward): the user menu -->
+          <div class="dropup mt-4">
+            <!-- data-bs-toggle="dropdown": clicking the button opens the menu below it in the code -->
+            <button type="button" class="btn btn-dark-soft w-100 text-start dropdown-toggle" data-bs-toggle="dropdown">
+              <i class="bi bi-person-circle me-2"></i>Layan A.
+            </button>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="account.html">Account settings</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="index.html">Log out</a></li>
+            </ul>
+          </div>
+
+        </div>
+      </aside>
+
+
+      <!-- ===== RIGHT SIDE: the page content (9 of 12 columns on tablets, 10 of 12 on big screens) ===== -->
+      <!-- section-light: light gray background. p-0: no padding here (the padding is on <main>) -->
+      <div class="col-md-9 col-lg-10 section-light p-0">
+
+        <!-- Sample data for Phase 2 (fictional client "Najd Bank"). In Phase 4 these values will come from the database. -->
+        <main class="p-4 p-lg-5">
+
+          <!-- 1: Heading -->
+          <p class="label-small">Stages 1–2</p>
+          <h1>Getting started</h1>
+          <p class="text-gray mb-4">Everything to finish before you go live. You do these steps in HUMAIN Fabric or with your HUMAIN team, and HUMAIN updates this list when each step is done.</p>
+
+          <!-- 2: Progress box: big number on the left, progress bar on the right -->
+          <section class="bg-white p-4 mb-4">
+            <div class="row align-items-center">
+              <div class="col-lg-3 mb-3 mb-lg-0">
+                <h2 class="display-4 text-gradient mb-0">60%</h2>
+                <p class="text-gray small mb-0">of your setup is done</p>
+              </div>
+              <div class="col-lg-9">
+                <!-- justify-content-between: one text on the left, one on the right -->
+                <div class="d-flex justify-content-between mb-2 small">
+                  <span>3 of 5 steps complete</span>
+                  <span class="text-gray">Estimated go-live · 1 Nov 2026</span>
+                </div>
+                <!-- Bootstrap Progress Bar -->
+                <div class="progress">
+                  <div class="progress-bar bg-teal" style="width:60%">60%</div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+
+          <div class="row">
+
+            <!-- 3: Checklist table (left, 8 of 12 columns) -->
+            <div class="col-lg-8 mb-4">
+              <section class="bg-white p-4">
+                <h5 class="mb-3">Your checklist</h5>
+
+                <!-- Each row: step number, step name, who does it, status -->
+                <div class="table-responsive">
+                  <table class="table align-middle mb-0">
+                    <tbody>
+                      <tr>
+                        <td class="text-gray">01</td>
+                        <td>Sign the service agreement<br><small class="text-gray">Completed 2 Sep 2026</small></td>
+                        <td class="text-gray small">HUMAIN + you</td>
+                        <td><span class="badge bg-teal">Done</span></td>
+                      </tr>
+                      <tr>
+                        <td class="text-gray">02</td>
+                        <td>Invite your team<br><small class="text-gray">3 teammates invited · 5 Sep</small></td>
+                        <td class="text-gray small">You</td>
+                        <td><span class="badge bg-teal">Done</span></td>
+                      </tr>
+                      <tr>
+                        <td class="text-gray">03</td>
+                        <td>Connect your data<br><small class="text-gray">3 sources connected · 12 Sep</small></td>
+                        <td class="text-gray small">You</td>
+                        <td><span class="badge bg-teal">Done</span></td>
+                      </tr>
+                      <tr>
+                        <td class="text-gray">04</td>
+                        <td>Finish your access rules<br><small class="text-gray">2 of 5 roles defined</small></td>
+                        <td class="text-gray small">You</td>
+                        <td><span class="badge bg-dark">In progress</span></td>
+                      </tr>
+                      <tr>
+                        <td class="text-gray">05</td>
+                        <td>Pick your first AI use case<br><small class="text-gray">Unlocks after access rules · you choose it from the Catalog</small></td>
+                        <td class="text-gray small">You + HUMAIN</td>
+                        <td><span class="badge bg-secondary">Not started</span></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </section>
+            </div>
+
+
+            <!-- 4: Account manager and recent activity (right, 4 of 12 columns) -->
+            <div class="col-lg-4 mb-4">
+
+              <section class="bg-white p-4 mb-4">
+                <p class="label-small mb-2">Your account manager</p>
+                <h5 class="mb-1">Sara A.</h5>
+                <p class="text-gray small">Replies within 1 working day</p>
+                <a class="btn btn-lime w-100" href="support.html">Message Sara &rarr;</a>
+              </section>
+
+              <!-- list-unstyled: a list without bullet points -->
+              <div class="bg-white p-4">
+                <p class="label-small mb-3">Recent activity</p>
+                <ul class="list-unstyled small mb-0">
+                  <li class="mb-3">Reminder: finish access rules<br><span class="text-gray">25 Sep · automatic</span></li>
+                  <li class="mb-3">You added 2 access roles<br><span class="text-gray">18 Sep · Noura M.</span></li>
+                  <li>HUMAIN verified your data connection<br><span class="text-gray">12 Sep · Sara A.</span></li>
+                </ul>
+              </div>
+
+            </div>
+
+          </div>
+
+        </main>
+
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Bootstrap JavaScript: needed for the sidebar menu button and the dropup -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>

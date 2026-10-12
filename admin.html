@@ -1,417 +1,405 @@
+<!-- Page 11: Admin portal (for HUMAIN staff only) -->
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Admin Portal | HUMAIN Fabric</title>
-
-    <!-- Favicon -->
-    <link rel="icon" type="image/webp" href="images/humain-favicon.webp">
-
-    <!-- Bootstrap -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
-
-    <!-- Google Font -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@200;300;400;500;600&display=swap">
-
-    <!-- Teammates' CSS -->
-    <link rel="stylesheet" href="css/style.css">
-
+  <meta charset="UTF-8">
+  <!-- makes the page fit phone screens -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin portal | HUMAIN Fabric</title>
+  <!-- small icon in the browser tab -->
+  <link rel="icon" type="image/webp" href="images/humain-favicon.webp">
+  <!-- Bootstrap 5.3.2 CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+  <!-- Google Font: Readex Pro -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@200;300;400;500;600&display=swap">
+  <!-- our own CSS (loaded last so it can change Bootstrap's styles) -->
+  <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
 
-    <!-- HEADER: simple black navbar for HUMAIN staff -->
-    <header>
-        <nav class="navbar section-black py-3" data-bs-theme="dark">
-            <div class="container">
+  <!-- ===== HEADER: simple black Bootstrap Navbar for HUMAIN staff (logo + Log out only) ===== -->
+  <header>
+    <nav class="navbar navbar-dark section-black py-3">
+      <div class="container">
 
-                <a class="navbar-brand" href="admin.html">
-                    <span class="brand-name">HUMAIN</span>
-                    <span class="brand-sub">Admin portal</span>
-                </a>
+        <a class="navbar-brand" href="admin.html">
+          <span class="brand-name">HUMAIN</span>
+          <span class="brand-sub">Admin portal</span>
+        </a>
 
-                <a class="btn btn-lime btn-sm" href="index.html">Log out</a>
+        <!-- Log out goes back to the home page -->
+        <a class="btn btn-lime btn-sm" href="index.html">Log out</a>
 
+      </div>
+    </nav>
+  </header>
+
+
+  <!-- Sample data for Phase 2. In Phase 4 these values will come from the database. -->
+  <main class="section-light py-5">
+    <div class="container">
+
+      <!-- 1: Page title -->
+      <p class="label-small">HUMAIN Fabric</p>
+      <h1>Admin portal</h1>
+      <p class="text-gray mb-4">Answer everything clients send to the HUMAIN team.</p>
+
+
+      <!-- 2: Summary numbers (what needs attention). They match the tables below -->
+      <div class="row mb-4">
+        <div class="col-6 col-lg-3 mb-3">
+          <div class="bg-white p-4 h-100">
+            <h2 class="text-gradient">3</h2>
+            <p class="text-gray mb-0">Requests to review</p>
+          </div>
+        </div>
+        <div class="col-6 col-lg-3 mb-3">
+          <div class="bg-white p-4 h-100">
+            <h2 class="text-gradient">1</h2>
+            <p class="text-gray mb-0">New message</p>
+          </div>
+        </div>
+        <div class="col-6 col-lg-3 mb-3">
+          <div class="bg-white p-4 h-100">
+            <h2 class="text-gradient">2</h2>
+            <p class="text-gray mb-0">Open tickets</p>
+          </div>
+        </div>
+        <div class="col-6 col-lg-3 mb-3">
+          <div class="bg-white p-4 h-100">
+            <h2 class="text-gradient">2</h2>
+            <p class="text-gray mb-0">Clients in setup</p>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- 3: One white box with 4 tabs. Each tab = a table + one small form -->
+      <div class="bg-white p-4">
+
+        <!-- Bootstrap Tabs: href="#requests" opens the div with id="requests" -->
+        <ul class="nav nav-tabs mb-4">
+          <li class="nav-item">
+            <a class="nav-link active" data-bs-toggle="tab" href="#requests">Requests</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-bs-toggle="tab" href="#messages">Messages</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-bs-toggle="tab" href="#tickets">Tickets</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-bs-toggle="tab" href="#clients">Clients</a>
+          </li>
+        </ul>
+
+        <!-- Tab content: only the "active" tab-pane is visible. fade = soft change between tabs -->
+        <div class="tab-content">
+
+          <!-- TAB 1: REQUESTS (sent from the Catalog "Request this" form and from Suggestions) -->
+          <div class="tab-pane fade show active" id="requests">
+
+            <h2 class="h5">Requests waiting for a decision</h2>
+            <p class="text-gray">Clients see your decision and note in My requests.</p>
+
+            <div class="table-responsive mb-4">
+              <table class="table table-hover align-middle">
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Client</th>
+                    <th>Request</th>
+                    <th>Date</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>R-1042</td>
+                    <td>Najd Bank</td>
+                    <td>Customer service assistant</td>
+                    <td>24 Sep 2026</td>
+                    <td><span class="badge bg-secondary">Pending</span></td>
+                  </tr>
+                  <tr>
+                    <td>R-1043</td>
+                    <td>Riyadh Health</td>
+                    <td>Extra data storage</td>
+                    <td>25 Sep 2026</td>
+                    <td><span class="badge bg-secondary">Pending</span></td>
+                  </tr>
+                  <tr>
+                    <td>R-1044</td>
+                    <td>Gulf Retail</td>
+                    <td>Analytics upgrade</td>
+                    <td>26 Sep 2026</td>
+                    <td><span class="badge bg-secondary">Pending</span></td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
-        </nav>
-    </header>
 
-
-    <!-- ADMIN PAGE -->
-    <!-- Sample data for Phase 2. In Phase 4 these values will come from the database. -->
-    <main class="section-light py-5">
-        <div class="container">
-
-            <!-- 1: Page title -->
-            <p class="label-small">HUMAIN Fabric</p>
-            <h1>Admin Portal</h1>
-            <p class="text-gray mb-4">Answer everything clients send to the HUMAIN team.</p>
-
-
-            <!-- 2: Summary cards (what needs attention) -->
-            <div class="row mb-4">
-
-                <div class="col-6 col-lg-3 mb-3">
-                    <div class="bg-white p-4 h-100">
-                        <h2 class="text-gradient">3</h2>
-                        <p class="text-gray mb-0">Requests to review</p>
-                    </div>
+            <!-- Form: decide on a request -->
+            <h3 class="h6 mb-3">Review a request</h3>
+            <!-- Phase 4: change to method="post" and send to the Node.js server -->
+            <form action="admin.html">
+              <!-- two fields side by side from medium screens -->
+              <div class="row">
+                <div class="col-md-6 mb-3">
+                  <label for="requestId" class="form-label">Request</label>
+                  <select class="form-select" id="requestId" name="requestId">
+                    <option>R-1042 · Najd Bank</option>
+                    <option>R-1043 · Riyadh Health</option>
+                    <option>R-1044 · Gulf Retail</option>
+                  </select>
                 </div>
-
-                <div class="col-6 col-lg-3 mb-3">
-                    <div class="bg-white p-4 h-100">
-                        <h2 class="text-gradient">1</h2>
-                        <p class="text-gray mb-0">New message</p>
-                    </div>
+                <div class="col-md-6 mb-3">
+                  <label for="decision" class="form-label">Decision</label>
+                  <select class="form-select" id="decision" name="decision">
+                    <option>Approved</option>
+                    <option>In progress</option>
+                    <option>Declined</option>
+                  </select>
                 </div>
+              </div>
+              <div class="mb-3">
+                <label for="requestNote" class="form-label">Note for the client</label>
+                <input type="text" class="form-control" id="requestNote" name="requestNote" placeholder="For example: Live from 1 Nov" required>
+              </div>
+              <button type="submit" class="btn btn-dark">Save decision</button>
+            </form>
 
-                <div class="col-6 col-lg-3 mb-3">
-                    <div class="bg-white p-4 h-100">
-                        <h2 class="text-gradient">2</h2>
-                        <p class="text-gray mb-0">Open tickets</p>
-                    </div>
-                </div>
+          </div>
 
-                <div class="col-6 col-lg-3 mb-3">
-                    <div class="bg-white p-4 h-100">
-                        <h2 class="text-gradient">4</h2>
-                        <p class="text-gray mb-0">Clients in setup</p>
-                    </div>
-                </div>
 
+          <!-- TAB 2: MESSAGES (sent from the client Support page) -->
+          <div class="tab-pane fade" id="messages">
+
+            <h2 class="h5">Client messages</h2>
+            <p class="text-gray">Messages clients send from their Support page.</p>
+
+            <div class="table-responsive mb-4">
+              <table class="table table-hover align-middle">
+                <thead>
+                  <tr>
+                    <th>Client</th>
+                    <th>From</th>
+                    <th>Last message</th>
+                    <th>Date</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Riyadh Health</td>
+                    <td>Omar K.</td>
+                    <td>Can we add two more team members?</td>
+                    <td>27 Sep 2026</td>
+                    <td><span class="badge bg-secondary">New</span></td>
+                  </tr>
+                  <tr>
+                    <td>Najd Bank</td>
+                    <td>Layan A.</td>
+                    <td>I would like an update on our customer service assistant request.</td>
+                    <td>24 Sep 2026</td>
+                    <td><span class="badge bg-teal">Replied</span></td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
 
+            <!-- Form: reply to a client -->
+            <h3 class="h6 mb-3">Reply to a client</h3>
+            <!-- Phase 4: change to method="post" and send to the Node.js server -->
+            <form action="admin.html">
+              <div class="mb-3">
+                <label for="replyClient" class="form-label">Client</label>
+                <select class="form-select" id="replyClient" name="replyClient">
+                  <option>Riyadh Health · Omar K.</option>
+                  <option>Najd Bank · Layan A.</option>
+                </select>
+              </div>
+              <div class="mb-3">
+                <label for="replyText" class="form-label">Your reply</label>
+                <textarea class="form-control" id="replyText" name="replyText" rows="3" placeholder="Write your reply here..." required></textarea>
+              </div>
+              <button type="submit" class="btn btn-dark">Send reply</button>
+            </form>
 
-            <!-- 3: One box with 4 Bootstrap tabs -->
-            <div class="bg-white p-4">
-
-                <!-- Bootstrap Tabs -->
-                <ul class="nav nav-tabs mb-4">
-                    <li class="nav-item">
-                        <button class="nav-link active" type="button" data-bs-toggle="tab"
-                            data-bs-target="#requests">Requests</button>
-                    </li>
-                    <li class="nav-item">
-                        <button class="nav-link" type="button" data-bs-toggle="tab"
-                            data-bs-target="#messages">Messages</button>
-                    </li>
-                    <li class="nav-item">
-                        <button class="nav-link" type="button" data-bs-toggle="tab"
-                            data-bs-target="#tickets">Tickets</button>
-                    </li>
-                    <li class="nav-item">
-                        <button class="nav-link" type="button" data-bs-toggle="tab"
-                            data-bs-target="#clients">Clients</button>
-                    </li>
-                </ul>
+          </div>
 
 
-                <div class="tab-content">
+          <!-- TAB 3: TICKETS (opened from the client Support page with "Report a problem") -->
+          <div class="tab-pane fade" id="tickets">
 
-                    <!-- TAB 1: REQUESTS (from Catalog "Request this" and Suggestions "Request upgrade") -->
-                    <div class="tab-pane fade show active" id="requests">
+            <h2 class="h5">Support tickets</h2>
+            <p class="text-gray">Clients see the new status in their Support tickets tab.</p>
 
-                        <h2 class="h5">Requests waiting for a decision</h2>
-                        <p class="text-gray">Clients see your decision and note in My requests.</p>
-
-                        <div class="table-responsive mb-4">
-                            <table class="table table-hover align-middle">
-                                <thead>
-                                    <tr>
-                                        <th>ID</th>
-                                        <th>Client</th>
-                                        <th>Request</th>
-                                        <th>Date</th>
-                                        <th>Status</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>R-1042</td>
-                                        <td>Najd Bank</td>
-                                        <td>Customer service assistant</td>
-                                        <td>24 Sep 2026</td>
-                                        <td><span class="badge bg-secondary">Pending</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td>R-1043</td>
-                                        <td>Riyadh Health</td>
-                                        <td>Extra data storage</td>
-                                        <td>25 Sep 2026</td>
-                                        <td><span class="badge bg-secondary">Pending</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td>R-1044</td>
-                                        <td>Gulf Retail</td>
-                                        <td>Analytics upgrade</td>
-                                        <td>26 Sep 2026</td>
-                                        <td><span class="badge bg-secondary">Pending</span></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-
-                        <!-- Form: decide on a request -->
-                        <h3 class="h6 mb-3">Review a request</h3>
-                        <!-- Phase 4: change to method="post" and send to the Node.js server -->
-                        <form action="admin.html">
-                            <div class="row">
-                                <div class="col-md-6 mb-3">
-                                    <label for="requestId" class="form-label">Request</label>
-                                    <select class="form-select" id="requestId" name="requestId">
-                                        <option>R-1042 · Najd Bank</option>
-                                        <option>R-1043 · Riyadh Health</option>
-                                        <option>R-1044 · Gulf Retail</option>
-                                    </select>
-                                </div>
-                                <div class="col-md-6 mb-3">
-                                    <label for="decision" class="form-label">Decision</label>
-                                    <select class="form-select" id="decision" name="decision">
-                                        <option>Approved</option>
-                                        <option>In progress</option>
-                                        <option>Declined</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="mb-3">
-                                <label for="requestNote" class="form-label">Note for the client</label>
-                                <input type="text" class="form-control" id="requestNote" name="requestNote"
-                                    placeholder="For example: Live from 1 Nov" required>
-                            </div>
-                            <button type="submit" class="btn btn-dark">Save decision</button>
-                        </form>
-
-                    </div>
-
-
-                    <!-- TAB 2: MESSAGES (from the client Support page) -->
-                    <div class="tab-pane fade" id="messages">
-
-                        <h2 class="h5">Client messages</h2>
-                        <p class="text-gray">Messages clients send from their Support page.</p>
-
-                        <div class="table-responsive mb-4">
-                            <table class="table table-hover align-middle">
-                                <thead>
-                                    <tr>
-                                        <th>Client</th>
-                                        <th>From</th>
-                                        <th>Last message</th>
-                                        <th>Date</th>
-                                        <th>Status</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>Riyadh Health</td>
-                                        <td>Omar K.</td>
-                                        <td>Can we add two more team members?</td>
-                                        <td>27 Sep 2026</td>
-                                        <td><span class="badge bg-secondary">New</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Najd Bank</td>
-                                        <td>Layan A.</td>
-                                        <td>I would like an update on our customer service assistant request.</td>
-                                        <td>24 Sep 2026</td>
-                                        <td><span class="badge bg-teal">Replied</span></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-
-                        <!-- Form: reply to a client -->
-                        <h3 class="h6 mb-3">Reply to a client</h3>
-                        <!-- Phase 4: change to method="post" and send to the Node.js server -->
-                        <form action="admin.html">
-                            <div class="mb-3">
-                                <label for="replyClient" class="form-label">Client</label>
-                                <select class="form-select" id="replyClient" name="replyClient">
-                                    <option>Riyadh Health · Omar K.</option>
-                                    <option>Najd Bank · Layan A.</option>
-                                </select>
-                            </div>
-                            <div class="mb-3">
-                                <label for="replyText" class="form-label">Your reply</label>
-                                <textarea class="form-control" id="replyText" name="replyText" rows="3"
-                                    placeholder="Write your reply here..." required></textarea>
-                            </div>
-                            <button type="submit" class="btn btn-dark">Send reply</button>
-                        </form>
-
-                    </div>
-
-
-                    <!-- TAB 3: TICKETS (from the client Support page) -->
-                    <div class="tab-pane fade" id="tickets">
-
-                        <h2 class="h5">Support tickets</h2>
-                        <p class="text-gray">Clients see the new status in their Support tickets tab.</p>
-
-                        <div class="table-responsive mb-4">
-                            <table class="table table-hover align-middle">
-                                <thead>
-                                    <tr>
-                                        <th>ID</th>
-                                        <th>Client</th>
-                                        <th>Subject</th>
-                                        <th>Date</th>
-                                        <th>Status</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>T-203</td>
-                                        <td>Najd Bank</td>
-                                        <td>Access permissions</td>
-                                        <td>25 Sep 2026</td>
-                                        <td><span class="badge bg-secondary">Open</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td>T-202</td>
-                                        <td>Najd Bank</td>
-                                        <td>Data connection issue</td>
-                                        <td>22 Sep 2026</td>
-                                        <td><span class="badge bg-dark">In progress</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td>T-201</td>
-                                        <td>Najd Bank</td>
-                                        <td>Login problem</td>
-                                        <td>18 Sep 2026</td>
-                                        <td><span class="badge bg-teal">Resolved</span></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-
-                        <!-- Form: update a ticket -->
-                        <h3 class="h6 mb-3">Update a ticket</h3>
-                        <!-- Phase 4: change to method="post" and send to the Node.js server -->
-                        <form action="admin.html">
-                            <div class="row">
-                                <div class="col-md-6 mb-3">
-                                    <label for="ticketId" class="form-label">Ticket</label>
-                                    <select class="form-select" id="ticketId" name="ticketId">
-                                        <option>T-203 · Access permissions</option>
-                                        <option>T-202 · Data connection issue</option>
-                                    </select>
-                                </div>
-                                <div class="col-md-6 mb-3">
-                                    <label for="ticketStatus" class="form-label">New status</label>
-                                    <select class="form-select" id="ticketStatus" name="ticketStatus">
-                                        <option>In progress</option>
-                                        <option>Resolved</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <button type="submit" class="btn btn-dark">Update ticket</button>
-                        </form>
-
-                    </div>
-
-
-                    <!-- TAB 4: CLIENTS (setup progress clients see on Getting started) -->
-                    <div class="tab-pane fade" id="clients">
-
-                        <h2 class="h5">Clients</h2>
-                        <p class="text-gray">Plans and setup progress. Clients see their progress on Getting started.</p>
-
-                        <div class="table-responsive mb-4">
-                            <table class="table table-hover align-middle">
-                                <thead>
-                                    <tr>
-                                        <th>Client</th>
-                                        <th>Plan</th>
-                                        <th class="w-25">Setup progress</th>
-                                        <th>Status</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>Najd Bank</td>
-                                        <td>Growth</td>
-                                        <td>
-                                            <div class="progress">
-                                                <div class="progress-bar bg-teal" style="width:60%">60%</div>
-                                            </div>
-                                        </td>
-                                        <td><span class="badge bg-dark">In setup</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Riyadh Health</td>
-                                        <td>Growth</td>
-                                        <td>
-                                            <div class="progress">
-                                                <div class="progress-bar bg-teal" style="width:100%">100%</div>
-                                            </div>
-                                        </td>
-                                        <td><span class="badge bg-teal">Active</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Gulf Retail</td>
-                                        <td>Starter</td>
-                                        <td>
-                                            <div class="progress">
-                                                <div class="progress-bar bg-teal" style="width:100%">100%</div>
-                                            </div>
-                                        </td>
-                                        <td><span class="badge bg-teal">Active</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Desert Logistics</td>
-                                        <td>Growth</td>
-                                        <td>
-                                            <div class="progress">
-                                                <div class="progress-bar bg-teal" style="width:40%">40%</div>
-                                            </div>
-                                        </td>
-                                        <td><span class="badge bg-dark">In setup</span></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-
-                        <!-- Form: update setup progress -->
-                        <h3 class="h6 mb-3">Update setup progress</h3>
-                        <!-- Phase 4: change to method="post" and send to the Node.js server -->
-                        <form action="admin.html">
-                            <div class="row">
-                                <div class="col-md-6 mb-3">
-                                    <label for="setupClient" class="form-label">Client</label>
-                                    <select class="form-select" id="setupClient" name="setupClient">
-                                        <option>Najd Bank</option>
-                                        <option>Desert Logistics</option>
-                                    </select>
-                                </div>
-                                <div class="col-md-6 mb-3">
-                                    <label for="stepsDone" class="form-label">Steps done</label>
-                                    <select class="form-select" id="stepsDone" name="stepsDone">
-                                        <option>1 of 5 (20%)</option>
-                                        <option>2 of 5 (40%)</option>
-                                        <option>3 of 5 (60%)</option>
-                                        <option>4 of 5 (80%)</option>
-                                        <option>5 of 5 (100%)</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <button type="submit" class="btn btn-dark">Save progress</button>
-                        </form>
-
-                    </div>
-
-                </div>
-
+            <div class="table-responsive mb-4">
+              <table class="table table-hover align-middle">
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Client</th>
+                    <th>Subject</th>
+                    <th>Date</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>T-203</td>
+                    <td>Najd Bank</td>
+                    <td>Access permissions</td>
+                    <td>25 Sep 2026</td>
+                    <td><span class="badge bg-secondary">Open</span></td>
+                  </tr>
+                  <tr>
+                    <td>T-202</td>
+                    <td>Najd Bank</td>
+                    <td>Data connection issue</td>
+                    <td>22 Sep 2026</td>
+                    <td><span class="badge bg-dark">In progress</span></td>
+                  </tr>
+                  <tr>
+                    <td>T-201</td>
+                    <td>Najd Bank</td>
+                    <td>Login problem</td>
+                    <td>18 Sep 2026</td>
+                    <td><span class="badge bg-teal">Resolved</span></td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
+
+            <!-- Form: change a ticket's status (only tickets that are not resolved yet) -->
+            <h3 class="h6 mb-3">Update a ticket</h3>
+            <!-- Phase 4: change to method="post" and send to the Node.js server -->
+            <form action="admin.html">
+              <div class="row">
+                <div class="col-md-6 mb-3">
+                  <label for="ticketId" class="form-label">Ticket</label>
+                  <select class="form-select" id="ticketId" name="ticketId">
+                    <option>T-203 · Access permissions</option>
+                    <option>T-202 · Data connection issue</option>
+                  </select>
+                </div>
+                <div class="col-md-6 mb-3">
+                  <label for="ticketStatus" class="form-label">New status</label>
+                  <select class="form-select" id="ticketStatus" name="ticketStatus">
+                    <option>In progress</option>
+                    <option>Resolved</option>
+                  </select>
+                </div>
+              </div>
+              <button type="submit" class="btn btn-dark">Update ticket</button>
+            </form>
+
+          </div>
+
+
+          <!-- TAB 4: CLIENTS (the setup progress clients see on their Getting started page) -->
+          <div class="tab-pane fade" id="clients">
+
+            <h2 class="h5">Clients</h2>
+            <p class="text-gray">Plans and setup progress. Clients see their progress on Getting started.</p>
+
+            <div class="table-responsive mb-4">
+              <table class="table table-hover align-middle">
+                <thead>
+                  <tr>
+                    <th>Client</th>
+                    <th>Plan</th>
+                    <!-- w-25: this column takes 25% of the table width -->
+                    <th class="w-25">Setup progress</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Najd Bank</td>
+                    <td>Growth</td>
+                    <td>
+                      <div class="progress">
+                        <div class="progress-bar bg-teal" style="width:60%">60%</div>
+                      </div>
+                    </td>
+                    <td><span class="badge bg-dark">In setup</span></td>
+                  </tr>
+                  <tr>
+                    <td>Riyadh Health</td>
+                    <td>Growth</td>
+                    <td>
+                      <div class="progress">
+                        <div class="progress-bar bg-teal" style="width:100%">100%</div>
+                      </div>
+                    </td>
+                    <td><span class="badge bg-teal">Active</span></td>
+                  </tr>
+                  <tr>
+                    <td>Gulf Retail</td>
+                    <td>Starter</td>
+                    <td>
+                      <div class="progress">
+                        <div class="progress-bar bg-teal" style="width:100%">100%</div>
+                      </div>
+                    </td>
+                    <td><span class="badge bg-teal">Active</span></td>
+                  </tr>
+                  <tr>
+                    <td>Desert Logistics</td>
+                    <td>Growth</td>
+                    <td>
+                      <div class="progress">
+                        <div class="progress-bar bg-teal" style="width:40%">40%</div>
+                      </div>
+                    </td>
+                    <td><span class="badge bg-dark">In setup</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <!-- Form: update a client's setup progress (only clients still in setup) -->
+            <h3 class="h6 mb-3">Update setup progress</h3>
+            <!-- Phase 4: change to method="post" and send to the Node.js server -->
+            <form action="admin.html">
+              <div class="row">
+                <div class="col-md-6 mb-3">
+                  <label for="setupClient" class="form-label">Client</label>
+                  <select class="form-select" id="setupClient" name="setupClient">
+                    <option>Najd Bank</option>
+                    <option>Desert Logistics</option>
+                  </select>
+                </div>
+                <div class="col-md-6 mb-3">
+                  <label for="stepsDone" class="form-label">Steps done</label>
+                  <select class="form-select" id="stepsDone" name="stepsDone">
+                    <option>1 of 5 (20%)</option>
+                    <option>2 of 5 (40%)</option>
+                    <option>3 of 5 (60%)</option>
+                    <option>4 of 5 (80%)</option>
+                    <option>5 of 5 (100%)</option>
+                  </select>
+                </div>
+              </div>
+              <button type="submit" class="btn btn-dark">Save progress</button>
+            </form>
+
+          </div>
 
         </div>
-    </main>
+
+      </div>
+
+    </div>
+  </main>
 
 
-    <!-- Bootstrap JavaScript -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Bootstrap JavaScript: needed for the tabs -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 

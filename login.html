@@ -1,183 +1,199 @@
-<!-- Page 2: Login -->
+<!-- Page 2: Log in (public) -->
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Log in</title>
-    <link rel="icon" type="image/webp" href="images/humain-favicon.webp">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@200;300;400;500;600&display=swap">
-    <link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8">
+  <!-- makes the page fit phone screens -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Log in | HUMAIN Fabric</title>
+  <!-- small icon in the browser tab -->
+  <link rel="icon" type="image/webp" href="images/humain-favicon.webp">
+  <!-- Bootstrap 5.3.2 CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+  <!-- Google Font: Readex Pro -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@200;300;400;500;600&display=swap">
+  <!-- our own CSS (loaded last so it can change Bootstrap's styles) -->
+  <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
 
-    <!-- HEADER: public navbar -->
-    <header class="sticky-top">
-        <nav id="mainNavbar" class="navbar navbar-expand-md section-black" data-bs-theme="dark">
-            <div class="container">
+  <!-- ===== HEADER: Bootstrap Navbar (same as the home page) ===== -->
+  <!-- sticky-top: the navbar stays at the top when you scroll -->
+  <header class="sticky-top">
+    <!-- navbar-expand-md: links in a row from medium screens up, behind a menu button on phones -->
+    <!-- navbar-dark: light text and icon for a dark navbar. section-black: our black background -->
+    <nav class="navbar navbar-expand-md navbar-dark section-black">
+      <div class="container">
 
-                <!-- Brand / logo -->
-                <a class="navbar-brand" href="index.html">
-                    <span class="brand-name">HUMAIN</span>
-                    <span class="brand-sub">Fabric Client Hub</span>
-                </a>
+        <!-- Logo: goes to the home page -->
+        <a class="navbar-brand" href="index.html">
+          <span class="brand-name">HUMAIN</span>
+          <span class="brand-sub">Fabric Client Hub</span>
+        </a>
 
-                <!-- Menu button (shows on small screens) -->
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#publicNavbar"
-                    aria-label="Open menu">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+        <!-- Menu button (only on small screens): opens and closes #publicNavbar -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#publicNavbar">
+          <span class="navbar-toggler-icon"></span>
+        </button>
 
-                <!-- Links -->
-                <div class="collapse navbar-collapse" id="publicNavbar">
-                    <ul class="navbar-nav mx-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="index.html#stages">How it works</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="index.html#platform">Platform</a>
-                        </li>
-                    </ul>
-                    <a class="btn btn-lime btn-sm" href="login.html">Log in</a>
-                </div>
-
-            </div>
-        </nav>
-    </header>
-
-
-     <main>
-
-        <section class="container-fluid p-0">
-            <div class="row g-0">
-
-                <!-- left side: welcome (fits both tabs) -->
-                <div class="col-lg-5 section-black login-panel p-5">
-                    <p class="label-small text-white mb-4">HUMAIN <span class="text-fabric">Fabric</span> | Client Hub</p>
-                    <h1 class="display-4 fw-normal text-gradient mb-4">Your HUMAIN Fabric hub</h1>
-                    <p class="lead text-gray mb-5">Log in to follow your setup, usage and requests. Your account is created by HUMAIN when your organization joins Fabric.</p>
-                    <p class="label-small text-fabric mt-5 mb-0">The End of Limits</p>
-                </div>
-
-                <!-- right side: forms -->
-                <div class="col-lg-7 d-flex align-items-center justify-content-center p-5">
-                    <div class="login-box">
-
-                        <!-- Bootstrap Tabs -->
-                        <ul class="nav nav-tabs mb-4">
-                            <li class="nav-item">
-                                <a class="nav-link active" data-bs-toggle="tab" href="#loginTab">Client</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" data-bs-toggle="tab" href="#staffTab">HUMAIN staff</a>
-                            </li>
-                        </ul>
-
-                        <div class="tab-content">
-
-                            <!-- Tab 1: Client log in -->
-                            <div class="tab-pane fade show active" id="loginTab">
-
-                                <h2 class="mb-2">Welcome back.</h2>
-                                <p class="text-gray mb-4">Log in with your work email.</p>
-
-                                <!-- Form: Log in -->
-                                <!-- Phase 4: change to method="post" and send to the Node.js server -->
-                                <form action="dashboard.html">
-                                    <div class="mb-3">
-                                        <label for="email" class="form-label">Work email</label>
-                                        <input type="email" class="form-control" id="email" placeholder="name@company.com" name="email" required>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="pwd" class="form-label">Password</label>
-                                        <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pswd" required>
-                                    </div>
-                                    <div class="form-check mb-4">
-                                        <input class="form-check-input" type="checkbox" id="remember" name="remember">
-                                        <label class="form-check-label" for="remember">Remember me</label>
-                                    </div>
-                                    <button type="submit" class="btn btn-dark w-100 d-flex justify-content-between align-items-center">Log in <span>&rarr;</span></button>
-                                </form>
-
-                            </div>
-
-                            <!-- Tab 2: HUMAIN staff -->
-                            <div class="tab-pane fade" id="staffTab">
-
-                                <h2 class="mb-2">HUMAIN staff.</h2>
-                                <p class="text-gray mb-4">Log in to the admin portal with your HUMAIN email.</p>
-
-                                <!-- Form: Staff log in -->
-                                <!-- Phase 4: change to method="post" and send to the Node.js server -->
-                                <form action="admin.html">
-                                    <div class="mb-3">
-                                        <label for="staffEmail" class="form-label">HUMAIN email</label>
-                                        <input type="email" class="form-control" id="staffEmail" placeholder="name@humain.com" name="staffEmail" required>
-                                    </div>
-                                    <div class="mb-4">
-                                        <label for="staffPwd" class="form-label">Password</label>
-                                        <input type="password" class="form-control" id="staffPwd" placeholder="Enter password" name="staffPwd" required>
-                                    </div>
-                                    <button type="submit" class="btn btn-dark w-100 d-flex justify-content-between align-items-center">Log in to admin portal <span>&rarr;</span></button>
-                                </form>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-                </div>
-
-            </div>
-        </section>
-
-    </main>
-
-
-        <!-- FOOTER -->
-    <footer class="section-light py-5">
-        <div class="container">
-
-            <!-- Top row: brand + links -->
-            <div class="row align-items-center">
-                <div class="col-md-6 mb-3 mb-md-0">
-                    <a class="navbar-brand" href="index.html">
-                        <span class="brand-name">HUMAIN</span>
-                        <span class="brand-sub">Fabric Client Hub</span>
-                    </a>
-                </div>
-                <div class="col-md-6">
-                    <ul class="list-inline footer-links text-md-end mb-0">
-                        <li class="list-inline-item me-4"><a href="index.html">Home</a></li>
-                        <li class="list-inline-item me-4"><a href="index.html#stages">How it works</a></li>
-                        <li class="list-inline-item"><a href="index.html#platform">Platform</a></li>
-                    </ul>
-                </div>
-            </div>
-
-            <hr class="my-4">
-
-            <!-- Bottom row: PIF logo + copyright -->
-            <div class="row align-items-center">
-                <div class="col-md-6 mb-3 mb-md-0">
-                    <a href="https://www.pif.gov.sa/en/" target="_blank">
-                        <img src="images/pif-logo.webp" width="180" alt="PIF logo">
-                    </a>
-                </div>
-                <div class="col-md-6 text-md-end">
-                    <p class="text-gray small mb-0">© 2026 · IS311 course project with HUMAIN</p>
-                </div>
-            </div>
-
+        <!-- The links (they collapse behind the button on small screens) -->
+        <div class="collapse navbar-collapse" id="publicNavbar">
+          <!-- mx-auto: centers the links -->
+          <ul class="navbar-nav mx-auto">
+            <li class="nav-item">
+              <!-- index.html#stages = open the home page at the section with id="stages" -->
+              <a class="nav-link" href="index.html#stages">How it works</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="index.html#platform">Platform</a>
+            </li>
+          </ul>
+          <a class="btn btn-lime btn-sm" href="login.html">Log in</a>
         </div>
-    </footer>
+
+      </div>
+    </nav>
+  </header>
 
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <main>
+
+    <!-- container-fluid p-0: full width with no padding. g-0: no space between the two columns -->
+    <section class="container-fluid p-0">
+      <div class="row g-0">
+
+        <!-- Left: black welcome panel (fits both tabs) -->
+        <!-- d-flex flex-column justify-content-center: centers the text vertically -->
+        <div class="col-lg-5 section-black login-panel p-5 d-flex flex-column justify-content-center">
+          <p class="label-small text-white mb-4">HUMAIN <span class="text-fabric">Fabric</span> | Client Hub</p>
+          <h1 class="display-4 fw-normal text-gradient mb-4">Your HUMAIN Fabric hub</h1>
+          <p class="lead text-gray mb-5">Log in to follow your setup, usage and requests. Your account is created by HUMAIN when your organization joins Fabric.</p>
+          <p class="label-small text-fabric mt-5 mb-0">The End of Limits</p>
+        </div>
+
+        <!-- Right: the forms, centered in the column -->
+        <div class="col-lg-7 d-flex align-items-center justify-content-center p-5">
+          <div class="login-box">
+
+            <!-- Bootstrap Tabs: each tab shows one form. href="#loginTab" opens the div with id="loginTab" -->
+            <ul class="nav nav-tabs mb-4">
+              <li class="nav-item">
+                <a class="nav-link active" data-bs-toggle="tab" href="#loginTab">Client</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="tab" href="#staffTab">HUMAIN staff</a>
+              </li>
+            </ul>
+
+            <!-- Tab content: only the "active" tab-pane is visible. fade = soft change between tabs -->
+            <div class="tab-content">
+
+              <!-- Tab 1: Client log in -->
+              <div class="tab-pane fade show active" id="loginTab">
+
+                <h2 class="mb-2">Welcome back.</h2>
+                <p class="text-gray mb-4">Log in with your work email.</p>
+
+                <!-- Form: client log in (no password check yet, it just opens the dashboard) -->
+                <!-- Phase 4: change to method="post" and send to the Node.js server -->
+                <form action="dashboard.html">
+                  <div class="mb-3">
+                    <label for="email" class="form-label">Work email</label>
+                    <!-- required: the form won't send if this is empty -->
+                    <input type="email" class="form-control" id="email" placeholder="name@company.com" name="email" required>
+                  </div>
+                  <div class="mb-3">
+                    <label for="pwd" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pswd" required>
+                  </div>
+                  <div class="form-check mb-4">
+                    <input class="form-check-input" type="checkbox" id="remember" name="remember">
+                    <label class="form-check-label" for="remember">Remember me</label>
+                  </div>
+                  <!-- w-100: full width. d-flex justify-content-between: text on the left, arrow on the right -->
+                  <button type="submit" class="btn btn-dark w-100 d-flex justify-content-between align-items-center">Log in <span>&rarr;</span></button>
+                </form>
+
+              </div>
+
+              <!-- Tab 2: HUMAIN staff log in -->
+              <div class="tab-pane fade" id="staffTab">
+
+                <h2 class="mb-2">HUMAIN staff.</h2>
+                <p class="text-gray mb-4">Log in to the admin portal with your HUMAIN email.</p>
+
+                <!-- Form: staff log in (no password check yet, it just opens the admin portal) -->
+                <!-- Phase 4: change to method="post" and send to the Node.js server -->
+                <form action="admin.html">
+                  <div class="mb-3">
+                    <label for="staffEmail" class="form-label">HUMAIN email</label>
+                    <input type="email" class="form-control" id="staffEmail" placeholder="name@humain.com" name="staffEmail" required>
+                  </div>
+                  <div class="mb-4">
+                    <label for="staffPwd" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="staffPwd" placeholder="Enter password" name="staffPwd" required>
+                  </div>
+                  <button type="submit" class="btn btn-dark w-100 d-flex justify-content-between align-items-center">Log in to admin portal <span>&rarr;</span></button>
+                </form>
+
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+
+  <!-- ===== FOOTER (same as the home page) ===== -->
+  <footer class="section-light py-5">
+    <div class="container">
+
+      <!-- Top row: logo on the left, links on the right -->
+      <div class="row align-items-center">
+        <div class="col-md-6 mb-3 mb-md-0">
+          <a class="navbar-brand" href="index.html">
+            <span class="brand-name">HUMAIN</span>
+            <span class="brand-sub">Fabric Client Hub</span>
+          </a>
+        </div>
+        <div class="col-md-6">
+          <!-- list-inline: list items in one row. text-md-end: right-aligned from medium screens -->
+          <ul class="list-inline footer-links text-md-end mb-0">
+            <li class="list-inline-item me-4"><a href="index.html">Home</a></li>
+            <li class="list-inline-item me-4"><a href="index.html#stages">How it works</a></li>
+            <li class="list-inline-item"><a href="index.html#platform">Platform</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <hr class="my-4">
+
+      <!-- Bottom row: PIF logo (opens in a new tab) + copyright -->
+      <div class="row align-items-center">
+        <div class="col-md-6 mb-3 mb-md-0">
+          <a href="https://www.pif.gov.sa/en/" target="_blank">
+            <img src="images/pif-logo.webp" width="180" alt="PIF logo">
+          </a>
+        </div>
+        <div class="col-md-6 text-md-end">
+          <p class="text-gray small mb-0">© 2026 · IS311 course project with HUMAIN</p>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+
+  <!-- Bootstrap JavaScript: needed for the navbar menu button and the tabs -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
 
 </html>

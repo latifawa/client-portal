@@ -1,277 +1,233 @@
+<!-- Page 6: Request a feature (opens from "Request this" in the Catalog) -->
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
+  <!-- makes the page fit phone screens -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Feature Details</title>
+  <title>Request a feature | HUMAIN Fabric</title>
+  <!-- small icon in the browser tab -->
   <link rel="icon" type="image/webp" href="images/humain-favicon.webp">
+  <!-- Bootstrap 5.3.2 CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+  <!-- Bootstrap Icons (the small icons in the sidebar and buttons) -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <!-- Google Font: Readex Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@200;300;400;500;600&display=swap">
+  <!-- our own CSS (loaded last so it can change Bootstrap's styles) -->
   <link rel="stylesheet" href="css/style.css">
 </head>
-<body class="hub">
 
-  <!-- TOP BAR -->
-  <header class="topbar d-flex flex-wrap align-items-center gap-4 p-3">
-    <a class="navbar-brand" href="dashboard.html">
-      <span class="brand-name">HUMAIN</span>
-      <span class="brand-sub">Fabric</span>
-    </a>
-    <input class="form-control topbar-search flex-grow-1" type="text" name="search" placeholder="Search features, requests, help">
-    <div class="ms-auto d-flex align-items-center gap-4">
-      <a href="support.html">Help</a>
-      <i class="bi bi-bell"></i>
-      <span>EN | ع</span>
-    </div>
-  </header>
+<body>
 
-  <!-- MAIN CONTAINER -->
+  <!-- Bootstrap grid: container-fluid = full width, row = the sidebar and the content side by side -->
   <div class="container-fluid">
     <div class="row">
 
-      <!-- SIDEBAR -->
+      <!-- ===== SIDEBAR (the same on every hub page, only the "active" link changes) ===== -->
+      <!-- col-md-3 col-lg-2: 3 of 12 columns on tablets, 2 of 12 on big screens -->
       <aside class="col-md-3 col-lg-2 sidebar p-3">
 
-        <!-- Brand-->
+        <!-- Logo + menu button. d-md-none: the button only shows on phones -->
         <div class="d-flex justify-content-between align-items-center">
           <a class="navbar-brand" href="dashboard.html">
             <span class="brand-name">HUMAIN</span>
             <span class="brand-sub">Fabric</span>
           </a>
-          <button class="btn btn-outline-dark btn-sm d-md-none" type="button"
-                  data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-label="Open menu">
+          <!-- Bootstrap Collapse: this button opens and closes #sidebarMenu -->
+          <button class="btn btn-outline-light btn-sm d-md-none" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu">
             <i class="bi bi-list"></i>
           </button>
         </div>
 
-        <!-- Sidebar Content -->
+        <!-- The menu: hidden on phones until the button is clicked (collapse), always shown from medium screens up (d-md-block) -->
         <div class="collapse d-md-block" id="sidebarMenu">
 
-          <!-- Organization -->
+          <!-- Organization box: which client is logged in -->
           <div class="section-light p-3 my-4">
             <p class="label-small mb-1">Organization</p>
             <p class="fw-semibold mb-0">Najd Bank</p>
             <p class="text-gray small mb-0">Growth plan</p>
           </div>
 
-          <!-- Main Menu Navigation -->
-          <nav aria-label="Main menu">
-            <ul class="nav nav-pills flex-column">
-              <li class="nav-item">
-                <a class="nav-link" href="dashboard.html">
-                  <i class="bi bi-grid me-2"></i>Overview</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="Getting-Started.html">
-                  <i class="bi bi-list-check me-2"></i>Getting started
-                  <small class="float-end text-muted">60%</small></a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="catalog.html">
-                  <i class="bi bi-layers me-2"></i>Catalog</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="suggestions.html">
-                  <i class="bi bi-stars me-2"></i>Suggestions
-                  <span class="badge rounded-pill bg-dark float-end">4</span></a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="requests.html">
-                  <i class="bi bi-inbox me-2"></i>My requests
-                  <span class="badge rounded-pill bg-dark float-end">1</span></a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="support.html">
-                  <i class="bi bi-chat-left-text me-2"></i>Support</a>
-              </li>
+          <!-- Bootstrap Nav Pills (vertical): flex-column puts the links under each other -->
+          <!-- "active" = the page we are on (shown as a lime pill). The <i> tags are Bootstrap Icons -->
+          <ul class="nav nav-pills flex-column">
+            <li class="nav-item">
+              <a class="nav-link" href="dashboard.html"><i class="bi bi-grid me-2"></i>Overview</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="setup.html"><i class="bi bi-list-check me-2"></i>Getting started</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="catalog.html"><i class="bi bi-layers me-2"></i>Catalog</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="suggestions.html"><i class="bi bi-stars me-2"></i>Suggestions</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="requests.html"><i class="bi bi-inbox me-2"></i>My requests</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="support.html"><i class="bi bi-chat-left-text me-2"></i>Support</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="account.html"><i class="bi bi-gear me-2"></i>Account settings</a>
+            </li>
+          </ul>
+
+          <!-- Bootstrap Dropup (a dropdown that opens upward): the user menu -->
+          <div class="dropup mt-4">
+            <!-- data-bs-toggle="dropdown": clicking the button opens the menu below it in the code -->
+            <button type="button" class="btn btn-dark-soft w-100 text-start dropdown-toggle" data-bs-toggle="dropdown">
+              <i class="bi bi-person-circle me-2"></i>Layan A.
+            </button>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="account.html">Account settings</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="index.html">Log out</a></li>
             </ul>
-          </nav>
-
-          <hr>
-
-          <!-- User Profile Area -->
-          <div class="pt-3">
-            <a class="nav-link d-flex text-gray mb-3" href="#"><i class="bi bi-gear me-3"></i>Account settings</a>
-            <div class="d-flex align-items-center gap-3">
-              <div class="avatar"><i class="bi bi-person fs-5"></i></div>
-              <div><strong>Layan A.</strong><br><small class="text-gray">Admin</small></div>
-            </div>
           </div>
 
         </div>
       </aside>
 
-      <!-- PAGE MAIN CONTENT -->
-      <main class="col-md-9 col-lg-10 section-light p-4 p-lg-5">
-        
-        <!-- Breadcrumb Navigation -->
-        <nav aria-label="breadcrumb" class="mb-4">
-          <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="catalog.html" class="text-decoration-none">Catalog</a></li>
-            <li class="breadcrumb-item">AI models</li>
-            <li class="breadcrumb-item active" aria-current="page">Arabic document understanding</li>
-          </ol>
-        </nav>
 
-        <div class="row g-4">
+      <!-- ===== RIGHT SIDE: the page content (9 of 12 columns on tablets, 10 of 12 on big screens) ===== -->
+      <!-- section-light: light gray background. p-0: no padding here (the padding is on <main>) -->
+      <div class="col-md-9 col-lg-10 section-light p-0">
 
-          <!-- Left Column: Carousel & Details -->
-          <div class="col-lg-8">
-            <div id="gallery" class="carousel slide mb-4">
-              <div class="carousel-indicators">
-                <button type="button" data-bs-target="#gallery" data-bs-slide-to="0" class="active" aria-label="Slide 1"></button>
-                <button type="button" data-bs-target="#gallery" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                <button type="button" data-bs-target="#gallery" data-bs-slide-to="2" aria-label="Slide 3"></button>
-              </div>
-              <div class="carousel-inner">
-                <div class="carousel-item active">
-                  <div class="placeholder-img" style="height:380px"><span>Product screenshot or demo video</span></div>
-                </div>
-                <div class="carousel-item">
-                  <div class="placeholder-img" style="height:380px"><span>Screenshot 2</span></div>
-                </div>
-                <div class="carousel-item">
-                  <div class="placeholder-img" style="height:380px"><span>Screenshot 3</span></div>
-                </div>
-              </div>
-              <button class="carousel-control-prev" type="button" data-bs-target="#gallery" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon"></span>
-              </button>
-              <button class="carousel-control-next" type="button" data-bs-target="#gallery" data-bs-slide="next">
-                <span class="carousel-control-next-icon"></span>
-              </button>
-            </div>
+        <!-- Sample data for Phase 2 (fictional client "Najd Bank"). In Phase 4 these values will come from the database. -->
+        <main class="p-4 p-lg-5">
 
-            <p class="label-small">AI models · Set up in about 2 weeks</p>
-            <h1 class="display-4">Arabic document understanding</h1>
-            <p class="text-gray fs-5">Upload contracts, national ID scans and loan forms in Arabic or English. The model pulls out names, dates, amounts and signatures and sends them to your systems, so staff stop typing them by hand.</p>
+          <!-- 1: Bootstrap Breadcrumb: shows where you are (Catalog > Request a feature) -->
+          <ul class="breadcrumb mb-4">
+            <li class="breadcrumb-item"><a href="catalog.html">Catalog</a></li>
+            <li class="breadcrumb-item active">Request a feature</li>
+          </ul>
 
-            <!-- Feature Highlights Grid -->
-            <div class="row g-2 mt-4">
-              <div class="col-md-4">
-                <div class="bg-white p-4 h-100">
-                  <div class="num fw-bold mb-2">01</div>
-                  <p class="mb-0">Templates for 20 common Saudi document types</p>
-                </div>
-              </div>
-              <div class="col-md-4">
-                <div class="bg-white p-4 h-100">
-                  <div class="num fw-bold mb-2">02</div>
-                  <p class="mb-0">A monthly accuracy report</p>
-                </div>
-              </div>
-              <div class="col-md-4">
-                <div class="bg-white p-4 h-100">
-                  <div class="num fw-bold mb-2">03</div>
-                  <p class="mb-0">Works with your connected data sources</p>
-                </div>
-              </div>
-            </div>
-          </div>
 
-          <!-- Right Column: Request Form -->
-          <div class="col-lg-4">
-            <div class="bg-white p-4">
-              <h2 class="h3 mb-4">Request this feature</h2>
-              <form action="requests.html" method="get">
+          <div class="row">
 
-                <div class="mb-4">
-                  <label for="useFor" class="form-label small text-gray">What will you use it for?</label>
-                  <textarea class="form-control" id="useFor" name="useFor" rows="4" placeholder="e.g. Speed up loan application review" required></textarea>
-                </div>
+            <!-- 2: Left (7 of 12 columns): title + what happens after you send the request -->
+            <div class="col-lg-7 mb-4">
 
-                <div class="mb-4">
-                  <label for="users" class="form-label small text-gray">Expected users</label>
-                  <select class="form-select" id="users" name="users">
-                    <option>1–10</option>
-                    <option>11–50</option>
-                    <option>51–200</option>
-                    <option>200+</option>
-                  </select>
-                </div>
+              <p class="label-small">Stage 4</p>
+              <h1>Request a feature</h1>
+              <!-- fs-5: slightly bigger text -->
+              <p class="text-gray fs-5">Tell HUMAIN what you need. Your account manager uses these answers to plan the setup with your team.</p>
 
-                <div class="mb-4">
-                  <label for="startDate" class="form-label small text-gray">Preferred start date</label>
-                  <input class="form-control" type="date" id="startDate" name="startDate">
-                </div>
-
-                <div class="mb-4">
-                  <p class="form-label small text-gray mb-1">Priority</p>
-                  <div class="prio d-flex gap-3">
-                    <div>
-                      <input type="radio" id="low" name="priority" value="Low">
-                      <label for="low">Low</label>
-                    </div>
-                    <div>
-                      <input type="radio" id="normal" name="priority" value="Normal" checked>
-                      <label for="normal">Normal</label>
-                    </div>
-                    <div>
-                      <input type="radio" id="urgent" name="priority" value="Urgent">
-                      <label for="urgent">Urgent</label>
-                    </div>
+              <h5 class="mt-4 mb-3">What happens next</h5>
+              <!-- 3 small boxes, side by side from medium screens -->
+              <div class="row">
+                <div class="col-md-4 mb-3">
+                  <div class="bg-white p-4 h-100">
+                    <h3 class="text-gradient">01</h3>
+                    <h5>HUMAIN reviews</h5>
+                    <p class="text-gray mb-0">Your account manager reviews your request within 2 working days.</p>
                   </div>
                 </div>
+                <div class="col-md-4 mb-3">
+                  <div class="bg-white p-4 h-100">
+                    <h3 class="text-gradient">02</h3>
+                    <h5>We plan together</h5>
+                    <p class="text-gray mb-0">HUMAIN contacts you to agree on the data, users and timeline.</p>
+                  </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                  <div class="bg-white p-4 h-100">
+                    <h3 class="text-gradient">03</h3>
+                    <h5>Setup and go live</h5>
+                    <p class="text-gray mb-0">The feature is set up and you follow every step in My requests.</p>
+                  </div>
+                </div>
+              </div>
 
-                <button class="btn btn-dark w-100 py-3 px-4 d-flex justify-content-between align-items-center" type="submit">
-                  <span>Submit request</span>
-                  <i class="bi bi-arrow-right"></i>
-                </button>
-              </form>
             </div>
+
+
+            <!-- 3: Right (5 of 12 columns): the request form -->
+            <div class="col-lg-5 mb-4">
+              <section class="bg-white p-4">
+                <h5 class="mb-4">Your request</h5>
+
+                <!-- After sending, the client goes to My requests -->
+                <!-- Phase 4: change to method="post" and send to the Node.js server -->
+                <form action="requests.html">
+
+                  <!-- Select menu. The first option has value="" so "required" makes the client choose a real feature -->
+                  <div class="mb-3">
+                    <label for="feature" class="form-label">Feature</label>
+                    <select class="form-select" id="feature" name="feature" required>
+                      <option value="">Choose a feature</option>
+                      <option>Fraud detection</option>
+                      <option>Arabic document understanding</option>
+                      <option>Data quality monitor</option>
+                      <option>Data masking</option>
+                      <option>Forecasting models</option>
+                      <option>Speech to text (Arabic)</option>
+                      <option>Plan upgrade</option>
+                    </select>
+                  </div>
+
+                  <!-- Textarea: a bigger text box (4 rows high) -->
+                  <div class="mb-3">
+                    <label for="useFor" class="form-label">What will you use it for?</label>
+                    <textarea class="form-control" id="useFor" name="useFor" rows="4" placeholder="e.g. Speed up loan application review" required></textarea>
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="users" class="form-label">Expected users</label>
+                    <select class="form-select" id="users" name="users">
+                      <option>1–10</option>
+                      <option>11–50</option>
+                      <option>51–200</option>
+                      <option>200+</option>
+                    </select>
+                  </div>
+
+                  <!-- type="date" shows a calendar to pick a date -->
+                  <div class="mb-3">
+                    <label for="startDate" class="form-label">Preferred start date</label>
+                    <input type="date" class="form-control" id="startDate" name="startDate">
+                  </div>
+
+                  <!-- Radio buttons: same name="priority" so only one can be picked. "checked" = picked by default -->
+                  <!-- form-check-inline: the 3 options in one row -->
+                  <div class="mb-4">
+                    <p class="form-label">Priority</p>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" id="low" name="priority" value="Low">
+                      <label class="form-check-label" for="low">Low</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" id="normal" name="priority" value="Normal" checked>
+                      <label class="form-check-label" for="normal">Normal</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" id="urgent" name="priority" value="Urgent">
+                      <label class="form-check-label" for="urgent">Urgent</label>
+                    </div>
+                  </div>
+
+                  <button type="submit" class="btn btn-lime w-100">Send request &rarr;</button>
+                </form>
+              </section>
+            </div>
+
           </div>
 
-        </div>
-      </main>
-
-    </div>
-  </div>
-  
-  <!-- FOOTER-->
-  <footer id="footer" class="section-light py-5 border-top">
-    <div class="container">
-      <div class="row">
-
-        <div class="col-md-6 mb-4">
-          <a class="navbar-brand" href="index.html">
-            <span class="brand-name fw-bold">HUMAIN</span>
-            <span class="brand-sub text-muted">Fabric Client Hub</span>
-          </a>
-          <p class="text-gray small mt-2">© 2026 · IS311 course project with HUMAIN</p>
-        </div>
-
-        <div class="col-4 col-md-2">
-          <p class="label-small">Hub</p>
-          <ul class="list-unstyled footer-links">
-            <li class="mb-2"><a href="login.html" class="text-decoration-none text-dark small">Log in</a></li>
-            <li class="mb-2"><a href="catalog.html" class="text-decoration-none text-dark small">Catalog</a></li>
-            <li class="mb-2"><a href="support.html" class="text-decoration-none text-dark small">Support</a></li>
-          </ul>
-        </div>
-
-        <div class="col-4 col-md-2">
-          <p class="label-small">Company</p>
-          <ul class="list-unstyled footer-links">
-            <li class="mb-2"><a href="#" class="text-decoration-none text-dark small">About HUMAIN</a></li>
-            <li class="mb-2"><a href="#" class="text-decoration-none text-dark small">Careers</a></li>
-            <li class="mb-2"><a href="#" class="text-decoration-none text-dark small">Newsroom</a></li>
-          </ul>
-        </div>
-
-        <div class="col-4 col-md-2">
-          <p class="label-small">Legal</p>
-          <ul class="list-unstyled footer-links">
-            <li class="mb-2"><a href="#" class="text-decoration-none text-dark small">Privacy</a></li>
-            <li class="mb-2"><a href="#" class="text-decoration-none text-dark small">Terms</a></li>
-            <li class="mb-2"><a href="#" class="text-decoration-none text-dark small">Data residency</a></li>
-          </ul>
-        </div>
+        </main>
 
       </div>
     </div>
-  </footer>
+  </div>
 
+
+  <!-- Bootstrap JavaScript: needed for the sidebar menu button and the dropup -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
+
 </html>

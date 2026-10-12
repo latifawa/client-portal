@@ -1,57 +1,60 @@
+/* Styling Page */
+
+
 /* 1. General */
 
+/* font and text color for the whole site */
 body {
   font-family: 'Readex Pro', Arial, sans-serif;
   color: #141416;
   background-color: #ffffff;
 }
 
+/* thin headings (HUMAIN style) */
 h1,
 h2,
 h3 {
   font-weight: 300;
 }
 
+/* links are near-black instead of Bootstrap blue */
 a {
   color: #141416;
 }
 
 
-/* 2. Background and text colors */
+/* 2. Background colors */
 
+/* light gray background */
 .section-light {
   background-color: #f4f4f4;
 }
 
-.section-gray {
-  background-color: #ececec;
-}
-
+/* black background with white text */
 .section-black {
   background-color: #050505;
   color: #ffffff;
 }
 
-.text-gray {
-  color: #666666;
-}
-
-.section-black .text-gray {
-  color: #a8a8a8;
-}
-
-.text-fabric {
-  color: #60D1A0;
-}
-
-/* teal for badges and progress bars */
+/* HUMAIN teal: used for badges and progress bars */
 .bg-teal {
   background-color: #3A869D;
 }
 
 
-/* 3. Labels and gradient text */
+/* 3. Text: gray, labels, green and gradient */
 
+/* gray text for descriptions */
+.text-gray {
+  color: #666666;
+}
+
+/* lighter gray when the text is on a black background */
+.section-black .text-gray {
+  color: #a8a8a8;
+}
+
+/* small uppercase label above titles */
 .label-small {
   font-size: 12px;
   font-weight: 500;
@@ -60,7 +63,18 @@ a {
   color: #666666;
 }
 
-/* after .label-small so the gradient wins when both are used */
+/* the next two come after .label-small so their color wins when both are used */
+
+/* HUMAIN green text */
+.text-fabric {
+  color: #60D1A0;
+}
+
+/* teal-to-green gradient text (for big numbers and titles):
+   1. the gradient is the background
+   2. background-clip: text cuts the background to the shape of the letters
+   3. the text color is transparent so the gradient shows through
+   (-webkit- is the same line for Safari) */
 .text-gradient {
   background: linear-gradient(90deg, #3A869D, #60D1A0, #BAE982);
   -webkit-background-clip: text;
@@ -71,24 +85,33 @@ a {
 
 /* 4. Buttons */
 
+/* all buttons are pills (fully rounded) */
 .btn {
   border-radius: 999px;
   padding: 10px 24px;
   font-weight: 500;
 }
 
+/* small buttons stay small */
+.btn-sm {
+  padding: 6px 16px;
+}
+
+/* lime button = the main button of a page */
 .btn-lime {
   background-color: #D8F869;
   color: #141416;
   border: 1px solid #D8F869;
 }
 
+/* a bit darker when the mouse is over it */
 .btn-lime:hover {
   background-color: #c6ea4f;
   border-color: #c6ea4f;
   color: #141416;
 }
 
+/* dark gray button for black backgrounds */
 .btn-dark-soft {
   background-color: #1E1E1E;
   color: #ffffff;
@@ -100,6 +123,7 @@ a {
   color: #ffffff;
 }
 
+/* Bootstrap's dark button with HUMAIN's near-black */
 .btn-dark {
   background-color: #141416;
   border-color: #141416;
@@ -113,6 +137,7 @@ a {
 
 /* 5. Forms */
 
+/* small gray labels above the fields */
 .form-label {
   font-size: 13px;
   font-weight: 500;
@@ -120,6 +145,7 @@ a {
   margin-bottom: 8px;
 }
 
+/* square gray fields */
 .form-control,
 .form-select {
   background-color: #f4f4f4;
@@ -129,10 +155,12 @@ a {
   font-size: 15px;
 }
 
+/* extra space on the right so the text doesn't cover the select arrow */
 .form-select {
   padding-right: 44px;
 }
 
+/* when you click in a field: black border instead of Bootstrap's blue glow */
 .form-control:focus,
 .form-select:focus {
   background-color: #f4f4f4;
@@ -140,11 +168,7 @@ a {
   box-shadow: none;
 }
 
-/* square black checkbox instead of Bootstrap's blue */
-.form-check-input {
-  border-radius: 0;
-}
-
+/* checked checkbox / radio: black instead of Bootstrap's blue */
 .form-check-input:checked {
   background-color: #141416;
   border-color: #141416;
@@ -156,13 +180,15 @@ a {
 }
 
 
-/* 6. Navbar (public pages) */
+/* 6. Navbar and logo (public pages and admin) */
 
+/* "HUMAIN" in bold with space between the letters */
 .brand-name {
   font-weight: 700;
   letter-spacing: 3px;
 }
 
+/* the smaller word next to HUMAIN */
 .brand-sub {
   font-size: 14px;
   font-weight: 300;
@@ -170,14 +196,7 @@ a {
   margin-left: 6px;
 }
 
-.navbar .nav-link {
-  color: #666666;
-}
-
-.navbar .nav-link:hover {
-  color: #141416;
-}
-
+/* logo colors on a black background */
 .section-black .navbar-brand,
 .section-black .brand-name {
   color: #ffffff;
@@ -187,6 +206,7 @@ a {
   color: #a8a8a8;
 }
 
+/* navbar links on a black background */
 .section-black .nav-link {
   color: #b5b5b5;
 }
@@ -198,6 +218,7 @@ a {
 
 /* 7. Footer */
 
+/* footer links: small, underlined only on hover */
 .footer-links a {
   font-size: 14px;
   text-decoration: none;
@@ -210,12 +231,13 @@ a {
 
 /* 8. Sidebar (hub pages) */
 
+/* black sidebar, at least as tall as the screen */
 .sidebar {
   background-color: #050505;
   min-height: 100vh;
 }
 
-/* brand colors on black */
+/* logo colors on black */
 .sidebar .brand-name {
   color: #ffffff;
 }
@@ -244,34 +266,42 @@ a {
   font-weight: 500;
 }
 
-/* organization box */
+/* organization box: dark gray inside the sidebar */
 .sidebar .section-light {
   background-color: #1E1E1E;
   color: #ffffff;
 }
 
+/* lighter gray so small text is readable on black */
+.sidebar .label-small,
+.sidebar .text-gray {
+  color: #a8a8a8;
+}
 
-/* 9. Home: hero */
 
+/* 9. Home: hero image */
+
+/* rounded corners on the hero image */
 .hero-img {
   border-radius: 32px;
-  -webkit-mask-image: radial-gradient(ellipse at center, black 60%, transparent 100%);
-  mask-image: radial-gradient(ellipse at center, black 60%, transparent 100%);
 }
 
 
 /* 10. Home: five stages */
 
+/* the thin line above each stage */
 .stage-line {
   height: 4px;
   background-color: #e4e4e4;
   margin-bottom: 16px;
 }
 
+/* the first line is black (= where the client starts) */
 .stage-line-active {
   background-color: #141416;
 }
 
+/* the big thin numbers 01-05 */
 .stage-number {
   font-size: 44px;
   font-weight: 200;
@@ -279,8 +309,9 @@ a {
 }
 
 
-/* 11. Home: animation */
+/* 11. Home: CSS animation */
 
+/* fadeUp: starts invisible and 30px lower, ends visible in its normal place */
 @keyframes fadeUp {
   from {
     opacity: 0;
@@ -293,6 +324,9 @@ a {
   }
 }
 
+/* each stage plays fadeUp for 0.8 seconds.
+   position: relative is needed so "top" can move it.
+   animation-fill-mode: both keeps it hidden before it starts and visible after it ends */
 .stage-step {
   position: relative;
   animation-name: fadeUp;
@@ -300,6 +334,7 @@ a {
   animation-fill-mode: both;
 }
 
+/* each stage starts a little later than the one before */
 .delay-1 {
   animation-delay: 0.2s;
 }
@@ -323,11 +358,15 @@ a {
 
 /* 12. Home: carousel */
 
+/* all slides have the same height.
+   object-fit: cover fills the space without stretching the image */
 .carousel-item img {
   height: 420px;
   object-fit: cover;
 }
 
+/* black box behind the caption text so it's readable on any image
+   (rgba = a color with transparency, 0.85 = 85% visible) */
 .carousel-caption {
   background-color: rgba(5, 5, 5, 0.85);
   border-radius: 16px;
@@ -335,34 +374,21 @@ a {
 }
 
 
-/* 13. Login */
+/* 13. Tabs (login, support, admin): thin underline instead of boxes */
 
-/* left black panel */
-.login-panel {
-  min-height: 80vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-/* right form box */
-.login-box {
-  width: 100%;
-  max-width: 460px;
-}
-
-/* tabs: thin underline like the wireframe */
+/* thin gray line under all the tabs */
 .nav-tabs {
   border-bottom: 1px solid #e4e4e4;
-  gap: 32px;
 }
 
+/* each tab: no box, just text with space between the tabs */
 .nav-tabs .nav-link {
   color: #666666;
   border: 0;
   border-bottom: 2px solid transparent;
   border-radius: 0;
   padding: 0 0 14px;
+  margin-right: 32px;
   font-size: 15px;
 }
 
@@ -370,11 +396,26 @@ a {
   color: #141416;
 }
 
+/* the open tab: black text with a black line under it */
 .nav-tabs .nav-link.active {
   color: #141416;
   font-weight: 500;
   background: none;
   border-bottom-color: #141416;
+}
+
+
+/* 14. Login */
+
+/* left black panel: tall enough to fill most of the screen */
+.login-panel {
+  min-height: 80vh;
+}
+
+/* right form box */
+.login-box {
+  width: 100%;
+  max-width: 460px;
 }
 
 /* headings: big and thin */
@@ -384,7 +425,7 @@ a {
   letter-spacing: -0.02em;
 }
 
-/* buttons: square, not pill */
+/* buttons on the login page are square, not pills */
 .login-box .btn {
   border-radius: 0;
   padding: 16px 22px;
@@ -393,7 +434,7 @@ a {
 }
 
 
-/* 14. Pagination: black instead of Bootstrap blue */
+/* 15. Pagination: black instead of Bootstrap blue */
 
 .page-item.active .page-link {
   background-color: #141416;

@@ -1,50 +1,58 @@
-<!-- Page 3: Overview Dashboard -->
+<!-- Page 3: Overview dashboard (Stage 3) -->
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
   <meta charset="UTF-8">
+  <!-- makes the page fit phone screens -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Overview Dashboard</title>
+  <title>Overview | HUMAIN Fabric</title>
+  <!-- small icon in the browser tab -->
   <link rel="icon" type="image/webp" href="images/humain-favicon.webp">
+  <!-- Bootstrap 5.3.2 CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+  <!-- Bootstrap Icons (the small icons in the sidebar and buttons) -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-  <link rel="stylesheet"
-    href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@200;300;400;500;600&display=swap">
+  <!-- Google Font: Readex Pro -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@200;300;400;500;600&display=swap">
+  <!-- our own CSS (loaded last so it can change Bootstrap's styles) -->
   <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
 
+  <!-- Bootstrap grid: container-fluid = full width, row = the sidebar and the content side by side -->
   <div class="container-fluid">
     <div class="row">
 
-      <!-- ===== SIDEBAR ===== -->
+      <!-- ===== SIDEBAR (the same on every hub page, only the "active" link changes) ===== -->
+      <!-- col-md-3 col-lg-2: 3 of 12 columns on tablets, 2 of 12 on big screens -->
       <aside class="col-md-3 col-lg-2 sidebar p-3">
 
-        <!-- Brand + menu button (button shows on phones only) -->
+        <!-- Logo + menu button. d-md-none: the button only shows on phones -->
         <div class="d-flex justify-content-between align-items-center">
           <a class="navbar-brand" href="dashboard.html">
             <span class="brand-name">HUMAIN</span>
             <span class="brand-sub">Fabric</span>
           </a>
-          <button class="btn btn-outline-light btn-sm d-md-none" type="button" data-bs-toggle="collapse"
-            data-bs-target="#sidebarMenu" aria-label="Open menu">
+          <!-- Bootstrap Collapse: this button opens and closes #sidebarMenu -->
+          <button class="btn btn-outline-light btn-sm d-md-none" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu">
             <i class="bi bi-list"></i>
           </button>
         </div>
 
-        <!-- Menu (hides on phones until the button is clicked) -->
+        <!-- The menu: hidden on phones until the button is clicked (collapse), always shown from medium screens up (d-md-block) -->
         <div class="collapse d-md-block" id="sidebarMenu">
 
-          <!-- Organization -->
+          <!-- Organization box: which client is logged in -->
           <div class="section-light p-3 my-4">
             <p class="label-small mb-1">Organization</p>
             <p class="fw-semibold mb-0">Najd Bank</p>
             <p class="text-gray small mb-0">Growth plan</p>
           </div>
 
-          <!-- Bootstrap Nav Pills (vertical) -->
+          <!-- Bootstrap Nav Pills (vertical): flex-column puts the links under each other -->
+          <!-- "active" = the page we are on (shown as a lime pill). The <i> tags are Bootstrap Icons -->
           <ul class="nav nav-pills flex-column">
             <li class="nav-item">
               <a class="nav-link active" href="dashboard.html"><i class="bi bi-grid me-2"></i>Overview</a>
@@ -69,10 +77,10 @@
             </li>
           </ul>
 
-          <!-- Bootstrap Dropup: user menu -->
+          <!-- Bootstrap Dropup (a dropdown that opens upward): the user menu -->
           <div class="dropup mt-4">
-            <button type="button" class="btn btn-dark-soft w-100 text-start dropdown-toggle"
-              data-bs-toggle="dropdown">
+            <!-- data-bs-toggle="dropdown": clicking the button opens the menu below it in the code -->
+            <button type="button" class="btn btn-dark-soft w-100 text-start dropdown-toggle" data-bs-toggle="dropdown">
               <i class="bi bi-person-circle me-2"></i>Layan A.
             </button>
             <ul class="dropdown-menu">
@@ -86,12 +94,11 @@
       </aside>
 
 
-      <!-- ===== RIGHT SIDE ===== -->
+      <!-- ===== RIGHT SIDE: the page content (9 of 12 columns on tablets, 10 of 12 on big screens) ===== -->
+      <!-- section-light: light gray background. p-0: no padding here (the padding is on <main>) -->
       <div class="col-md-9 col-lg-10 section-light p-0">
 
-
-
-        <!-- Sample data for Phase 2. In Phase 4 these values will come from the database. -->
+        <!-- Sample data for Phase 2 (fictional client "Najd Bank"). In Phase 4 these values will come from the database. -->
         <main class="p-4 p-lg-5">
 
           <!-- 1: Heading -->
@@ -100,11 +107,11 @@
           <p class="text-gray">Here's what's happening with your workspace.</p>
 
 
-          <!-- 2: Usage numbers -->
+          <!-- 2: Usage numbers (4 small white boxes: 2 per row on phones, 4 per row from medium screens) -->
           <div class="row mt-4">
             <div class="col-6 col-md-3 mb-3">
               <div class="bg-white p-3">
-                <p class="text-gray">API calls this month</p>
+                <p class="text-gray">Data queries this month</p>
                 <h3 class="text-gradient">128,400</h3>
               </div>
             </div>
@@ -129,25 +136,27 @@
           </div>
 
 
-          <!-- 3: Chart + setup progress, side by side -->
+          <!-- 3: Chart (left) + setup progress (right), side by side on large screens -->
           <div class="row">
 
-            <!-- Line chart (Chart.js) -->
+            <!-- Line chart (made with Chart.js, see the script at the bottom) -->
+            <!-- h-100: both boxes have the same height -->
             <div class="col-lg-8 mb-3">
               <div class="bg-white p-4 h-100">
-                <h5>API calls per week</h5>
-                <p class="text-gray">Weekly API usage this month.</p>
+                <h5>Data queries per week</h5>
+                <p class="text-gray">Weekly data queries this month.</p>
+                <!-- the chart is drawn inside this canvas -->
                 <canvas id="apiChart"></canvas>
               </div>
             </div>
 
-            <!-- Setup progress (Bootstrap Progress Bar) -->
+            <!-- Setup progress (Bootstrap Progress Bar: the inner div's width = how full the bar is) -->
             <div class="col-lg-4 mb-3">
               <div class="bg-white p-4 h-100">
                 <h5>Setup progress</h5>
                 <p class="text-gray">3 of 5 steps done.</p>
                 <div class="progress mb-3">
-                  <div class="progress-bar bg-dark" style="width:60%">60%</div>
+                  <div class="progress-bar bg-teal" style="width:60%">60%</div>
                 </div>
                 <p class="small mb-4"><strong>Next step:</strong> Finish your access rules</p>
                 <a href="setup.html" class="btn btn-lime">Continue setup</a>
@@ -157,12 +166,14 @@
           </div>
 
 
-          <!-- 4: Features table (Bootstrap Table + Progress Bars) -->
+          <!-- 4: Features table (Bootstrap Table with a progress bar in the last column) -->
           <section class="bg-white p-4 mt-3">
             <h5>Features in use</h5>
             <p class="text-gray">How much of your plan limit each feature has used this month.</p>
 
+            <!-- table-responsive: the table scrolls sideways on small screens -->
             <div class="table-responsive">
+              <!-- table-hover: a row turns gray under the mouse. align-middle: text centered vertically -->
               <table class="table table-hover align-middle">
                 <thead>
                   <tr>
@@ -170,6 +181,7 @@
                     <th>Status</th>
                     <th>Usage this month</th>
                     <th>Plan limit</th>
+                    <!-- w-25: this column takes 25% of the table width -->
                     <th class="w-25">% of limit</th>
                   </tr>
                 </thead>
@@ -186,7 +198,7 @@
                     </td>
                   </tr>
                   <tr>
-                    <td>Arabic chat assistant</td>
+                    <td>Employee chat assistant</td>
                     <td><span class="badge bg-teal">Active</span></td>
                     <td>36,500 messages</td>
                     <td>50,000</td>
@@ -224,7 +236,7 @@
           </section>
 
 
-          <!-- 5: Suggested for you -->
+          <!-- 5: Suggested for you (2 suggestions, the full list is on the Suggestions page) -->
           <section class="mt-4">
             <h5>Suggested for you</h5>
             <p class="text-gray">Explore features that may help your team.</p>
@@ -234,7 +246,7 @@
                 <div class="bg-white p-4 h-100">
                   <h5>Your usage is growing</h5>
                   <p class="text-gray">You may reach your chat assistant limit around 20 Oct.</p>
-                  <a href="suggestions.html" class="btn btn-outline-dark">View upgrade options</a>
+                  <a href="suggestions.html" class="btn btn-outline-dark">View suggestion</a>
                 </div>
               </div>
               <div class="col-md-6 mb-3">
@@ -254,18 +266,22 @@
   </div>
 
 
+  <!-- Bootstrap JavaScript: needed for the sidebar menu button and the dropup -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
-  <!-- Chart.js library (for the line chart) -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.js"></script>  <script>
+  <!-- Chart.js library (draws the line chart) -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.js"></script>
+
+  <!-- Our line chart: drawn inside <canvas id="apiChart"> -->
+  <script>
     new Chart(document.getElementById("apiChart"), {
-      type: "line",
+      type: "line",                                     // line chart
       data: {
-        labels: ["Week 1", "Week 2", "Week 3", "Week 4"],
+        labels: ["Week 1", "Week 2", "Week 3", "Week 4"], // the bottom axis
         datasets: [{
-          label: "API calls",
-          data: [20000, 35000, 28000, 45400],
-          borderColor: "#3A869D"
+          label: "Data queries",
+          data: [20000, 35000, 28000, 45400],            // adds up to 128,400 (the number in the box above)
+          borderColor: "#3A869D"                         // HUMAIN teal line
         }]
       }
     });

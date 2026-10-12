@@ -1,449 +1,241 @@
+<!-- Page 8: My requests -->
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>My Requests | HUMAIN Fabric</title>
-
-    <!-- Favicon -->
-    <link rel="icon" type="image/webp" href="images/humain-favicon.webp">
-
-    <!-- Bootstrap -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
-
-    <!-- Google Font -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@200;300;400;500;600&display=swap">
-
-    <!-- Bootstrap Icons -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-
-    <!-- Teammates' CSS -->
-    <link rel="stylesheet" href="css/style.css">
-
+  <meta charset="UTF-8">
+  <!-- makes the page fit phone screens -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My requests | HUMAIN Fabric</title>
+  <!-- small icon in the browser tab -->
+  <link rel="icon" type="image/webp" href="images/humain-favicon.webp">
+  <!-- Bootstrap 5.3.2 CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+  <!-- Bootstrap Icons (the small icons in the sidebar and buttons) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <!-- Google Font: Readex Pro -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@200;300;400;500;600&display=swap">
+  <!-- our own CSS (loaded last so it can change Bootstrap's styles) -->
+  <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
 
-    <div class="container-fluid">
-        <div class="row">
-
-            <!-- SIDEBAR: Same as the dashboard -->
-            <aside class="col-md-3 col-lg-2 sidebar p-3">
-
-                <!-- HUMAIN Logo -->
-                <div class="d-flex justify-content-between align-items-center">
-
-                    <a class="navbar-brand" href="dashboard.html">
-                        <span class="brand-name">HUMAIN</span>
-                        <span class="brand-sub">Fabric</span>
-                    </a>
-
-                    <!-- Menu button for phones -->
-                    <button class="btn btn-outline-light btn-sm d-md-none"
-                            type="button"
-                            data-bs-toggle="collapse"
-                            data-bs-target="#sidebarMenu"
-                            aria-label="Open menu">
-
-                        <i class="bi bi-list"></i>
-
-                    </button>
-
-                </div>
-
-                <div class="collapse d-md-block" id="sidebarMenu">
-
-                    <!-- Organization -->
-                    <div class="section-light p-3 my-4">
-
-                        <p class="label-small mb-1">Organization</p>
-
-                        <p class="fw-semibold mb-0">Najd Bank</p>
-
-                        <p class="text-gray small mb-0">Growth plan</p>
-
-                    </div>
-
-                    <!-- Navigation (Bootstrap Nav Pills) -->
-                    <ul class="nav nav-pills flex-column">
-
-                        <li class="nav-item">
-                            <a class="nav-link" href="dashboard.html">
-                                <i class="bi bi-grid me-2"></i>Overview
-                            </a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link" href="setup.html">
-                                <i class="bi bi-list-check me-2"></i>Getting started
-                            </a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link" href="catalog.html">
-                                <i class="bi bi-layers me-2"></i>Catalog
-                            </a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link" href="suggestions.html">
-                                <i class="bi bi-stars me-2"></i>Suggestions
-                            </a>
-                        </li>
-
-                        <!-- Current Page -->
-                        <li class="nav-item">
-                            <a class="nav-link active" href="requests.html">
-                                <i class="bi bi-inbox me-2"></i>My requests
-                            </a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link" href="support.html">
-                                <i class="bi bi-chat-left-text me-2"></i>Support
-                            </a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link" href="account.html">
-                                <i class="bi bi-gear me-2"></i>Account settings
-                            </a>
-                        </li>
-
-                    </ul>
-
-                    <!-- User Dropdown (opens upward) -->
-                    <div class="dropup mt-4">
-
-                        <button class="btn btn-dark-soft w-100 text-start dropdown-toggle"
-                                type="button"
-                                data-bs-toggle="dropdown">
-
-                            <i class="bi bi-person-circle me-2"></i>Layan A.
-
-                        </button>
-
-                        <ul class="dropdown-menu">
-
-                            <li>
-                                <a class="dropdown-item" href="account.html">Account settings</a>
-                            </li>
-
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-
-                            <li>
-                                <a class="dropdown-item" href="index.html">Log out</a>
-                            </li>
-
-                        </ul>
-
-                    </div>
-
-                </div>
-
-            </aside>
-
-
-            <!-- RIGHT SIDE -->
-            <div class="col-md-9 col-lg-10 section-light p-0">
-
-
-                <!-- MY REQUESTS PAGE -->
-                <!-- Sample data for Phase 2. In Phase 4 these values will come from the database. -->
-                <main class="p-4 p-lg-5">
-
-                    <!-- Page Title -->
-                    <div class="row align-items-center mb-4">
-
-                        <div class="col-md-8">
-
-                            <h1>My requests</h1>
-
-                            <p class="text-gray">
-                                Every feature, upgrade and support request,
-                                with its latest status.
-                            </p>
-
-                        </div>
-
-                        <div class="col-md-4 text-md-end">
-
-                            <a href="catalog.html" class="btn btn-lime">
-                                New request
-                                <i class="bi bi-arrow-right"></i>
-                            </a>
-
-                        </div>
-
-                    </div>
-
-
-                    <!-- SUMMARY CARDS -->
-                    <div class="row mb-4">
-
-                        <!-- Waiting -->
-                        <div class="col-6 col-lg-3 mb-3">
-
-                            <div class="bg-white p-4 h-100">
-
-                                <h2 class="text-gradient">1</h2>
-
-                                <p class="text-gray mb-0">
-                                    Waiting for HUMAIN
-                                </p>
-
-                            </div>
-
-                        </div>
-
-                        <!-- In Progress -->
-                        <div class="col-6 col-lg-3 mb-3">
-
-                            <div class="bg-white p-4 h-100">
-
-                                <h2 class="text-gradient">1</h2>
-
-                                <p class="text-gray mb-0">
-                                    In progress
-                                </p>
-
-                            </div>
-
-                        </div>
-
-                        <!-- Approved or Done -->
-                        <div class="col-6 col-lg-3 mb-3">
-
-                            <div class="bg-white p-4 h-100">
-
-                                <h2 class="text-gradient">3</h2>
-
-                                <p class="text-gray mb-0">
-                                    Approved or done
-                                </p>
-
-                            </div>
-
-                        </div>
-
-                        <!-- Declined -->
-                        <div class="col-6 col-lg-3 mb-3">
-
-                            <div class="bg-white p-4 h-100">
-
-                                <h2 class="text-gradient">1</h2>
-
-                                <p class="text-gray mb-0">
-                                    Declined
-                                </p>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-
-                    <!-- REQUESTS TABLE -->
-                    <div class="bg-white p-4">
-
-                        <div class="table-responsive">
-
-                            <table class="table table-striped table-hover align-middle">
-
-                                <!-- Table Headings -->
-                                <thead>
-
-                                    <tr>
-                                        <th>ID</th>
-                                        <th>Request</th>
-                                        <th>By</th>
-                                        <th>Date</th>
-                                        <th>Status</th>
-                                        <th>Latest update</th>
-                                    </tr>
-
-                                </thead>
-
-                                <!-- Table Data -->
-                                <tbody>
-
-                                    <!-- Request 1 -->
-                                    <tr>
-
-                                        <td>R-1042</td>
-
-                                        <td>Customer service assistant</td>
-
-                                        <td>Layan A.</td>
-
-                                        <td>24 Sep 2026</td>
-
-                                        <td>
-                                            <span class="badge bg-secondary">Pending</span>
-                                        </td>
-
-                                        <td>Sara is reviewing it</td>
-
-                                    </tr>
-
-
-                                    <!-- Request 2 -->
-                                    <tr>
-
-                                        <td>R-1039</td>
-
-                                        <td>Plan upgrade: Growth</td>
-
-                                        <td>Layan A.</td>
-
-                                        <td>20 Sep 2026</td>
-
-                                        <td>
-                                            <span class="badge bg-teal">Approved</span>
-                                        </td>
-
-                                        <td>Live from 1 Oct</td>
-
-                                    </tr>
-
-
-                                    <!-- Request 3 -->
-                                    <tr>
-
-                                        <td>R-1031</td>
-
-                                        <td>Extra data source: CRM</td>
-
-                                        <td>Noura M.</td>
-
-                                        <td>11 Sep 2026</td>
-
-                                        <td>
-                                            <span class="badge bg-dark">In progress</span>
-                                        </td>
-
-                                        <td>Connector being set up</td>
-
-                                    </tr>
-
-
-                                    <!-- Request 4 -->
-                                    <tr>
-
-                                        <td>R-1027</td>
-
-                                        <td>Training for analysts</td>
-
-                                        <td>Latifa B.</td>
-
-                                        <td>6 Sep 2026</td>
-
-                                        <td>
-                                            <span class="badge bg-teal">Done</span>
-                                        </td>
-
-                                        <td>Held 15 Sep</td>
-
-                                    </tr>
-
-
-                                    <!-- Request 5 -->
-                                    <tr>
-
-                                        <td>R-1019</td>
-
-                                        <td>Forecasting models</td>
-
-                                        <td>Noura M.</td>
-
-                                        <td>30 Aug 2026</td>
-
-                                        <td>
-                                            <span class="badge bg-light text-dark">Declined</span>
-                                        </td>
-
-                                        <td>Needs 6 months of data</td>
-
-                                    </tr>
-
-
-                                    <!-- Request 6 -->
-                                    <tr>
-
-                                        <td>R-1012</td>
-
-                                        <td>Access audit log</td>
-
-                                        <td>Johara B.</td>
-
-                                        <td>22 Aug 2026</td>
-
-                                        <td>
-                                            <span class="badge bg-teal">Done</span>
-                                        </td>
-
-                                        <td>Live since 1 Sep</td>
-
-                                    </tr>
-
-                                </tbody>
-
-                            </table>
-
-                        </div>
-
-                    </div>
-
-
-                    <!-- PAGINATION -->
-                    <div class="d-flex justify-content-between align-items-center mt-4">
-
-                        <p class="text-gray">
-                            Showing 1–6 of 6 requests
-                        </p>
-
-                        <nav aria-label="Requests pages">
-
-                            <ul class="pagination">
-
-                                <li class="page-item disabled">
-                                    <span class="page-link">
-                                        Previous
-                                    </span>
-                                </li>
-
-                                <li class="page-item active">
-                                    <span class="page-link">
-                                        1
-                                    </span>
-                                </li>
-
-                                <li class="page-item disabled">
-                                    <span class="page-link">
-                                        Next
-                                    </span>
-                                </li>
-
-                            </ul>
-
-                        </nav>
-
-                    </div>
-
-                </main>
-
-            </div>
+  <!-- Bootstrap grid: container-fluid = full width, row = the sidebar and the content side by side -->
+  <div class="container-fluid">
+    <div class="row">
+
+      <!-- ===== SIDEBAR (the same on every hub page, only the "active" link changes) ===== -->
+      <!-- col-md-3 col-lg-2: 3 of 12 columns on tablets, 2 of 12 on big screens -->
+      <aside class="col-md-3 col-lg-2 sidebar p-3">
+
+        <!-- Logo + menu button. d-md-none: the button only shows on phones -->
+        <div class="d-flex justify-content-between align-items-center">
+          <a class="navbar-brand" href="dashboard.html">
+            <span class="brand-name">HUMAIN</span>
+            <span class="brand-sub">Fabric</span>
+          </a>
+          <!-- Bootstrap Collapse: this button opens and closes #sidebarMenu -->
+          <button class="btn btn-outline-light btn-sm d-md-none" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu">
+            <i class="bi bi-list"></i>
+          </button>
+        </div>
+
+        <!-- The menu: hidden on phones until the button is clicked (collapse), always shown from medium screens up (d-md-block) -->
+        <div class="collapse d-md-block" id="sidebarMenu">
+
+          <!-- Organization box: which client is logged in -->
+          <div class="section-light p-3 my-4">
+            <p class="label-small mb-1">Organization</p>
+            <p class="fw-semibold mb-0">Najd Bank</p>
+            <p class="text-gray small mb-0">Growth plan</p>
+          </div>
+
+          <!-- Bootstrap Nav Pills (vertical): flex-column puts the links under each other -->
+          <!-- "active" = the page we are on (shown as a lime pill). The <i> tags are Bootstrap Icons -->
+          <ul class="nav nav-pills flex-column">
+            <li class="nav-item">
+              <a class="nav-link" href="dashboard.html"><i class="bi bi-grid me-2"></i>Overview</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="setup.html"><i class="bi bi-list-check me-2"></i>Getting started</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="catalog.html"><i class="bi bi-layers me-2"></i>Catalog</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="suggestions.html"><i class="bi bi-stars me-2"></i>Suggestions</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="requests.html"><i class="bi bi-inbox me-2"></i>My requests</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="support.html"><i class="bi bi-chat-left-text me-2"></i>Support</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="account.html"><i class="bi bi-gear me-2"></i>Account settings</a>
+            </li>
+          </ul>
+
+          <!-- Bootstrap Dropup (a dropdown that opens upward): the user menu -->
+          <div class="dropup mt-4">
+            <!-- data-bs-toggle="dropdown": clicking the button opens the menu below it in the code -->
+            <button type="button" class="btn btn-dark-soft w-100 text-start dropdown-toggle" data-bs-toggle="dropdown">
+              <i class="bi bi-person-circle me-2"></i>Layan A.
+            </button>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="account.html">Account settings</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="index.html">Log out</a></li>
+            </ul>
+          </div>
 
         </div>
+      </aside>
+
+
+      <!-- ===== RIGHT SIDE: the page content (9 of 12 columns on tablets, 10 of 12 on big screens) ===== -->
+      <!-- section-light: light gray background. p-0: no padding here (the padding is on <main>) -->
+      <div class="col-md-9 col-lg-10 section-light p-0">
+
+        <!-- Sample data for Phase 2 (fictional client "Najd Bank"). In Phase 4 these values will come from the database. -->
+        <main class="p-4 p-lg-5">
+
+          <!-- 1: Heading on the left, "New request" button on the right -->
+          <div class="row align-items-center mb-4">
+            <div class="col-md-8">
+              <h1>My requests</h1>
+              <p class="text-gray">Every feature and upgrade request, with its latest status.</p>
+            </div>
+            <!-- text-md-end: the button is on the right from medium screens -->
+            <div class="col-md-4 text-md-end">
+              <a href="catalog.html" class="btn btn-lime">New request <i class="bi bi-arrow-right"></i></a>
+            </div>
+          </div>
+
+
+          <!-- 2: Summary numbers (they match the table below: 1 + 1 + 3 + 1 = 6) -->
+          <div class="row mb-4">
+            <div class="col-6 col-lg-3 mb-3">
+              <div class="bg-white p-4 h-100">
+                <h2 class="text-gradient">1</h2>
+                <p class="text-gray mb-0">Waiting for HUMAIN</p>
+              </div>
+            </div>
+            <div class="col-6 col-lg-3 mb-3">
+              <div class="bg-white p-4 h-100">
+                <h2 class="text-gradient">1</h2>
+                <p class="text-gray mb-0">In progress</p>
+              </div>
+            </div>
+            <div class="col-6 col-lg-3 mb-3">
+              <div class="bg-white p-4 h-100">
+                <h2 class="text-gradient">3</h2>
+                <p class="text-gray mb-0">Approved or done</p>
+              </div>
+            </div>
+            <div class="col-6 col-lg-3 mb-3">
+              <div class="bg-white p-4 h-100">
+                <h2 class="text-gradient">1</h2>
+                <p class="text-gray mb-0">Declined</p>
+              </div>
+            </div>
+          </div>
+
+
+          <!-- 3: Requests table -->
+          <div class="bg-white p-4">
+            <!-- table-responsive: the table scrolls sideways on small screens -->
+            <div class="table-responsive">
+              <!-- table-striped: every other row is gray. table-hover: a row turns gray under the mouse -->
+              <table class="table table-striped table-hover align-middle">
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Request</th>
+                    <th>By</th>
+                    <th>Date</th>
+                    <th>Status</th>
+                    <th>Latest update</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>R-1042</td>
+                    <td>Customer service assistant</td>
+                    <td>Layan A.</td>
+                    <td>24 Sep 2026</td>
+                    <td><span class="badge bg-secondary">Pending</span></td>
+                    <td>Sara is reviewing it</td>
+                  </tr>
+                  <tr>
+                    <td>R-1039</td>
+                    <td>Plan upgrade: Growth</td>
+                    <td>Layan A.</td>
+                    <td>20 Sep 2026</td>
+                    <td><span class="badge bg-teal">Approved</span></td>
+                    <td>Live from 1 Oct</td>
+                  </tr>
+                  <tr>
+                    <td>R-1031</td>
+                    <td>Extra data source: CRM</td>
+                    <td>Noura M.</td>
+                    <td>11 Sep 2026</td>
+                    <td><span class="badge bg-dark">In progress</span></td>
+                    <td>Connector being set up</td>
+                  </tr>
+                  <tr>
+                    <td>R-1027</td>
+                    <td>Training for analysts</td>
+                    <td>Latifa B.</td>
+                    <td>6 Sep 2026</td>
+                    <td><span class="badge bg-teal">Done</span></td>
+                    <td>Held 15 Sep</td>
+                  </tr>
+                  <tr>
+                    <td>R-1019</td>
+                    <td>Forecasting models</td>
+                    <td>Noura M.</td>
+                    <td>30 Aug 2026</td>
+                    <!-- border: a thin outline so the light badge is visible on white -->
+                    <td><span class="badge bg-light text-dark border">Declined</span></td>
+                    <td>Needs 6 months of data</td>
+                  </tr>
+                  <tr>
+                    <td>R-1012</td>
+                    <td>Access audit log</td>
+                    <td>Johara B.</td>
+                    <td>22 Aug 2026</td>
+                    <td><span class="badge bg-teal">Done</span></td>
+                    <td>Live since 1 Sep</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+
+          <!-- 4: Bootstrap Pagination -->
+          <!-- There is only 1 page for now, so Previous and Next are "disabled".
+               We use <span> instead of <a> because there is no other page to link to yet -->
+          <div class="d-flex justify-content-between align-items-center mt-4">
+            <p class="text-gray mb-0">Showing 1–6 of 6 requests</p>
+            <ul class="pagination mb-0">
+              <li class="page-item disabled"><span class="page-link">Previous</span></li>
+              <li class="page-item active"><span class="page-link">1</span></li>
+              <li class="page-item disabled"><span class="page-link">Next</span></li>
+            </ul>
+          </div>
+
+        </main>
+
+      </div>
     </div>
+  </div>
 
 
-    <!-- Bootstrap JavaScript -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Bootstrap JavaScript: needed for the sidebar menu button and the dropup -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 
