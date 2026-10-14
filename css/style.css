@@ -1,4 +1,4 @@
-/* Styling Page */
+/* main css page */
 
 
 /* 1. General */
@@ -10,14 +10,12 @@ body {
   background-color: #ffffff;
 }
 
-/* thin headings (HUMAIN style) */
-h1,
-h2,
-h3 {
+/* thin headings (HUMAIN's style) */
+h1, h2, h3 {
   font-weight: 300;
 }
 
-/* links are near-black instead of Bootstrap blue */
+/* links are black instead of bootstrap blue */
 a {
   color: #141416;
 }
@@ -36,7 +34,7 @@ a {
   color: #ffffff;
 }
 
-/* HUMAIN teal: used for badges and progress bars */
+/* HUMAIN's teal: used for badges and progress bars */
 .bg-teal {
   background-color: #3A869D;
 }
@@ -70,11 +68,7 @@ a {
   color: #60D1A0;
 }
 
-/* teal-to-green gradient text (for big numbers and titles):
-   1. the gradient is the background
-   2. background-clip: text cuts the background to the shape of the letters
-   3. the text color is transparent so the gradient shows through
-   (-webkit- is the same line for Safari) */
+/* teal-to-green gradient text (for big numbers and titles): */
 .text-gradient {
   background: linear-gradient(90deg, #3A869D, #60D1A0, #BAE982);
   -webkit-background-clip: text;
@@ -104,7 +98,7 @@ a {
   border: 1px solid #D8F869;
 }
 
-/* a bit darker when the mouse is over it */
+/* a little bit darker when the mouse is over it */
 .btn-lime:hover {
   background-color: #c6ea4f;
   border-color: #c6ea4f;
@@ -146,8 +140,7 @@ a {
 }
 
 /* square gray fields */
-.form-control,
-.form-select {
+.form-control, .form-select {
   background-color: #f4f4f4;
   border: 1px solid #f4f4f4;
   border-radius: 0;
@@ -161,8 +154,7 @@ a {
 }
 
 /* when you click in a field: black border instead of Bootstrap's blue glow */
-.form-control:focus,
-.form-select:focus {
+.form-control:focus, .form-select:focus {
   background-color: #f4f4f4;
   border-color: #141416;
   box-shadow: none;
@@ -188,7 +180,7 @@ a {
   letter-spacing: 3px;
 }
 
-/* the smaller word next to HUMAIN */
+/* the smaller word next to HUMAIN : fabric */
 .brand-sub {
   font-size: 14px;
   font-weight: 300;
@@ -197,8 +189,7 @@ a {
 }
 
 /* logo colors on a black background */
-.section-black .navbar-brand,
-.section-black .brand-name {
+.section-black .navbar-brand, .section-black .brand-name {
   color: #ffffff;
 }
 
@@ -324,9 +315,7 @@ a {
   }
 }
 
-/* each stage plays fadeUp for 0.8 seconds.
-   position: relative is needed so "top" can move it.
-   animation-fill-mode: both keeps it hidden before it starts and visible after it ends */
+/* fadeUp animation on each stage */
 .stage-step {
   position: relative;
   animation-name: fadeUp;
@@ -358,15 +347,13 @@ a {
 
 /* 12. Home: carousel */
 
-/* all slides have the same height.
-   object-fit: cover fills the space without stretching the image */
+
 .carousel-item img {
   height: 420px;
   object-fit: cover;
 }
 
-/* black box behind the caption text so it's readable on any image
-   (rgba = a color with transparency, 0.85 = 85% visible) */
+/* black box behind the caption */
 .carousel-caption {
   background-color: rgba(5, 5, 5, 0.85);
   border-radius: 16px;

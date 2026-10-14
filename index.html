@@ -13,37 +13,34 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
   <!-- Google Font: Readex Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@200;300;400;500;600&display=swap">
-  <!-- our own CSS (loaded last so it can change Bootstrap's styles) -->
+  <!-- our own CSS -->
   <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
 
-  <!-- ===== HEADER: Bootstrap Navbar ===== -->
-  <!-- sticky-top: the navbar stays at the top when you scroll -->
+  <!-- Header: Bootstrap Navbar -->
   <header class="sticky-top">
-    <!-- navbar-expand-md: links in a row from medium screens up, behind a menu button on phones -->
-    <!-- navbar-dark: light text and icon for a dark navbar. section-black: our black background -->
+
     <nav class="navbar navbar-expand-md navbar-dark section-black">
       <div class="container">
 
-        <!-- Logo: goes to the home page -->
+        <!-- logo: goes to the home page -->
         <a class="navbar-brand" href="index.html">
           <span class="brand-name">HUMAIN</span>
           <span class="brand-sub">Fabric Client Hub</span>
         </a>
 
-        <!-- Menu button (only on small screens): opens and closes #publicNavbar -->
+        <!-- menu button (only on small screens): opens and closes #publicNavbar -->
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#publicNavbar">
           <span class="navbar-toggler-icon"></span>
         </button>
 
-        <!-- The links (they collapse behind the button on small screens) -->
+        <!-- the links (they collapse behind the button on small screens) -->
         <div class="collapse navbar-collapse" id="publicNavbar">
-          <!-- mx-auto: centers the links -->
           <ul class="navbar-nav mx-auto">
             <li class="nav-item">
-              <!-- #stages jumps to the section with id="stages" on this page -->
+
               <a class="nav-link" href="#stages">How it works</a>
             </li>
             <li class="nav-item">
@@ -60,26 +57,23 @@
 
   <main>
 
-    <!-- ===== 1: JUMBOTRON ===== -->
-    <!-- Bootstrap 5 has no .jumbotron class, so (like w3schools) we make one
-         with big padding (py-5) and a background color (section-black) -->
+    <!-- 1: jumbotron -->
+ 
     <section class="section-black py-5">
       <div class="container py-5">
-        <!-- align-items-center: text and image are centered vertically -->
         <div class="row align-items-center">
 
-          <!-- Left: text (half the width on large screens) -->
+
           <div class="col-lg-6 mb-4 mb-lg-0">
             <p class="label-small text-white mb-4">HUMAIN Fabric | Client Hub</p>
-            <!-- display-3: a big Bootstrap heading. text-gradient: our teal-to-green text -->
+
             <h1 class="display-3 fw-normal text-gradient mb-4">Your whole HUMAIN Fabric journey. One place.</h1>
-            <!-- lead: slightly bigger paragraph -->
+
             <p class="lead text-gray mb-5">For organizations already working with HUMAIN Fabric. Follow your setup, usage, requests and support.</p>
             <a href="login.html" class="btn btn-lime btn-lg me-3">Log in to your hub</a>
             <a href="#stages" class="btn btn-dark-soft btn-lg">See how it works</a>
           </div>
 
-          <!-- Right: image (img-fluid makes it shrink on small screens) -->
           <div class="col-lg-6">
             <img src="images/hero.jpg" class="img-fluid hero-img" alt="glowing data core">
           </div>
@@ -89,23 +83,20 @@
     </section>
 
 
-    <!-- ===== 2: THE FIVE STAGES (with the CSS animation) ===== -->
+    <!-- 2: the five stages (with the CSS animation) -->
     <section id="stages" class="py-5">
       <div class="container py-4">
 
-        <!-- Title on the left, short text on the right -->
+
         <div class="row mb-5">
           <div class="col-lg-6">
             <h2 class="display-6">Five stages, from onboarding to scaling up</h2>
           </div>
-          <!-- offset-lg-1: leaves one empty column before the text -->
           <div class="col-lg-5 offset-lg-1">
             <p class="text-gray">Each stage has its own page in the hub, so you always know where you are and what comes next.</p>
           </div>
         </div>
 
-        <!-- The 5 stages: 2 per row on phones (col-6), 5 in one row from medium screens (col-md) -->
-        <!-- stage-step = plays the fadeUp animation, delay-1 to delay-5 = each one starts a bit later -->
         <div class="row">
           <!-- 01 -->
           <div class="col-6 col-md stage-step delay-1">
@@ -148,13 +139,13 @@
     </section>
 
 
-    <!-- ===== 3: BOOTSTRAP CAROUSEL ("Take a tour") ===== -->
+    <!-- 3: bootsrap carousel -->
     <section id="platform" class="section-light py-5">
       <div class="container py-4">
         <p class="label-small">Take a tour</p>
         <h2 class="display-6 mb-4">See what you can do in the hub</h2>
 
-        <!-- data-bs-ride="carousel": the slides change by themselves -->
+  
         <div id="fabricCarousel" class="carousel slide" data-bs-ride="carousel">
 
           <!-- Indicators (the dots): each one jumps to a slide -->
@@ -177,8 +168,8 @@
             <div class="carousel-item">
               <img src="images/slide2.jpg" class="d-block w-100" alt="catalog page with features">
               <div class="carousel-caption">
-                <h3>Request features in one click</h3>
-                <p>Browse what else Fabric offers and click "Request this".</p>
+                <h3>Request new features</h3>
+                <p>Browse what else Fabric offers and send a short request.</p>
               </div>
             </div>
             <div class="carousel-item">
@@ -203,13 +194,13 @@
     </section>
 
 
-    <!-- ===== 4: HIGHLIGHTS (two short points, side by side) ===== -->
+    <!-- 4: highlights -->
     <section class="py-5">
       <div class="container py-4">
         <div class="row">
           <div class="col-md-6 mb-4 mb-md-0">
-            <h2 class="h4">Request features in one click</h2>
-            <p class="text-gray">Pick from the catalog and follow the request until it is live.</p>
+            <h2 class="h4">Track every request</h2>
+            <p class="text-gray">Follow each request from submitted to live.</p>
           </div>
           <div class="col-md-6">
             <h2 class="h4">Support in one thread</h2>
@@ -222,11 +213,11 @@
   </main>
 
 
-  <!-- ===== FOOTER ===== -->
+  <!-- footer -->
   <footer class="section-light py-5">
     <div class="container">
 
-      <!-- Top row: logo on the left, links on the right -->
+      <!-- top row: logo on the left, links on the right -->
       <div class="row align-items-center">
         <div class="col-md-6 mb-3 mb-md-0">
           <a class="navbar-brand" href="index.html">
@@ -235,7 +226,7 @@
           </a>
         </div>
         <div class="col-md-6">
-          <!-- list-inline: list items in one row. text-md-end: right-aligned from medium screens -->
+
           <ul class="list-inline footer-links text-md-end mb-0">
             <li class="list-inline-item me-4"><a href="login.html">Log in</a></li>
             <li class="list-inline-item me-4"><a href="#stages">How it works</a></li>
@@ -246,7 +237,7 @@
 
       <hr class="my-4">
 
-      <!-- Bottom row: PIF logo (opens in a new tab) + copyright -->
+      <!-- bottom row: PIF logo (opens in a new tab) -->
       <div class="row align-items-center">
         <div class="col-md-6 mb-3 mb-md-0">
           <a href="https://www.pif.gov.sa/en/" target="_blank">
@@ -262,7 +253,7 @@
   </footer>
 
 
-  <!-- Bootstrap JavaScript: needed for the navbar menu button and the carousel -->
+  <!-- Bootstrap JavaScript -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
