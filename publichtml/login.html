@@ -1,0 +1,240 @@
+<!-- Page 2: Log in (public) -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <!-- makes the page fit phone screens -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Log in | HUMAIN Fabric</title>
+  <!-- small icon in the browser tab -->
+  <link rel="icon" type="image/webp" href="images/humain-favicon.webp">
+  <!-- Bootstrap 5.3.2 CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+  <!-- Google Font: Readex Pro -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@200;300;400;500;600&display=swap">
+  <!-- our own CSS -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+  <!-- Header: Bootstrap Navbar -->
+  <header class="sticky-top">
+
+    <nav class="navbar navbar-expand-md navbar-dark section-black">
+      <div class="container">
+
+        <!-- logo: goes to the home page -->
+        <a class="navbar-brand" href="index.html">
+          <span class="brand-name">HUMAIN</span>
+          <span class="brand-sub">Fabric Client Hub</span>
+        </a>
+
+        <!-- menu button (only on small screens): opens and closes #publicNavbar -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#publicNavbar">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- the links (they collapse behind the button on small screens) -->
+        <div class="collapse navbar-collapse" id="publicNavbar">
+          <ul class="navbar-nav mx-auto">
+            <li class="nav-item">
+
+              <a class="nav-link" href="index.html#stages">How it works</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="index.html#platform">Platform</a>
+            </li>
+          </ul>
+          <a class="btn btn-lime btn-sm" href="login.html">Log in</a>
+        </div>
+
+      </div>
+    </nav>
+  </header>
+
+
+  <main>
+
+    <section class="container-fluid p-0">
+      <div class="row g-0">
+
+        <!-- 1. left: black welcome panel -->
+        <div class="col-lg-5 section-black login-panel p-5 d-flex flex-column justify-content-center">
+          <p class="label-small text-white mb-4">HUMAIN <span class="text-fabric">Fabric</span> | Client Hub</p>
+          <h1 class="display-4 fw-normal text-gradient mb-4">Your HUMAIN Fabric hub</h1>
+          <p class="lead text-gray mb-5">Log in to follow your setup, usage and requests. Your account is created by HUMAIN when your organization joins Fabric.</p>
+          <p class="label-small text-fabric mt-5 mb-0">The End of Limits</p>
+        </div>
+
+        <!-- 2. right: the forms -->
+        <div class="col-lg-7 d-flex align-items-center justify-content-center p-5">
+          <div class="login-box">
+
+            <!-- bootstrap Tabs: each tab shows one form. -->
+            <ul class="nav nav-tabs mb-4">
+              <li class="nav-item">
+                <a class="nav-link active" data-bs-toggle="tab" href="#loginTab">Client</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="tab" href="#staffTab">HUMAIN staff</a>
+              </li>
+            </ul>
+
+            <!-- tab content -->
+            <div class="tab-content">
+
+              <!-- tab 1: Client log in -->
+              <div class="tab-pane fade show active" id="loginTab">
+
+                <h2 class="mb-2">Welcome back.</h2>
+                <p class="text-gray mb-4">Log in with your work email.</p>
+
+
+                <form id="loginForm">
+                  <div class="mb-3">
+                    <label for="email" class="form-label">Work email</label>
+                    <input type="email" class="form-control" id="email" placeholder="name@company.com" name="email" required>
+                  </div>
+                  <div class="mb-3">
+                    <label for="pwd" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pswd" required>
+                  </div>
+                  <div class="form-check mb-4">
+                    <input class="form-check-input" type="checkbox" id="remember" name="remember">
+                    <label class="form-check-label" for="remember">Remember me</label>
+                  </div>
+                  <button type="submit" class="btn btn-dark w-100 d-flex justify-content-between align-items-center">Log in <span>&rarr;</span></button>
+                </form>
+
+              </div>
+
+              <!-- tab 2: HUMAIN staff log in -->
+              <div class="tab-pane fade" id="staffTab">
+
+                <h2 class="mb-2">HUMAIN staff.</h2>
+                <p class="text-gray mb-4">Log in to the admin portal with your HUMAIN email.</p>
+
+
+                <form action="admin.html">
+                  <div class="mb-3">
+                    <label for="staffEmail" class="form-label">HUMAIN email</label>
+                    <input type="email" class="form-control" id="staffEmail" placeholder="name@humain.com" name="staffEmail" required>
+                  </div>
+                  <div class="mb-4">
+                    <label for="staffPwd" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="staffPwd" placeholder="Enter password" name="staffPwd" required>
+                  </div>
+                  <button type="submit" class="btn btn-dark w-100 d-flex justify-content-between align-items-center">Log in to admin portal <span>&rarr;</span></button>
+                </form>
+
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+
+  <!-- footer -->
+  <footer class="section-light py-5">
+    <div class="container">
+
+      <!-- top row: logo on the left, links on the right -->
+      <div class="row align-items-center">
+        <div class="col-md-6 mb-3 mb-md-0">
+          <a class="navbar-brand" href="index.html">
+            <span class="brand-name">HUMAIN</span>
+            <span class="brand-sub">Fabric Client Hub</span>
+          </a>
+        </div>
+        <div class="col-md-6">
+          <ul class="list-inline footer-links text-md-end mb-0">
+            <li class="list-inline-item me-4"><a href="index.html">Home</a></li>
+            <li class="list-inline-item me-4"><a href="index.html#stages">How it works</a></li>
+            <li class="list-inline-item"><a href="index.html#platform">Platform</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <hr class="my-4">
+
+      <!-- bottom row: PIF logo (opens in a new tab) -->
+      <div class="row align-items-center">
+        <div class="col-md-6 mb-3 mb-md-0">
+          <a href="https://www.pif.gov.sa/en/" target="_blank">
+            <img src="images/pif-logo.webp" width="180" alt="PIF logo">
+          </a>
+        </div>
+        <div class="col-md-6 text-md-end">
+          <p class="text-gray small mb-0">© 2026 · IS311 course project with HUMAIN</p>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+
+  <script>
+  const API_BASE_URL = "http://localhost:3000/data";
+
+  // alert at the top right
+  function showAlert(message, type) {
+    const alertDiv = document.createElement("div");
+    alertDiv.className = `alert alert-${type} alert-dismissible fade show position-fixed top-0 end-0 m-3`;
+    alertDiv.style.zIndex = "9999";
+    alertDiv.innerHTML = `${message}<button type="button" class="btn-close" data-bs-dismiss="alert"></button>`;
+    document.body.appendChild(alertDiv);
+    setTimeout(() => alertDiv.remove(), 3000);
+  }
+
+  document.getElementById("loginForm").addEventListener("submit", login);
+
+  async function login(event) {
+    event.preventDefault();
+
+    // take the data from the user
+    const loginData = {
+      email: document.getElementById("email").value.trim(),
+      password: document.getElementById("pwd").value,
+    };
+
+    // send to the server and get the answer
+    try { 
+      const response = await fetch(`${API_BASE_URL}/login`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(loginData),
+      });
+      const result = await response.json();
+
+      if (result.success) {
+        // remember who logged in, so the other pages know
+        localStorage.setItem("user", JSON.stringify(result.data));
+
+        // HUMAIN staff go to the admin portal, clients go to their dashboard
+        if (result.data.role == "Staff") {
+          window.location.href = "admin.html";
+        } else {
+          window.location.href = "dashboard.html";
+        }
+      } else {
+        showAlert(result.message, "danger");
+      }
+    } catch (error) {
+      showAlert("Error: " + error.message, "danger");
+    }
+  }
+</script>
+  <!-- Bootstrap JavaScripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>

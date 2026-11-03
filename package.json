@@ -1,0 +1,29 @@
+{
+  "name": "client-portal",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/latifawa/client-portal.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/latifawa/client-portal/issues"
+  },
+  "homepage": "https://github.com/latifawa/client-portal#readme",
+  "dependencies": {
+    "express": "^5.3.0",
+    "joi": "^18.3.1",
+    "mysql2": "^3.24.6"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  }
+}
