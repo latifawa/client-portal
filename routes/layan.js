@@ -1,4 +1,4 @@
-// Routes for: (write the pages here)
+// Routes for: login, account, admin, index
 module.exports = function (app, dbCon) {
 
   // get all organizations
@@ -17,7 +17,11 @@ module.exports = function (app, dbCon) {
       return res.status(400).send({ success: false, message: "Please enter your email and password" });
     }
 
-    let sqlQuery = "SELECT user_id, org_id, full_name, role FROM users WHERE email = ? AND password = ?";
+    let sqlQuery = `SELECT users.user_id, users.org_id, users.full_name, users.role,
+                           organizations.name AS org_name, organizations.plan
+                    FROM users
+                    LEFT JOIN organizations ON users.org_id = organizations.org_id
+                    WHERE users.email = ? AND users.password = ?`;
     dbCon.query(sqlQuery, [req.body.email, req.body.password], (error, results) => {
       if (error) {
         return res.status(500).send({ success: false, message: "Internal Server Error.." });
