@@ -50,25 +50,25 @@
       <div class="row mb-4">
         <div class="col-6 col-lg-3 mb-3">
           <div class="bg-white p-4 h-100">
-            <h2 class="text-gradient">3</h2>
+            <h2 class="text-gradient" id="statRequestsToReview">3</h2>
             <p class="text-gray mb-0">Requests to review</p>
           </div>
         </div>
         <div class="col-6 col-lg-3 mb-3">
           <div class="bg-white p-4 h-100">
-            <h2 class="text-gradient">1</h2>
+            <h2 class="text-gradient" id="statNewMessages">1</h2>
             <p class="text-gray mb-0">New message</p>
           </div>
         </div>
         <div class="col-6 col-lg-3 mb-3">
           <div class="bg-white p-4 h-100">
-            <h2 class="text-gradient">2</h2>
+            <h2 class="text-gradient" id="statOpenTickets">2</h2>
             <p class="text-gray mb-0">Open tickets</p>
           </div>
         </div>
         <div class="col-6 col-lg-3 mb-3">
           <div class="bg-white p-4 h-100">
-            <h2 class="text-gradient">2</h2>
+            <h2 class="text-gradient" id="statClientsInSetup">2</h2>
             <p class="text-gray mb-0">Clients in setup</p>
           </div>
         </div>
@@ -113,49 +113,29 @@
                     <th>Status</th>
                   </tr>
                 </thead>
-                <tbody>
-                  <tr>
-                    <td>R-1042</td>
-                    <td>Najd Bank</td>
-                    <td>Customer service assistant</td>
-                    <td>24 Sep 2026</td>
-                    <td><span class="badge bg-secondary">Pending</span></td>
-                  </tr>
-                  <tr>
-                    <td>R-1043</td>
-                    <td>Riyadh Health</td>
-                    <td>Extra data storage</td>
-                    <td>25 Sep 2026</td>
-                    <td><span class="badge bg-secondary">Pending</span></td>
-                  </tr>
-                  <tr>
-                    <td>R-1044</td>
-                    <td>Gulf Retail</td>
-                    <td>Analytics upgrade</td>
-                    <td>26 Sep 2026</td>
-                    <td><span class="badge bg-secondary">Pending</span></td>
-                  </tr>
+                <tbody id="requestsTableBody">
+                  
+                  
                 </tbody>
               </table>
             </div>
 
+                        
             <h3 class="h6 mb-3">Review a request</h3>
-            <form action="admin.html">
 
+            <form id="requestForm">
               <div class="row">
                 <div class="col-md-6 mb-3">
                   <label for="requestId" class="form-label">Request</label>
-                  <select class="form-select" id="requestId" name="requestId">
-                    <option>R-1042 · Najd Bank</option>
-                    <option>R-1043 · Riyadh Health</option>
-                    <option>R-1044 · Gulf Retail</option>
-                  </select>
+                  <!-- filled from the database -->
+                  <select class="form-select" id="requestId" name="requestId" required></select>
                 </div>
                 <div class="col-md-6 mb-3">
                   <label for="decision" class="form-label">Decision</label>
                   <select class="form-select" id="decision" name="decision">
                     <option>Approved</option>
                     <option>In progress</option>
+                    <option>Done</option>
                     <option>Declined</option>
                   </select>
                 </div>
@@ -187,34 +167,20 @@
                     <th>Status</th>
                   </tr>
                 </thead>
-                <tbody>
-                  <tr>
-                    <td>Riyadh Health</td>
-                    <td>Omar K.</td>
-                    <td>Can we add two more team members?</td>
-                    <td>27 Sep 2026</td>
-                    <td><span class="badge bg-secondary">New</span></td>
-                  </tr>
-                  <tr>
-                    <td>Najd Bank</td>
-                    <td>Layan A.</td>
-                    <td>I would like an update on our customer service assistant request.</td>
-                    <td>24 Sep 2026</td>
-                    <td><span class="badge bg-teal">Replied</span></td>
-                  </tr>
+                <tbody id="messagesTableBody">
+                  
                 </tbody>
               </table>
             </div>
 
+                        
             <h3 class="h6 mb-3">Reply to a client</h3>
 
-            <form action="admin.html">
+            <form id="replyForm">
               <div class="mb-3">
                 <label for="replyClient" class="form-label">Client</label>
-                <select class="form-select" id="replyClient" name="replyClient">
-                  <option>Riyadh Health · Omar K.</option>
-                  <option>Najd Bank · Layan A.</option>
-                </select>
+                <!-- filled from the database: clients with a conversation -->
+                <select class="form-select" id="replyClient" name="replyClient" required></select>
               </div>
               <div class="mb-3">
                 <label for="replyText" class="form-label">Your reply</label>
@@ -243,42 +209,21 @@
                     <th>Status</th>
                   </tr>
                 </thead>
-                <tbody>
-                  <tr>
-                    <td>T-203</td>
-                    <td>Najd Bank</td>
-                    <td>Access permissions</td>
-                    <td>25 Sep 2026</td>
-                    <td><span class="badge bg-secondary">Open</span></td>
-                  </tr>
-                  <tr>
-                    <td>T-202</td>
-                    <td>Najd Bank</td>
-                    <td>Data connection issue</td>
-                    <td>22 Sep 2026</td>
-                    <td><span class="badge bg-dark">In progress</span></td>
-                  </tr>
-                  <tr>
-                    <td>T-201</td>
-                    <td>Najd Bank</td>
-                    <td>Login problem</td>
-                    <td>18 Sep 2026</td>
-                    <td><span class="badge bg-teal">Resolved</span></td>
-                  </tr>
+                <tbody id="ticketsTableBody">
+                  
                 </tbody>
               </table>
             </div>
 
+                        
             <h3 class="h6 mb-3">Update a ticket</h3>
 
-            <form action="admin.html">
+            <form id="ticketForm">
               <div class="row">
                 <div class="col-md-6 mb-3">
                   <label for="ticketId" class="form-label">Ticket</label>
-                  <select class="form-select" id="ticketId" name="ticketId">
-                    <option>T-203 · Access permissions</option>
-                    <option>T-202 · Data connection issue</option>
-                  </select>
+                  <!-- filled from the database: only tickets that are not resolved -->
+                  <select class="form-select" id="ticketId" name="ticketId" required></select>
                 </div>
                 <div class="col-md-6 mb-3">
                   <label for="ticketStatus" class="form-label">New status</label>
@@ -311,74 +256,26 @@
                     <th>Status</th>
                   </tr>
                 </thead>
-                <tbody>
-                  <tr>
-                    <td>Najd Bank</td>
-                    <td>Growth</td>
-                    <td>
-                      <div class="progress">
-                        <div class="progress-bar bg-teal" style="width:60%">60%</div>
-                      </div>
-                    </td>
-                    <td><span class="badge bg-dark">In setup</span></td>
-                  </tr>
-                  <tr>
-                    <td>Riyadh Health</td>
-                    <td>Growth</td>
-                    <td>
-                      <div class="progress">
-                        <div class="progress-bar bg-teal" style="width:100%">100%</div>
-                      </div>
-                    </td>
-                    <td><span class="badge bg-teal">Active</span></td>
-                  </tr>
-                  <tr>
-                    <td>Gulf Retail</td>
-                    <td>Starter</td>
-                    <td>
-                      <div class="progress">
-                        <div class="progress-bar bg-teal" style="width:100%">100%</div>
-                      </div>
-                    </td>
-                    <td><span class="badge bg-teal">Active</span></td>
-                  </tr>
-                  <tr>
-                    <td>Desert Logistics</td>
-                    <td>Growth</td>
-                    <td>
-                      <div class="progress">
-                        <div class="progress-bar bg-teal" style="width:40%">40%</div>
-                      </div>
-                    </td>
-                    <td><span class="badge bg-dark">In setup</span></td>
-                  </tr>
+                <tbody id="clientsTableBody">
+                  
                 </tbody>
               </table>
             </div>
 
-            <h3 class="h6 mb-3">Update setup progress</h3>
+                        
+            <h3 class="h6 mb-3">Mark a setup step as done</h3>
 
-            <form action="admin.html">
-              <div class="row">
+            <form id="setupForm">
+              <div class="row align-items-end">
                 <div class="col-md-6 mb-3">
                   <label for="setupClient" class="form-label">Client</label>
-                  <select class="form-select" id="setupClient" name="setupClient">
-                    <option>Najd Bank</option>
-                    <option>Desert Logistics</option>
-                  </select>
+                  <!-- filled from the database: only clients still in setup -->
+                  <select class="form-select" id="setupClient" name="setupClient" required></select>
                 </div>
                 <div class="col-md-6 mb-3">
-                  <label for="stepsDone" class="form-label">Steps done</label>
-                  <select class="form-select" id="stepsDone" name="stepsDone">
-                    <option>1 of 5 (20%)</option>
-                    <option>2 of 5 (40%)</option>
-                    <option>3 of 5 (60%)</option>
-                    <option>4 of 5 (80%)</option>
-                    <option>5 of 5 (100%)</option>
-                  </select>
+                  <button type="submit" class="btn btn-dark">Mark next step as done</button>
                 </div>
               </div>
-              <button type="submit" class="btn btn-dark">Save progress</button>
             </form>
 
           </div>
@@ -395,6 +292,310 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
   <script src="js/session.js"></script>
+
+  <script>
+  const API_BASE_URL = "http://localhost:3000/data";
+
+  function showAlert(message, type) {
+    const alertDiv = document.createElement("div");
+    alertDiv.className = `alert alert-${type} alert-dismissible fade show position-fixed top-0 end-0 m-3`;
+    alertDiv.style.zIndex = "9999";
+    alertDiv.innerHTML = `${message}<button type="button" class="btn-close" data-bs-dismiss="alert"></button>`;
+    document.body.appendChild(alertDiv);
+    setTimeout(() => alertDiv.remove(), 3000);
+  }
+    // turns "2026-09-24T07:30:00.000Z" into "24 Sep 2026"
+  function formatDate(date) {
+    return new Date(date).toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" });
+  }
+
+  // the right Bootstrap badge colour for each status word
+  function statusBadge(status) {
+    let colour = "bg-secondary";                                       // Pending, Open, New
+    if (status == "In progress") colour = "bg-dark";
+    if (status == "Approved" || status == "Done" || status == "Resolved" || status == "Replied") colour = "bg-teal";
+    if (status == "Declined") colour = "bg-light text-dark";
+    return `<span class="badge ${colour}">${status}</span>`;
+  }
+
+    document.addEventListener("DOMContentLoaded", () => {
+    // Clients tab
+    loadClients();
+    document.getElementById("setupForm").addEventListener("submit", markNextStep);
+
+    // Requests tab
+    loadRequests();
+    document.getElementById("requestForm").addEventListener("submit", saveDecision);
+
+    // Messages tab
+    loadMessages();
+    document.getElementById("replyForm").addEventListener("submit", sendReply);
+    
+    // Tickets tab
+    loadTickets();
+    document.getElementById("ticketForm").addEventListener("submit", updateTicket);
+  });
+
+  // ===== CLIENTS TAB =====
+
+  // SELECT: fill the table, the dropdown and the summary card
+  async function loadClients() {
+    try {
+      const response = await fetch(`${API_BASE_URL}/admin/clients`);
+      const result = await response.json();
+      const clients = result.data;
+
+      // the table
+      document.getElementById("clientsTableBody").innerHTML = clients
+        .map((c) => {
+          const percent = Math.round((c.steps_done / c.total_steps) * 100);
+          const isActive = c.steps_done == c.total_steps;
+          return `
+            <tr>
+              <td>${c.name}</td>
+              <td>${c.plan}</td>
+              <td>
+                <div class="progress">
+                  <div class="progress-bar bg-teal" style="width:${percent}%">${percent}%</div>
+                </div>
+              </td>
+              <td>${isActive
+                ? '<span class="badge bg-teal">Active</span>'
+                : '<span class="badge bg-dark">In setup</span>'}</td>
+            </tr>`;
+        })
+        .join("");
+
+      // the dropdown: only clients that are still in setup
+      const inSetup = clients.filter((c) => c.steps_done < c.total_steps);
+      document.getElementById("setupClient").innerHTML = inSetup
+        .map((c) => `<option value="${c.org_id}">${c.name} (${c.steps_done} of ${c.total_steps} done)</option>`)
+        .join("");
+
+      // the summary card
+      document.getElementById("statClientsInSetup").textContent = inSetup.length;
+    } catch (error) {
+      showAlert("Error loading clients: " + error.message, "danger");
+    }
+  }
+
+  // UPDATE: mark the chosen client's next step as done
+  async function markNextStep(event) {
+    event.preventDefault();
+    const orgId = document.getElementById("setupClient").value;
+
+    try {
+      const response = await fetch(`${API_BASE_URL}/admin/clients/${orgId}/next-step`, {
+        method: "PUT",
+      });
+      const result = await response.json();
+
+      if (result.success) {
+        showAlert(result.message, "success");
+        loadClients();   // refresh the table, dropdown and card
+      } else {
+        showAlert(result.message, "danger");
+      }
+    } catch (error) {
+      showAlert("Error: " + error.message, "danger");
+    }
+  }
+    // ===== REQUESTS TAB =====
+
+  // SELECT: fill the table, the dropdown and the summary card
+  async function loadRequests() {
+    try {
+      const response = await fetch(`${API_BASE_URL}/admin/requests`);
+      const result = await response.json();
+      const requests = result.data;
+
+      // the table
+      document.getElementById("requestsTableBody").innerHTML = requests
+        .map((r) => `
+          <tr>
+            <td>R-${r.request_id}</td>
+            <td>${r.org_name}</td>
+            <td>${r.title}</td>
+            <td>${formatDate(r.created_at)}</td>
+            <td>${statusBadge(r.status)}</td>
+          </tr>`)
+        .join("");
+
+      // the dropdown
+      document.getElementById("requestId").innerHTML = requests
+        .map((r) => `<option value="${r.request_id}">R-${r.request_id} · ${r.org_name} · ${r.title}</option>`)
+        .join("");
+
+      // the summary card: only the ones nobody has looked at yet
+      document.getElementById("statRequestsToReview").textContent =
+        requests.filter((r) => r.status == "Pending").length;
+    } catch (error) {
+      showAlert("Error loading requests: " + error.message, "danger");
+    }
+  }
+
+  // UPDATE: save Ruba's decision
+  async function saveDecision(event) {
+    event.preventDefault();
+    const requestId = document.getElementById("requestId").value;
+
+    const decisionData = {
+      status: document.getElementById("decision").value,
+      note: document.getElementById("requestNote").value.trim(),
+    };
+
+    try {
+      const response = await fetch(`${API_BASE_URL}/admin/requests/${requestId}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(decisionData),
+      });
+      const result = await response.json();
+
+      if (result.success) {
+        showAlert(result.message, "success");
+        document.getElementById("requestForm").reset();   // empty the form
+        loadRequests();                                   // refresh the table
+      } else {
+        showAlert(result.message, "danger");
+      }
+    } catch (error) {
+      showAlert("Error: " + error.message, "danger");
+    }
+  }
+
+    // ===== MESSAGES TAB =====
+
+  // SELECT: one row per client conversation (its latest message)
+  async function loadMessages() {
+    try {
+      const response = await fetch(`${API_BASE_URL}/admin/messages`);
+      const result = await response.json();
+      const messages = result.data;
+
+      // the messages arrive newest first, so the FIRST one we meet
+      // for each client is that client's latest message
+      const latest = [];
+      messages.forEach((m) => {
+        if (!latest.find((x) => x.org_id == m.org_id)) {
+          latest.push(m);
+        }
+      });
+
+      // the table
+      document.getElementById("messagesTableBody").innerHTML = latest
+        .map((m) => `
+          <tr>
+            <td>${m.org_name}</td>
+            <td>${m.sender_name}</td>
+            <td>${m.message}</td>
+            <td>${formatDate(m.created_at)}</td>
+            <td>${statusBadge(m.sender_role == "Staff" ? "Replied" : "New")}</td>
+          </tr>`)
+        .join("");
+
+      // the dropdown: one option per client
+      document.getElementById("replyClient").innerHTML = latest
+        .map((m) => `<option value="${m.org_id}">${m.org_name}</option>`)
+        .join("");
+
+      // the summary card: conversations waiting for HUMAIN
+      document.getElementById("statNewMessages").textContent =
+        latest.filter((m) => m.sender_role != "Staff").length;
+    } catch (error) {
+      showAlert("Error loading messages: " + error.message, "danger");
+    }
+  }
+
+  // INSERT: Ruba sends a reply
+  async function sendReply(event) {
+    event.preventDefault();
+
+    const replyData = {
+      user_id: currentUser.user_id,                               // Ruba (from session.js)
+      org_id: document.getElementById("replyClient").value,      // which client
+      message: document.getElementById("replyText").value.trim(),
+    };
+
+    try {
+      const response = await fetch(`${API_BASE_URL}/admin/messages`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(replyData),
+      });
+      const result = await response.json();
+
+      if (result.success) {
+        showAlert(result.message, "success");
+        document.getElementById("replyForm").reset();
+        loadMessages();   // refresh: that client becomes "Replied"
+      } else {
+        showAlert(result.message, "danger");
+      }
+    } catch (error) {
+      showAlert("Error: " + error.message, "danger");
+    }
+  }
+    // ===== TICKETS TAB =====
+
+  // SELECT: fill the table, the dropdown and the summary card
+  async function loadTickets() {
+    try {
+      const response = await fetch(`${API_BASE_URL}/admin/tickets`);
+      const result = await response.json();
+      const tickets = result.data;
+
+      // the table: every ticket
+      document.getElementById("ticketsTableBody").innerHTML = tickets
+        .map((t) => `
+          <tr>
+            <td>T-${t.ticket_id}</td>
+            <td>${t.org_name}</td>
+            <td>${t.subject}</td>
+            <td>${formatDate(t.created_at)}</td>
+            <td>${statusBadge(t.status)}</td>
+          </tr>`)
+        .join("");
+
+      // only tickets that still need work
+      const notResolved = tickets.filter((t) => t.status != "Resolved");
+
+      // the dropdown
+      document.getElementById("ticketId").innerHTML = notResolved
+        .map((t) => `<option value="${t.ticket_id}">T-${t.ticket_id} · ${t.org_name} · ${t.subject}</option>`)
+        .join("");
+
+      // the summary card
+      document.getElementById("statOpenTickets").textContent = notResolved.length;
+    } catch (error) {
+      showAlert("Error loading tickets: " + error.message, "danger");
+    }
+  }
+
+  // UPDATE: change the chosen ticket's status
+  async function updateTicket(event) {
+    event.preventDefault();
+    const ticketId = document.getElementById("ticketId").value;
+
+    try {
+      const response = await fetch(`${API_BASE_URL}/admin/tickets/${ticketId}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ status: document.getElementById("ticketStatus").value }),
+      });
+      const result = await response.json();
+
+      if (result.success) {
+        showAlert(result.message, "success");
+        loadTickets();   // refresh the table, dropdown and card
+      } else {
+        showAlert(result.message, "danger");
+      }
+    } catch (error) {
+      showAlert("Error: " + error.message, "danger");
+    }
+  }
+</script>
 </body>
 
 </html>
