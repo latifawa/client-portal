@@ -1,4 +1,4 @@
-// Routes for: (write the pages here)
+// Routes for: Support and Getting Started
 module.exports = function (app, dbCon) {
 
   // get support tickets 
@@ -11,8 +11,6 @@ module.exports = function (app, dbCon) {
       res.json(results);
     });
   });
-
-  // add your app.get / app.post / app.put / app.delete here
 
   // get messsages for an organization
   app.get("/api/messages/:org_id", (req, res) => {
