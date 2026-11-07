@@ -110,25 +110,25 @@
           <div class="row mb-4">
             <div class="col-6 col-lg-3 mb-3">
               <div class="bg-white p-4 h-100">
-                <h2 class="text-gradient">1</h2>
+                <h2 class="text-gradient" id="waitingCount">0</h2>
                 <p class="text-gray mb-0">Waiting for HUMAIN</p>
               </div>
             </div>
             <div class="col-6 col-lg-3 mb-3">
               <div class="bg-white p-4 h-100">
-                <h2 class="text-gradient">1</h2>
+                <h2 class="text-gradient" id="progressCount">0</h2>
                 <p class="text-gray mb-0">In progress</p>
               </div>
             </div>
             <div class="col-6 col-lg-3 mb-3">
               <div class="bg-white p-4 h-100">
-                <h2 class="text-gradient">3</h2>
+                <h2 class="text-gradient" id="doneCount">0</h2>
                 <p class="text-gray mb-0">Approved or done</p>
               </div>
             </div>
             <div class="col-6 col-lg-3 mb-3">
               <div class="bg-white p-4 h-100">
-                <h2 class="text-gradient">1</h2>
+                <h2 class="text-gradient" id="declinedCount">0</h2>
                 <p class="text-gray mb-0">Declined</p>
               </div>
             </div>
@@ -149,56 +149,7 @@
                     <th>Latest update</th>
                   </tr>
                 </thead>
-                <tbody>
-                  <tr>
-                    <td>R-1042</td>
-                    <td>Customer service assistant</td>
-                    <td>Layan A.</td>
-                    <td>24 Sep 2026</td>
-                    <td><span class="badge bg-secondary">Pending</span></td>
-                    <td>Sara is reviewing it</td>
-                  </tr>
-                  <tr>
-                    <td>R-1039</td>
-                    <td>Plan upgrade: Growth</td>
-                    <td>Layan A.</td>
-                    <td>20 Sep 2026</td>
-                    <td><span class="badge bg-teal">Approved</span></td>
-                    <td>Live from 1 Oct</td>
-                  </tr>
-                  <tr>
-                    <td>R-1031</td>
-                    <td>Extra data source: CRM</td>
-                    <td>Noura M.</td>
-                    <td>11 Sep 2026</td>
-                    <td><span class="badge bg-dark">In progress</span></td>
-                    <td>Connector being set up</td>
-                  </tr>
-                  <tr>
-                    <td>R-1027</td>
-                    <td>Training for analysts</td>
-                    <td>Latifa B.</td>
-                    <td>6 Sep 2026</td>
-                    <td><span class="badge bg-teal">Done</span></td>
-                    <td>Held 15 Sep</td>
-                  </tr>
-                  <tr>
-                    <td>R-1019</td>
-                    <td>Forecasting models</td>
-                    <td>Noura M.</td>
-                    <td>30 Aug 2026</td>
-                    <td><span class="badge bg-light text-dark border">Declined</span></td>
-                    <td>Needs 6 months of data</td>
-                  </tr>
-                  <tr>
-                    <td>R-1012</td>
-                    <td>Access audit log</td>
-                    <td>Johara B.</td>
-                    <td>22 Aug 2026</td>
-                    <td><span class="badge bg-teal">Done</span></td>
-                    <td>Live since 1 Sep</td>
-                  </tr>
-                </tbody>
+                         <tbody id="requestsBody"></tbody>
               </table>
             </div>
           </div>
@@ -208,7 +159,7 @@
           <!-- There is only 1 page for now, so Previous and Next are "disabled".
                We use <span> instead of <a> because there is no other page to link to yet -->
           <div class="d-flex justify-content-between align-items-center mt-4">
-            <p class="text-gray mb-0">Showing 1–6 of 6 requests</p>
+          <p class="text-gray mb-0" id="showingText">Showing 0 requests</p>
             <ul class="pagination mb-0">
               <li class="page-item disabled"><span class="page-link">Previous</span></li>
               <li class="page-item active"><span class="page-link">1</span></li>
@@ -221,7 +172,62 @@
       </div>
     </div>
   </div>
+  <script>
+    // who is logged in
+    const user = JSON.parse(localStorage.getItem("user"));
+    if (!user) {
+      window.location.href = "login.html";
+    }
 
+    // pick the badge color for each status
+    function statusBadge(status) {
+      if (status == "Pending") return `<span class="badge bg-secondary">Pending</span>`;
+      if (status == "In progress") return `<span class="badge bg-dark">In progress</span>`;
+      if (status == "Declined") return `<span class="badge bg-light text-dark border">Declined</span>`;
+      return `<span class="badge bg-teal">${status}</span>`;   // Approved, Done
+    }
+
+    // PART 1: the 4 summary numbers
+    fetch("/data/requests/" + user.org_id + "/summary")
+      .then(res => res.json())
+      .then(result => {
+        document.getElementById("waitingCount").textContent = result.data.waiting;
+        document.getElementById("progressCount").textContent = result.data.in_progress;
+        document.getElementById("doneCount").textContent = result.data.approved_or_done;
+        document.getElementById("declinedCount").textContent = result.data.declined;
+      });
+
+    // PART 2: the requests table
+    fetch("/data/requests/" + user.org_id)
+      .then(res => res.json())
+      .then(result => {
+        const body = document.getElementById("requestsBody");
+        body.innerHTML = "";
+
+        if (result.data.length == 0) {
+          body.innerHTML = `<tr><td colspan="6" class="text-center text-gray">No requests yet</td></tr>`;
+        }
+
+        result.data.forEach(r => {
+          const date = new Date(r.created_at).toLocaleDateString("en-GB", {
+            day: "numeric", month: "short", year: "numeric"
+          });
+
+          body.innerHTML += `
+            <tr>
+              <td>R-${r.request_id}</td>
+              <td>${r.title}</td>
+              <td>${r.sender_name || "-"}</td>
+              <td>${date}</td>
+              <td>${statusBadge(r.status)}</td>
+              <td>${r.note || "Waiting for review"}</td>
+            </tr>`;
+        });
+
+        document.getElementById("showingText").textContent =
+          "Showing " + result.data.length + " requests";
+      });
+  </script>
 
   <!-- Bootstrap JavaScript -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>

@@ -104,7 +104,7 @@
           <div class="row mt-4">
 
             <!-- 2: suggestion cards. Each card: type, title, reason, button -->
-            <div class="col-lg-8">
+            <div class="col-lg-8" id="suggestionCards">
 
               <!-- suggestion 1: upgrade (the button opens the request form) -->
               <section class="bg-white p-4 mb-3">
@@ -175,7 +175,48 @@
       </div>
     </div>
   </div>
+  <script>
+    // who is logged in
+    const user = JSON.parse(localStorage.getItem("user"));
+    if (!user) {
+      window.location.href = "login.html";
+    }
 
+    // the button text for each type of suggestion (the table has no button column)
+    const buttonText = {
+      "Upgrade": "Request upgrade",
+      "New feature": "View in catalog",
+      "Setup": "Go to checklist",
+      "Tip": "Book a session"
+    };
+
+    // get the suggestion cards of this organization
+    fetch("/data/suggestions/" + user.org_id)
+      .then(res => res.json())
+      .then(result => {
+        const cards = document.getElementById("suggestionCards");
+        cards.innerHTML = "";
+
+        // nothing yet? show a friendly line
+        if (result.data.length == 0) {
+          cards.innerHTML = `<p class="text-gray">No suggestions right now.</p>`;
+        }
+
+        // one card for each suggestion
+        result.data.forEach(s => {
+          cards.innerHTML += `
+            <section class="bg-white p-4 mb-3">
+              <p class="label-small text-gradient">${s.type}</p>
+              <h5>${s.title}</h5>
+              <p class="text-gray">${s.details}</p>
+              <div class="section-light p-3 mb-3">
+                <p class="small mb-0"><strong>Why am I seeing this?</strong> ${s.reason}</p>
+              </div>
+              <a href="${s.link_page}" class="btn btn-dark">${buttonText[s.type] || "Open"} &rarr;</a>
+            </section>`;
+        });
+      });
+  </script>
 
   <!-- Bootstrap JavaScript -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
