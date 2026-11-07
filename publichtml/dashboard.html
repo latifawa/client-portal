@@ -46,8 +46,8 @@
           <!-- organization box: which client is logged in -->
           <div class="section-light p-3 my-4">
             <p class="label-small mb-1">Organization</p>
-            <p class="fw-semibold mb-0">Najd Bank</p>
-            <p class="text-gray small mb-0">Growth plan</p>
+            <p class="fw-semibold mb-0" id="orgName"></p>
+            <p class="text-gray small mb-0" id="orgPlan"></p>
           </div>
 
           <!-- nav Pills -->
@@ -78,7 +78,7 @@
           <!-- dropup: the user menu -->
           <div class="dropup mt-4">
             <button type="button" class="btn btn-dark-soft w-100 text-start dropdown-toggle" data-bs-toggle="dropdown">
-              <i class="bi bi-person-circle me-2"></i>Layan A.
+              <i class="bi bi-person-circle me-2"></i><span id="userName"></span>
             </button>
             <ul class="dropdown-menu">
               <li><a class="dropdown-item" href="account.html">Account settings</a></li>
@@ -98,7 +98,7 @@
 
           <!-- 1: heading -->
           <p class="label-small">Stage 3</p>
-          <h1>Good morning, Layan</h1>
+          <h1>Good morning, <span id="greetingName"></span></h1>
           <p class="text-gray">Here's what's happening with your workspace.</p>
 
 
@@ -107,25 +107,25 @@
             <div class="col-6 col-md-3 mb-3">
               <div class="bg-white p-3">
                 <p class="text-gray">Data queries this month</p>
-                <h3 class="text-gradient">128,400</h3>
+                <h3 class="text-gradient" id="monthlyQueries">128,400</h3>
               </div>
             </div>
             <div class="col-6 col-md-3 mb-3">
               <div class="bg-white p-3">
                 <p class="text-gray">Active users</p>
-                <h3 class="text-gradient">64</h3>
+                <h3 class="text-gradient" id="activeUsers">64</h3>
               </div>
             </div>
             <div class="col-6 col-md-3 mb-3">
               <div class="bg-white p-3">
                 <p class="text-gray">Data sources</p>
-                <h3 class="text-gradient">3</h3>
+                <h3 class="text-gradient" id="dataSources">3</h3>
               </div>
             </div>
             <div class="col-6 col-md-3 mb-3">
               <div class="bg-white p-3">
                 <p class="text-gray">Features in use</p>
-                <h3 class="text-gradient">4</h3>
+                <h3 class="text-gradient" id="featuresCount">4</h3>
               </div>
             </div>
           </div>
@@ -144,18 +144,27 @@
               </div>
             </div>
 
-            <!-- setup progress -->
-            <div class="col-lg-4 mb-3">
-              <div class="bg-white p-4 h-100">
-                <h5>Setup progress</h5>
-                <p class="text-gray">3 of 5 steps done.</p>
-                <div class="progress mb-3">
-                  <div class="progress-bar bg-teal" style="width:60%">60%</div>
-                </div>
-                <p class="small mb-4"><strong>Next step:</strong> Finish your access rules</p>
-                <a href="setup.html" class="btn btn-lime">Continue setup</a>
-              </div>
-            </div>
+<!-- setup progress -->
+<div class="col-lg-4 mb-3">
+    <div class="bg-white p-4 h-100">
+        <h5>Setup progress</h5>
+
+        <p class="text-gray" id="setupText">Loading progress...</p>
+
+        <div class="progress mb-3">
+            <div class="progress-bar bg-teal"
+                 id="setupBar"
+                 style="width:0%">0%</div>
+        </div>
+
+        <p class="small mb-4">
+            <strong>Next step:</strong>
+            <span id="nextStep">Loading...</span>
+        </p>
+
+        <a href="setup.html" class="btn btn-lime">Continue setup</a>
+    </div>
+</div>
 
           </div>
 
@@ -177,52 +186,11 @@
                     <th class="w-25">% of limit</th>
                   </tr>
                 </thead>
-                <tbody>
-                  <tr>
-                    <td>Document search</td>
-                    <td><span class="badge bg-teal">Active</span></td>
-                    <td>59,000 queries</td>
-                    <td>80,000</td>
-                    <td>
-                      <div class="progress">
-                        <div class="progress-bar bg-teal" style="width:74%">74%</div>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>Employee chat assistant</td>
-                    <td><span class="badge bg-teal">Active</span></td>
-                    <td>36,500 messages</td>
-                    <td>50,000</td>
-                    <td>
-                      <div class="progress">
-                        <div class="progress-bar bg-teal" style="width:73%">73%</div>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>Data pipelines</td>
-                    <td><span class="badge bg-teal">Active</span></td>
-                    <td>19,300 runs</td>
-                    <td>40,000</td>
-                    <td>
-                      <div class="progress">
-                        <div class="progress-bar bg-teal" style="width:48%">48%</div>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>Reports</td>
-                    <td><span class="badge bg-secondary">Low use</span></td>
-                    <td>10,300 views</td>
-                    <td>100,000</td>
-                    <td>
-                      <div class="progress">
-                        <div class="progress-bar bg-teal" style="width:10%">10%</div>
-                      </div>
-                    </td>
-                  </tr>
-                </tbody>
+                <tbody id="featuresTable">
+               <tr>
+               <td colspan="5">Loading features...</td>
+               </tr>
+              </tbody>
               </table>
             </div>
           </section>
@@ -233,22 +201,9 @@
             <h5>Suggested for you</h5>
             <p class="text-gray">Explore features that may help your team.</p>
 
-            <div class="row">
-              <div class="col-md-6 mb-3">
-                <div class="bg-white p-4 h-100">
-                  <h5>Your usage is growing</h5>
-                  <p class="text-gray">You may reach your chat assistant limit around 20 Oct.</p>
-                  <a href="suggestions.html" class="btn btn-outline-dark">View suggestion</a>
-                </div>
-              </div>
-              <div class="col-md-6 mb-3">
-                <div class="bg-white p-4 h-100">
-                  <h5>Banks like you also use Fraud detection</h5>
-                  <p class="text-gray">7 of 10 banking clients use it.</p>
-                  <a href="catalog.html" class="btn btn-outline-dark">View in catalog</a>
-                </div>
-              </div>
-            </div>
+          <div class="row" id="suggestionCards">
+          <p class="text-gray">Loading suggestions...</p>
+          </div>
           </section>
 
         </main>
@@ -257,6 +212,8 @@
     </div>
   </div>
 
+  <!-- Get the logged-in user's information -->
+  <script src="js/session.js"></script>
 
   <!-- Bootstrap JavaScript -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
@@ -265,20 +222,219 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.js"></script>
 
   <!-- Our line chart: drawn inside <canvas id="apiChart"> -->
+    <script>
+    // Get weekly usage data from MySQL
+    async function loadWeeklyChart() {
+        try {
+            var orgId = currentUser.org_id;
+
+            var response = await fetch("/data/weekly-usage/" + orgId);
+            var weeks = await response.json();
+
+            var weekLabels = [];
+            var usageNumbers = [];
+
+            for (var i = 0; i < weeks.length; i++) {
+                weekLabels.push("Week " + (i + 1));
+                usageNumbers.push(weeks[i].usage_count);
+            }
+
+            // Draw the chart using the database values
+            new Chart(document.getElementById("apiChart"), {
+                type: "line",
+                data: {
+                    labels: weekLabels,
+                    datasets: [{
+                        label: "Data queries",
+                        data: usageNumbers,
+                        borderColor: "#3A869D"
+                    }]
+                }
+            });
+
+        } catch (error) {
+            console.log("Weekly chart error:", error);
+        }
+    }
+
+    loadWeeklyChart();
+</script>
+
   <script>
-    new Chart(document.getElementById("apiChart"), {
-      type: "line",                                     // line chart
-      data: {
-        labels: ["Week 1", "Week 2", "Week 3", "Week 4"], // the bottom axis
-        datasets: [{
-          label: "Data queries",
-          data: [20000, 35000, 28000, 45400],            // adds up to 128,400 (the number in the box above)
-          borderColor: "#3A869D"                         // HUMAIN teal line
-        }]
-      }
-    });
-  </script>
+    // Display the logged-in user's first name
+    document.getElementById("greetingName").textContent =
+    currentUser.full_name.split(" ")[0];
+    
+    // Get Dashboard numbers from MySQL
+    async function loadDashboardNumbers() {
+        try {
+            var orgId = currentUser.org_id;
+
+            var response = await fetch("/data/dashboard/" + orgId);
+            var data = await response.json();
+
+            document.getElementById("activeUsers").textContent = data.fabric_users;
+
+            document.getElementById("dataSources").textContent = data.data_sources;
+
+            // Display this month's data queries
+            document.getElementById("monthlyQueries").textContent = Number(data.monthly_queries).toLocaleString();
+
+            // Get the number of features in use
+            var featureResponse = await fetch("/data/feature-count/" + orgId);
+            var featureData = await featureResponse.json();
+
+            document.getElementById("featuresCount").textContent = featureData.total;
+
+        } catch (error) {
+            console.log("Dashboard error:", error);
+        }
+    }
+
+    loadDashboardNumbers();
+</script>
+
+<script>
+    // Get the organization's features from MySQL
+    async function loadOrgFeatures() {
+        try {
+            var orgId = currentUser.org_id;
+
+            var response = await fetch("/data/org-features/" + orgId);
+            var features = await response.json();
+
+            var table = document.getElementById("featuresTable");
+
+            table.innerHTML = "";
+
+            for (var i = 0; i < features.length; i++) {
+                table.innerHTML += `
+                    <tr>
+                        <td>${features[i].feature_name}</td>
+                        <td><span class="badge bg-teal">Active</span></td>
+                        <td>—</td>
+                        <td>—</td>
+                        <td>—</td>
+                    </tr>
+                `;
+            }
+
+            if (features.length === 0) {
+                table.innerHTML = `
+                    <tr>
+                        <td colspan="5">No features in use yet.</td>
+                    </tr>
+                `;
+            }
+
+        } catch (error) {
+            console.log("Features table error:", error);
+        }
+    }
+
+    loadOrgFeatures();
+</script>
+
+<script>
+    // Get setup progress from MySQL
+    async function loadSetupProgress() {
+        try {
+            var orgId = currentUser.org_id;
+
+            var response = await fetch("/data/setup-progress/" + orgId);
+            var steps = await response.json();
+
+            var totalSteps = steps.length;
+            var completedSteps = 0;
+            var nextStep = "All steps completed!";
+
+            for (var i = 0; i < steps.length; i++) {
+                if (steps[i].status === "Done") {
+                    completedSteps++;
+                } else if (nextStep === "All steps completed!") {
+                    nextStep = steps[i].step_name;
+                }
+            }
+
+            var percentage = 0;
+
+            if (totalSteps > 0) {
+                percentage = Math.round((completedSteps / totalSteps) * 100);
+            }
+
+            document.getElementById("setupText").textContent =
+                completedSteps + " of " + totalSteps + " steps done.";
+
+            document.getElementById("setupBar").style.width =
+                percentage + "%";
+
+            document.getElementById("setupBar").textContent =
+                percentage + "%";
+
+            document.getElementById("nextStep").textContent =
+                nextStep;
+
+        } catch (error) {
+            console.log("Setup progress error:", error);
+        }
+    }
+
+    loadSetupProgress();
+</script>
+
+<script>
+    // Get Dashboard suggestions from MySQL
+    async function loadDashboardSuggestions() {
+        try {
+            var orgId = currentUser.org_id;
+
+            var response = await fetch("/data/dashboard-suggestions/" + orgId);
+            var suggestions = await response.json();
+
+            var cards = document.getElementById("suggestionCards");
+            cards.innerHTML = "";
+
+            for (var i = 0; i < suggestions.length; i++) {
+                var suggestion = suggestions[i];
+
+                var card = document.createElement("div");
+                card.className = "col-md-6 mb-3";
+
+                var content = document.createElement("div");
+                content.className = "bg-white p-4 h-100";
+
+                var title = document.createElement("h5");
+                title.textContent = suggestion.title;
+
+                var details = document.createElement("p");
+                details.className = "text-gray";
+                details.textContent = suggestion.details;
+
+                var link = document.createElement("a");
+                link.className = "btn btn-outline-dark";
+                link.href = suggestion.link_page;
+                link.textContent = "View suggestion";
+
+                content.appendChild(title);
+                content.appendChild(details);
+                content.appendChild(link);
+                card.appendChild(content);
+                cards.appendChild(card);
+            }
+
+            if (suggestions.length === 0) {
+                cards.textContent = "No suggestions available.";
+            }
+
+        } catch (error) {
+            console.log("Dashboard suggestions error:", error);
+            document.getElementById("suggestionCards").textContent =
+                "Could not load suggestions.";
+        }
+    }
+
+    loadDashboardSuggestions();
+</script>
 
 </body>
-
 </html>
