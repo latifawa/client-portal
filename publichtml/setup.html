@@ -45,8 +45,8 @@
           <!-- organization box: which client is logged in -->
           <div class="section-light p-3 my-4">
             <p class="label-small mb-1">Organization</p>
-            <p class="fw-semibold mb-0">Najd Bank</p>
-            <p class="text-gray small mb-0">Growth plan</p>
+            <p class="fw-semibold mb-0" id="organizationName">Loading...</p>
+            <p class="text-gray small mb-0" id="organizationPlan">Loading...</p>
           </div>
 
           <!-- nav Pills -->
@@ -78,7 +78,7 @@
           <div class="dropup mt-4">
 
             <button type="button" class="btn btn-dark-soft w-100 text-start dropdown-toggle" data-bs-toggle="dropdown">
-              <i class="bi bi-person-circle me-2"></i>Layan A.
+              <i class="bi bi-person-circle me-2"></i><span id="sideBarUserName">Loading...</span>
             </button>
             <ul class="dropdown-menu">
               <li><a class="dropdown-item" href="account.html">Account settings</a></li>
@@ -105,18 +105,18 @@
           <section class="bg-white p-4 mb-4">
             <div class="row align-items-center">
               <div class="col-lg-3 mb-3 mb-lg-0">
-                <h2 class="display-4 text-gradient mb-0">60%</h2>
+                <h2 class="display-4 text-gradient mb-0" id="setupPercentage">60%</h2>
                 <p class="text-gray small mb-0">of your setup is done</p>
               </div>
               <div class="col-lg-9">
 
                 <div class="d-flex justify-content-between mb-2 small">
-                  <span>3 of 5 steps complete</span>
+                  <span id="setupProgressText">3 of 5 steps complete</span>
                   <span class="text-gray">Estimated go-live · 1 Nov 2026</span>
                 </div>
                 <!-- progress Bar -->
                 <div class="progress">
-                  <div class="progress-bar bg-teal" style="width:60%">60%</div>
+                  <div class="progress-bar bg-teal" id="setupProgressBar" style="width:60%">60%</div>
                 </div>
               </div>
             </div>
@@ -133,37 +133,7 @@
                 <!-- each row: step number, step name, who does it, status -->
                 <div class="table-responsive">
                   <table class="table align-middle mb-0">
-                    <tbody>
-                      <tr>
-                        <td class="text-gray">01</td>
-                        <td>Sign the service agreement<br><small class="text-gray">Completed 2 Sep 2026</small></td>
-                        <td class="text-gray small">HUMAIN + you</td>
-                        <td><span class="badge bg-teal">Done</span></td>
-                      </tr>
-                      <tr>
-                        <td class="text-gray">02</td>
-                        <td>Invite your team<br><small class="text-gray">3 teammates invited · 5 Sep</small></td>
-                        <td class="text-gray small">You</td>
-                        <td><span class="badge bg-teal">Done</span></td>
-                      </tr>
-                      <tr>
-                        <td class="text-gray">03</td>
-                        <td>Connect your data<br><small class="text-gray">3 sources connected · 12 Sep</small></td>
-                        <td class="text-gray small">You</td>
-                        <td><span class="badge bg-teal">Done</span></td>
-                      </tr>
-                      <tr>
-                        <td class="text-gray">04</td>
-                        <td>Finish your access rules<br><small class="text-gray">2 of 5 roles defined</small></td>
-                        <td class="text-gray small">You</td>
-                        <td><span class="badge bg-dark">In progress</span></td>
-                      </tr>
-                      <tr>
-                        <td class="text-gray">05</td>
-                        <td>Pick your first AI use case<br><small class="text-gray">Unlocks after access rules · you choose it from the Catalog</small></td>
-                        <td class="text-gray small">You + HUMAIN</td>
-                        <td><span class="badge bg-secondary">Not started</span></td>
-                      </tr>
+                    <tbody id="setupTableBody">
                     </tbody>
                   </table>
                 </div>
@@ -176,17 +146,17 @@
 
               <section class="bg-white p-4 mb-4">
                 <p class="label-small mb-2">Your account manager</p>
-                <h5 class="mb-1">Sara A.</h5>
+                <h5 class="mb-1" id="setupAccountManager">Loading...</h5>
                 <p class="text-gray small">Replies within 1 working day</p>
-                <a class="btn btn-lime w-100" href="support.html">Message Sara &rarr;</a>
+                <a class="btn btn-lime w-100" href="support.html">Message account manager &rarr;</a>
               </section>
 
               <div class="bg-white p-4">
                 <p class="label-small mb-3">Recent activity</p>
-                <ul class="list-unstyled small mb-0">
-                  <li class="mb-3">Reminder: finish access rules<br><span class="text-gray">25 Sep · automatic</span></li>
+                <ul class="list-unstyled small mb-0" id="recentActivityList">
+                  <li class="mb-3">Reminder: Finish access rules<br><span class="text-gray">25 Sep · automatic</span></li>
                   <li class="mb-3">2 access roles added<br><span class="text-gray">18 Sep · Noura M.</span></li>
-                  <li>HUMAIN verified your data connection<br><span class="text-gray">12 Sep · Sara A.</span></li>
+                  <li>HUMAIN verified your data connection<br><span class="text-gray">12 Sep · HUMAIN Support</span></li>
                 </ul>
               </div>
 
@@ -203,6 +173,121 @@
 
   <!-- Bootstrap JavaScript -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    const user = JSON.parse(localStorage.getItem("user"));
+
+    
+
+    // display the logged-in user's name in the sidebar
+    if(user) {
+      document.getElementById("sideBarUserName").textContent = user.full_name;
+    }
+
+    // display the account manager for the logged-in organization
+    async function loadSetupAccountManager() {
+      if(user && user.org_id) {
+        try { 
+          const response = await fetch(`/api/account-manager/${user.org_id}`);
+          if (!response.ok) {
+            throw new Error("Failed to load account manager");
+          }
+          const accountManager = await response.json();
+          document.getElementById("setupAccountManager").textContent = accountManager.full_name;
+        } catch (error) {
+          console.error("Error loading account manager:", error);
+        }
+      }
+    }
+    loadSetupAccountManager();
+
+    // display the organization details for the logged-in user
+  async function loadOrganization() {
+    if (user && user.org_id) {
+    try {
+      const response = await fetch(`/api/organization/${user.org_id}`);
+      if (!response.ok) {
+        throw new Error("Failed to load organization");
+      }
+      const organization = await response.json();
+      document.getElementById("organizationName").textContent = organization.name;
+      document.getElementById("organizationPlan").textContent = organization.plan;
+    } catch (error) {
+      console.error("Error loading organization: ", error);
+    }
+  }
+}
+loadOrganization();
+
+
+    // load setup steps for the logged-in organization
+    async function loadSetupSteps() {
+      if(user && user.org_id) {
+        try { 
+          const response = await fetch(`/api/setup-steps/${user.org_id}`);
+          if (!response.ok) {
+            throw new Error("Failed to load setup steps");
+          }
+          const steps = await response.json();
+
+          // display the 3 most recently completed setup steps
+         const recentActivity = steps.filter(step => step.status === "Done" && step.completed_at)
+        .sort((a, b) => new Date(b.completed_at) - new Date(a.completed_at))
+        .slice(0, 3);
+
+        const activityList = document.getElementById("recentActivityList");
+        activityList.innerHTML = "";
+        recentActivity.forEach(step => {
+        const date = new Date(step.completed_at).toLocaleDateString();
+
+        activityList.innerHTML += `
+        <li class="mb-3">${step.step_name}
+          <br>
+          <span class="text-gray">${date} · Completed</span></li>
+       `;
+       });
+
+          const completedSteps = steps.filter(step => step.status === "Done").length;
+          const totalSteps = steps.length;
+          const percentage = totalSteps > 0 ? Math.round((completedSteps / totalSteps) * 100) : 0;
+          document.getElementById("setupPercentage").textContent = percentage + "%";
+          document.getElementById("setupProgressText").textContent = completedSteps + " of " + totalSteps + " steps complete";
+          const progressBar = document.getElementById("setupProgressBar");
+          progressBar.style.width = percentage + "%";
+          progressBar.textContent = percentage + "%";
+
+          const tableBody = document.getElementById("setupTableBody");
+          tableBody.innerHTML = ""; // Clear existing rows
+          steps.forEach(step => {
+            let badgeClass;
+
+            if (step.status === "Done") {
+              badgeClass = "bg-teal";
+            } else if (step.status === "In progress") {
+              badgeClass = "bg-dark";
+            } else {
+              badgeClass = "bg-secondary";
+            }
+            tableBody.innerHTML += `
+              <tr>
+                <td class="text-gray">${String(step.step_number).padStart(2,"0")}</td>
+                <td>${step.step_name}
+                  <br>
+                  <small class="text-gray">${step.description || ""}</small>
+                  </td>
+                <td class="text-gray small">${step.responsible_party || ""}</td>
+                <td><span class="badge ${badgeClass}">${step.status}</span></td>
+              </tr>
+            `;
+          });
+
+        } catch (error) {
+          console.error("Error loading setup steps:", error);
+        }
+      }
+    }
+    loadSetupSteps();
+  </script>
 
 </body>
 
