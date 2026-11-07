@@ -20,7 +20,7 @@ module.exports = function (app, dbCon) {
   });
 
   // Get the organization's Dashboard numbers
-app.get("/data/dashboard/:org_id", (req, res) => {
+  app.get("/data/dashboard/:org_id", (req, res) => {
 
     let orgId = req.params.org_id;
 
@@ -40,55 +40,55 @@ app.get("/data/dashboard/:org_id", (req, res) => {
 `;
     dbCon.query(sqlQuery, [orgId], (error, results) => {
 
-        if (error) {
-            console.log(error);
-            return res.status(500).send("Database error");
-        }
+      if (error) {
+        console.log(error);
+        return res.status(500).send("Database error");
+      }
 
-        res.send(results[0]);
+      res.send(results[0]);
     });
-});
+  });
 
-// Count the features used by an organization
-app.get("/data/feature-count/:org_id", (req, res) => {
+  // Count the features used by an organization
+  app.get("/data/feature-count/:org_id", (req, res) => {
 
     let orgId = req.params.org_id;
 
     let sqlQuery =
-        "SELECT COUNT(*) AS total FROM org_features WHERE org_id = ?";
+      "SELECT COUNT(*) AS total FROM org_features WHERE org_id = ?";
 
     dbCon.query(sqlQuery, [orgId], (error, results) => {
 
-        if (error) {
-            console.log(error);
-            return res.status(500).send("Database error");
-        }
+      if (error) {
+        console.log(error);
+        return res.status(500).send("Database error");
+      }
 
-        res.send(results[0]);
+      res.send(results[0]);
     });
-});
+  });
 
-// Get weekly usage for one organization
-app.get("/data/weekly-usage/:org_id", (req, res) => {
+  // Get weekly usage for one organization
+  app.get("/data/weekly-usage/:org_id", (req, res) => {
 
     let orgId = req.params.org_id;
 
     let sqlQuery =
-        "SELECT week_start, usage_count FROM weekly_usage WHERE org_id = ? ORDER BY week_start";
+      "SELECT week_start, usage_count FROM weekly_usage WHERE org_id = ? ORDER BY week_start";
 
     dbCon.query(sqlQuery, [orgId], (error, results) => {
 
-        if (error) {
-            console.log(error);
-            return res.status(500).send("Database error");
-        }
+      if (error) {
+        console.log(error);
+        return res.status(500).send("Database error");
+      }
 
-        res.send(results);
+      res.send(results);
     });
-});
+  });
 
-// Get the features used by one organization
-app.get("/data/org-features/:org_id", (req, res) => {
+  // Get the features used by one organization
+  app.get("/data/org-features/:org_id", (req, res) => {
 
     let orgId = req.params.org_id;
 
@@ -102,17 +102,17 @@ app.get("/data/org-features/:org_id", (req, res) => {
 
     dbCon.query(sqlQuery, [orgId], (error, results) => {
 
-        if (error) {
-            console.log(error);
-            return res.status(500).send("Database error");
-        }
+      if (error) {
+        console.log(error);
+        return res.status(500).send("Database error");
+      }
 
-        res.send(results);
+      res.send(results);
     });
-});
+  });
 
-// Get setup progress for one organization
-app.get("/data/setup-progress/:org_id", (req, res) => {
+  // Get setup progress for one organization
+  app.get("/data/setup-progress/:org_id", (req, res) => {
 
     let orgId = req.params.org_id;
 
@@ -125,17 +125,17 @@ app.get("/data/setup-progress/:org_id", (req, res) => {
 
     dbCon.query(sqlQuery, [orgId], (error, results) => {
 
-        if (error) {
-            console.log(error);
-            return res.status(500).send("Database error");
-        }
+      if (error) {
+        console.log(error);
+        return res.status(500).send("Database error");
+      }
 
-        res.send(results);
+      res.send(results);
     });
-});
+  });
 
-// Get suggestions for one organization
-app.get("/data/dashboard-suggestions/:org_id", (req, res) => {
+  // Get suggestions for one organization
+  app.get("/data/dashboard-suggestions/:org_id", (req, res) => {
 
     let orgId = req.params.org_id;
 
@@ -149,17 +149,17 @@ app.get("/data/dashboard-suggestions/:org_id", (req, res) => {
 
     dbCon.query(sqlQuery, [orgId], (error, results) => {
 
-        if (error) {
-            console.log(error);
-            return res.status(500).send("Database error");
-        }
+      if (error) {
+        console.log(error);
+        return res.status(500).send("Database error");
+      }
 
-        res.send(results);
+      res.send(results);
     });
-});
+  });
 
-// Get pending feature requests for one organization
-app.get("/data/pending-features/:org_id", (req, res) => {
+  // Get pending feature requests for one organization
+  app.get("/data/pending-features/:org_id", (req, res) => {
 
     let orgId = req.params.org_id;
 
@@ -173,13 +173,13 @@ app.get("/data/pending-features/:org_id", (req, res) => {
 
     dbCon.query(sqlQuery, [orgId], (error, results) => {
 
-        if (error) {
-            console.log(error);
-            return res.status(500).send("Database error");
-        }
+      if (error) {
+        console.log(error);
+        return res.status(500).send("Database error");
+      }
 
-        res.send(results);
+      res.send(results);
     });
-});
+  });
 
 };
