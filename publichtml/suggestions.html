@@ -77,7 +77,7 @@
           <!-- dropup: the user menu -->
           <div class="dropup mt-4">
             <button type="button" class="btn btn-dark-soft w-100 text-start dropdown-toggle" data-bs-toggle="dropdown">
-              <i class="bi bi-person-circle me-2"></i>Layan A.
+              <i class="bi bi-person-circle me-2"></i>
             </button>
             <ul class="dropdown-menu">
               <li><a class="dropdown-item" href="account.html">Account settings</a></li>
@@ -175,7 +175,9 @@
       </div>
     </div>
   </div>
+  <script src="js/session.js"></script>
   <script>
+    
     // who is logged in
     const user = JSON.parse(localStorage.getItem("user"));
     if (!user) {

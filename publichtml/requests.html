@@ -44,8 +44,8 @@
           <!-- organization box: which client is logged in -->
           <div class="section-light p-3 my-4">
             <p class="label-small mb-1">Organization</p>
-            <p class="fw-semibold mb-0">Najd Bank</p>
-            <p class="text-gray small mb-0">Growth plan</p>
+            <p class="fw-semibold mb-0" id="orgName">Najd Bank</p>
+            <p class="text-gray small mb-0" id="orgPlan">Growth plan</p>
           </div>
 
           <!-- nav pills -->
@@ -172,6 +172,7 @@
       </div>
     </div>
   </div>
+  <script src="js/session.js"></script>
   <script>
     // who is logged in
     const user = JSON.parse(localStorage.getItem("user"));
