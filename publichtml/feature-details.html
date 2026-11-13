@@ -1,5 +1,5 @@
-<!-- Page 6: Request a feature (opens from "Request this" in the Catalog) -->
 <!DOCTYPE html>
+<!-- Page 6: Request a feature (opens from "Request this" in the Catalog) -->
 <html lang="en">
 
 <head>
@@ -10,11 +10,12 @@
   <!-- small icon in the browser tab -->
   <link rel="icon" type="image/webp" href="images/humain-favicon.webp">
   <!-- Bootstrap 5.3.2 CSS -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
   <!-- Bootstrap Icons (the small icons in the sidebar and buttons) -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   <!-- Google Font: Readex Pro -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@200;300;400;500;600&display=swap">
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@200;300;400;500;600&display=swap">
   <!-- our own CSS -->
   <link rel="stylesheet" href="css/style.css">
 </head>
@@ -34,7 +35,8 @@
             <span class="brand-sub">Fabric</span>
           </a>
 
-          <button class="btn btn-outline-light btn-sm d-md-none" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu">
+          <button class="btn btn-outline-light btn-sm d-md-none" type="button" data-bs-toggle="collapse"
+            data-bs-target="#sidebarMenu">
             <i class="bi bi-list"></i>
           </button>
         </div>
@@ -45,8 +47,8 @@
           <!-- organization box: which client is logged in -->
           <div class="section-light p-3 my-4">
             <p class="label-small mb-1">Organization</p>
-            <p class="fw-semibold mb-0">Najd Bank</p>
-            <p class="text-gray small mb-0">Growth plan</p>
+            <p class="fw-semibold mb-0" id="orgName"></p>
+            <p class="text-gray small mb-0" id="orgPlan"></p>
           </div>
 
           <!-- nav pills -->
@@ -77,12 +79,13 @@
           <!-- dropup: the user menu -->
           <div class="dropup mt-4">
             <button type="button" class="btn btn-dark-soft w-100 text-start dropdown-toggle" data-bs-toggle="dropdown">
-              <i class="bi bi-person-circle me-2"></i>Layan A.
-            </button>
+              <i class="bi bi-person-circle me-2"></i><span id="userName"></span> </button>
             <ul class="dropdown-menu">
               <li><a class="dropdown-item" href="account.html">Account settings</a></li>
-              <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="index.html">Log out</a></li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <li><a class="dropdown-item" href="index.html" id="logoutLink">Log out</a></li>
             </ul>
           </div>
 
@@ -110,7 +113,8 @@
               <p class="label-small">Stage 4</p>
               <h1>Request a feature</h1>
 
-              <p class="text-gray fs-5">Tell HUMAIN what you need. Your account manager uses these answers to plan the setup with your team.</p>
+              <p class="text-gray fs-5">Tell HUMAIN what you need. Your account manager uses these answers to plan the
+                setup with your team.</p>
 
               <h5 class="mt-4 mb-3">What happens next</h5>
               <!-- 3 small boxes, side by side-->
@@ -159,16 +163,17 @@
 
                   <div class="mb-3">
                     <label for="useFor" class="form-label">What will you use it for?</label>
-                    <textarea class="form-control" id="useFor" name="useFor" rows="4" placeholder="e.g. Speed up loan application review" required></textarea>
+                    <textarea class="form-control" id="useFor" name="useFor" rows="4"
+                      placeholder="e.g. Speed up loan application review" required minlength="5"></textarea>
                   </div>
 
                   <div class="mb-3">
                     <label for="users" class="form-label">Expected users</label>
                     <select class="form-select" id="users" name="users">
-                      <option>1–10</option>
-                      <option>11–50</option>
-                      <option>51–200</option>
-                      <option>200+</option>
+                      <option value="1-10">1–10</option>
+                      <option value="11-50">11–50</option>
+                      <option value="51-200">51–200</option>
+                      <option value="200+">200+</option>
                     </select>
                   </div>
 
@@ -192,7 +197,7 @@
                       <label class="form-check-label" for="urgent">Urgent</label>
                     </div>
                   </div>
-                <p id="message" class="mb-3"></p>
+                  <p id="message" class="mb-3"></p>
                   <button type="submit" class="btn btn-lime w-100">Send request &rarr;</button>
                 </form>
               </section>
@@ -206,66 +211,86 @@
     </div>
   </div>
 
-<script>
-  // who is logged in (the login page saved it in the browser)
-  const user = JSON.parse(localStorage.getItem("user"));
-  if (!user) {
-    window.location.href = "login.html";
-  }
+  <!-- Bootstrap JavaScript -->
+  <script src="js/bootstrap.bundle.min.js"></script>
 
-  // PART 1: fill the dropdown from the features table
-  fetch("/data/features")
-    .then(res => res.json())
-    .then(features => {
-      const select = document.getElementById("feature");
+  <!-- Get the logged-in user's information -->
+  <script src="js/session.js"></script>
+  
+    <script>
+    // the logged-in user (currentUser comes from session.js)
+    const user = currentUser;
 
-      features.forEach(f => {
-        select.innerHTML += `<option value="${f.feature_id}">${f.feature_name}</option>`;
-      });
-
-      // coming from the catalog ? choose that feature
-      const chosen = new URLSearchParams(window.location.search).get("feature");
-      if (chosen) {
-        select.value = chosen;
-      }
+    // when the page opens: fill the dropdown and connect the form
+    document.addEventListener("DOMContentLoaded", () => {
+      loadFeatures();
+      document.getElementById("requestForm").addEventListener("submit", sendRequest);
     });
 
-  // PART 2: save the request when the form is sent
-  document.getElementById("requestForm").addEventListener("submit", (e) => {
-    e.preventDefault();   // don't reload the page
+    // show a green or red message above the button
+    function showMessage(text, type) {
+      const message = document.getElementById("message");
+      message.className = "alert alert-" + type;
+      message.textContent = text;
+    }
 
-    const body = {
-      org_id: user.org_id,
-      user_id: user.user_id,
-      feature_id: document.getElementById("feature").value,
-      use_for: document.getElementById("useFor").value,
-      expected_users: document.getElementById("users").value,
-      start_date: document.getElementById("startDate").value,
-      priority: document.querySelector('input[name="priority"]:checked').value
-    };
+    // PART 1 (SELECT): fill the dropdown from the features table
+    async function loadFeatures() {
+      try {
+        const response = await fetch("/data/features");
+        const features = await response.json();
+        const select = document.getElementById("feature");
 
-    fetch("/data/requests", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(body)
-    })
-      .then(res => res.json())
-      .then(result => {
-        const message = document.getElementById("message");
+        features.forEach(f => {
+          select.innerHTML += `<option value="${f.feature_id}">${f.feature_name}</option>`;
+        });
+
+        // coming from the catalog? choose that feature
+        const chosen = new URLSearchParams(window.location.search).get("feature_id");
+        if (chosen) {
+          select.value = chosen;
+        }
+      } catch (error) {
+        console.log(error);
+        showMessage("Could not load the features.", "danger");
+      }
+    }
+
+    // PART 2 (INSERT): save the request when the form is sent
+    async function sendRequest(e) {
+      e.preventDefault();   // don't reload the page
+
+      const body = {
+        org_id: user.org_id,
+        user_id: user.user_id,
+        feature_id: document.getElementById("feature").value,
+        use_for: document.getElementById("useFor").value.trim(),
+        expected_users: document.getElementById("users").value,
+        start_date: document.getElementById("startDate").value,
+        priority: document.querySelector('input[name="priority"]:checked').value
+      };
+
+      try {
+        const response = await fetch("/data/requests", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(body)
+        });
+        const result = await response.json();
 
         if (result.success) {
-          message.className = "alert alert-success";
-          message.textContent = result.message;
+          showMessage(result.message, "success");
+          // after 1 second, go to My requests to see the new row
           setTimeout(() => { window.location.href = "requests.html"; }, 1000);
         } else {
-          message.className = "alert alert-danger";
-          message.textContent = result.message;
+          showMessage(result.message, "danger");
         }
-      });
-  });
-</script>
-  <!-- Bootstrap JavaScript -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+      } catch (error) {
+        console.log(error);
+        showMessage("Could not send your request.", "danger");
+      }
+    }
+  </script>
 
 </body>
 

@@ -1,5 +1,5 @@
-<!-- Page 7: Smart suggestions (Stage 5) -->
 <!DOCTYPE html>
+<!-- Page 7: Smart suggestions (Stage 5) -->
 <html lang="en">
 
 <head>
@@ -10,11 +10,12 @@
   <!-- small icon in the browser tab -->
   <link rel="icon" type="image/webp" href="images/humain-favicon.webp">
   <!-- Bootstrap 5.3.2 CSS -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
   <!-- Bootstrap Icons (the small icons in the sidebar and buttons) -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   <!-- Google Font: Readex Pro -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@200;300;400;500;600&display=swap">
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@200;300;400;500;600&display=swap">
   <!-- our own CSS -->
   <link rel="stylesheet" href="css/style.css">
 </head>
@@ -34,7 +35,8 @@
             <span class="brand-sub">Fabric</span>
           </a>
 
-          <button class="btn btn-outline-light btn-sm d-md-none" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu">
+          <button class="btn btn-outline-light btn-sm d-md-none" type="button" data-bs-toggle="collapse"
+            data-bs-target="#sidebarMenu">
             <i class="bi bi-list"></i>
           </button>
         </div>
@@ -45,8 +47,8 @@
           <!-- organization box: which client is logged in -->
           <div class="section-light p-3 my-4">
             <p class="label-small mb-1">Organization</p>
-            <p class="fw-semibold mb-0" id="orgName">Najd Bank</p>
-            <p class="text-gray small mb-0" id="orgPlan">Growth plan</p>
+            <p class="fw-semibold mb-0" id="orgName"></p>
+            <p class="text-gray small mb-0" id="orgPlan"></p>
           </div>
 
           <!-- nav pills -->
@@ -75,13 +77,15 @@
           </ul>
 
           <!-- dropup: the user menu -->
-          <div class="dropup mt-4">                        
+          <div class="dropup mt-4">
             <button type="button" class="btn btn-dark-soft w-100 text-start dropdown-toggle" data-bs-toggle="dropdown">
               <i class="bi bi-person-circle me-2"></i><span id="userName"></span>
             </button>
             <ul class="dropdown-menu">
               <li><a class="dropdown-item" href="account.html">Account settings</a></li>
-              <li><hr class="dropdown-divider"></li>                            
+              <li>
+                <hr class="dropdown-divider">
+              </li>
               <li><a class="dropdown-item" href="index.html" id="logoutLink">Log out</a></li>
             </ul>
           </div>
@@ -98,56 +102,15 @@
           <!-- 1: heading -->
           <p class="label-small">Stage 5</p>
           <h1>Smart suggestions</h1>
-          <p class="text-gray">Based on how <span id="suggestOrgName">your organization</span> used HUMAIN Fabric in the last 30 days.</p>
+          <p class="text-gray">Based on how <span id="suggestOrgName">your organization</span> used HUMAIN Fabric in the
+            last 30 days.</p>
 
           <div class="row mt-4">
 
             <!-- 2: suggestion cards. Each card: type, title, reason, button -->
             <div class="col-lg-8" id="suggestionCards">
 
-              <!-- suggestion 1: upgrade (the button opens the request form) -->
-              <section class="bg-white p-4 mb-3">
-                <p class="label-small text-gradient">Upgrade</p>
-                <h5>Your usage is growing</h5>
-                <p class="text-gray">Employee chat assistant messages grew 42% this month. At this rate you will reach your plan limit around 20 Oct.</p>
-                <div class="section-light p-3 mb-3">
-                  <p class="small mb-0"><strong>Why am I seeing this?</strong> Usage grew more than 30% and over 70% of the limit is used.</p>
-                </div>
-                <a href="feature-details.html" class="btn btn-dark">Request upgrade &rarr;</a>
-              </section>
-
-              <!-- suggestion 2: new feature (the button goes to the Catalog) -->
-              <section class="bg-white p-4 mb-3">
-                <p class="label-small text-gradient">New feature</p>
-                <h5>Banks like you also use Fraud detection</h5>
-                <p class="text-gray">7 of 10 banking clients on HUMAIN Fabric use it with the same data sources you connected.</p>
-                <div class="section-light p-3 mb-3">
-                  <p class="small mb-0"><strong>Why am I seeing this?</strong> More than half of the clients in your sector use it.</p>
-                </div>
-                <a href="catalog.html" class="btn btn-dark">View in catalog &rarr;</a>
-              </section>
-
-              <!-- suggestion 3: setup (the button goes to Getting started) -->
-              <section class="bg-white p-4 mb-3">
-                <p class="label-small text-gradient">Setup</p>
-                <h5>Finish your access rules</h5>
-                <p class="text-gray">This step has been open for 9 days. Your first AI use case unlocks after it.</p>
-                <div class="section-light p-3 mb-3">
-                  <p class="small mb-0"><strong>Why am I seeing this?</strong> A checklist step has been open for more than 7 days.</p>
-                </div>
-                <a href="setup.html" class="btn btn-dark">Go to checklist &rarr;</a>
-              </section>
-
-              <!-- suggestion 4: tip (the button goes to Support) -->
-              <section class="bg-white p-4 mb-3">
-                <p class="label-small text-gradient">Tip</p>
-                <h5>Reports is barely used</h5>
-                <p class="text-gray">Only 10,300 report views this month. A 30-minute session could help your analysts get more from it.</p>
-                <div class="section-light p-3 mb-3">
-                  <p class="small mb-0"><strong>Why am I seeing this?</strong> A feature stayed under 15% of its limit for 30 days.</p>
-                </div>
-                <a href="support.html" class="btn btn-dark">Book a session &rarr;</a>
-              </section>
+              <p class="text-gray">Loading suggestions...</p>
 
             </div>
 
@@ -174,37 +137,52 @@
       </div>
     </div>
   </div>
+  <!-- Bootstrap JavaScript -->
+  <script src="js/bootstrap.bundle.min.js"></script>
+
+  <!-- Get the logged-in user's information -->
   <script src="js/session.js"></script>
-  <script>
-    
-    // who is logged in
-    const user = JSON.parse(localStorage.getItem("user"));
-    if (!user) {
-      window.location.href = "login.html";
-    }        
-    document.getElementById("suggestOrgName").textContent = user.org_name;
+
+    <script>
+    // the logged-in user (currentUser comes from session.js)
+    const user = currentUser;
 
     // the button text for each type of suggestion (the table has no button column)
     const buttonText = {
-      "Upgrade": "Request upgrade",
+      "Upgrade": "Ask about upgrading",
       "New feature": "View in catalog",
       "Setup": "Go to checklist",
       "Tip": "Book a session"
     };
 
-    // get the suggestion cards of this organization
-    fetch("/data/suggestions/" + user.org_id)
-      .then(res => res.json())
-      .then(result => {
-        const cards = document.getElementById("suggestionCards");
-        cards.innerHTML = "";
+    // when the page opens: fill the heading and load the cards
+    document.addEventListener("DOMContentLoaded", () => {
+      document.getElementById("suggestOrgName").textContent = user.org_name;
+      loadSuggestions();
+    });
+
+    // SELECT: get the suggestion cards of this organization
+    async function loadSuggestions() {
+      const cards = document.getElementById("suggestionCards");
+
+      try {
+        const response = await fetch("/data/suggestions/" + user.org_id);
+        const result = await response.json();
+
+        // the server answered with an error
+        if (!result.success) {
+          cards.innerHTML = `<p class="text-gray">${result.message}</p>`;
+          return;
+        }
 
         // nothing yet? show a friendly line
         if (result.data.length == 0) {
           cards.innerHTML = `<p class="text-gray">No suggestions right now.</p>`;
+          return;
         }
 
         // one card for each suggestion
+        cards.innerHTML = "";
         result.data.forEach(s => {
           cards.innerHTML += `
             <section class="bg-white p-4 mb-3">
@@ -217,11 +195,15 @@
               <a href="${s.link_page}" class="btn btn-dark">${buttonText[s.type] || "Open"} &rarr;</a>
             </section>`;
         });
-      });
+
+      } catch (error) {
+        // the server could not be reached
+        console.log(error);
+        cards.innerHTML = `<p class="text-gray">Could not load suggestions.</p>`;
+      }
+    }
   </script>
 
-  <!-- Bootstrap JavaScript -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 

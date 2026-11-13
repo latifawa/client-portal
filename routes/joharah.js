@@ -1,9 +1,8 @@
-// Routes for: (write the pages here)
+// Routes for: requests, feature-details, suggestions
 module.exports = function (app, dbCon) {
 
-  // add your app.get / app.post / app.put / app.delete here
-  app.post("/data/requests", (req, res) => {
- 
+    app.post("/data/requests", (req, res) => {
+
     // validation: the checks come first, before we touch the database
     if (!req.body.org_id || !req.body.user_id) {
       return res.status(400).send({ success: false, message: "Please log in first" });
@@ -14,42 +13,59 @@ module.exports = function (app, dbCon) {
     if (!req.body.use_for || req.body.use_for.trim().length < 5) {
       return res.status(400).send({ success: false, message: "Please tell us what you will use it for (at least 5 characters)" });
     }
- 
+
     // step 1: find the name of the chosen feature (it becomes the request title)
     let featureQuery = "SELECT feature_name FROM features WHERE feature_id = ?";
- 
+
     dbCon.query(featureQuery, [req.body.feature_id], (error, features) => {
       if (error) {
         console.log(error);
         return res.status(500).send({ success: false, message: "Internal Server Error.." });
       }
-      
       if (features.length == 0) {
         return res.status(404).send({ success: false, message: "Feature not found" });
       }
- 
-      // step 2: request form for my requests & suggestions 
-      let sqlQuery = `INSERT INTO requests
-                        (org_id, user_id, feature_id, title, use_for, expected_users, start_date, priority, status, created_at)
-                      VALUES (?, ?, ?, ?, ?, ?, ?, ?, 'Pending', NOW())`;
- 
-      let values = [
-        req.body.org_id,
-        req.body.user_id,
-        req.body.feature_id,
-        features[0].feature_name,
-        req.body.use_for.trim(),
-        req.body.expected_users,
-        req.body.start_date || null,   // empty date -> NULL
-        req.body.priority || "Normal"
-      ];
- 
-      dbCon.query(sqlQuery, values, (error, results) => {
+
+      // step 2: stop duplicates (is there already an open request for this feature?)
+      let openQuery = `SELECT request_id FROM requests
+                       WHERE org_id = ? AND feature_id = ?
+                       AND status IN ('Pending', 'Approved', 'In progress')`;
+
+      dbCon.query(openQuery, [req.body.org_id, req.body.feature_id], (error, openRequests) => {
         if (error) {
           console.log(error);
           return res.status(500).send({ success: false, message: "Internal Server Error.." });
         }
-        res.status(201).send({ success: true, message: "Your request was sent", id: results.insertId });
+        if (openRequests.length > 0) {
+          return res.status(400).send({
+            success: false,
+            message: "You already have an open request for this feature (R-" + openRequests[0].request_id + ")"
+          });
+        }
+
+        // step 3: save the new request
+        let sqlQuery = `INSERT INTO requests
+                          (org_id, user_id, feature_id, title, use_for, expected_users, start_date, priority, status, created_at)
+                        VALUES (?, ?, ?, ?, ?, ?, ?, ?, 'Pending', NOW())`;
+
+        let values = [
+          req.body.org_id,
+          req.body.user_id,
+          req.body.feature_id,
+          features[0].feature_name,
+          req.body.use_for.trim(),
+          req.body.expected_users,
+          req.body.start_date || null,   // empty date -> NULL
+          req.body.priority || "Normal"
+        ];
+
+        dbCon.query(sqlQuery, values, (error, results) => {
+          if (error) {
+            console.log(error);
+            return res.status(500).send({ success: false, message: "Internal Server Error.." });
+          }
+          res.status(201).send({ success: true, message: "Your request was sent", id: results.insertId });
+        });
       });
     });
   });

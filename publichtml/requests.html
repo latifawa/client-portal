@@ -1,5 +1,5 @@
-<!-- Page 8: My requests -->
 <!DOCTYPE html>
+<!-- Page 8: My requests -->
 <html lang="en">
 
 <head>
@@ -10,11 +10,12 @@
   <!-- small icon in the browser tab -->
   <link rel="icon" type="image/webp" href="images/humain-favicon.webp">
   <!-- Bootstrap 5.3.2 CSS -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
   <!-- Bootstrap Icons (the small icons in the sidebar and buttons) -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   <!-- Google Font: Readex Pro -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@200;300;400;500;600&display=swap">
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@200;300;400;500;600&display=swap">
   <!-- our own CSS -->
   <link rel="stylesheet" href="css/style.css">
 </head>
@@ -33,7 +34,8 @@
             <span class="brand-name">HUMAIN</span>
             <span class="brand-sub">Fabric</span>
           </a>
-          <button class="btn btn-outline-light btn-sm d-md-none" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu">
+          <button class="btn btn-outline-light btn-sm d-md-none" type="button" data-bs-toggle="collapse"
+            data-bs-target="#sidebarMenu">
             <i class="bi bi-list"></i>
           </button>
         </div>
@@ -44,8 +46,8 @@
           <!-- organization box: which client is logged in -->
           <div class="section-light p-3 my-4">
             <p class="label-small mb-1">Organization</p>
-            <p class="fw-semibold mb-0" id="orgName">Najd Bank</p>
-            <p class="text-gray small mb-0" id="orgPlan">Growth plan</p>
+            <p class="fw-semibold mb-0" id="orgName"></p>
+            <p class="text-gray small mb-0" id="orgPlan"></p>
           </div>
 
           <!-- nav pills -->
@@ -76,12 +78,14 @@
           <!-- dropup: the user menu -->
           <div class="dropup mt-4">
             <button type="button" class="btn btn-dark-soft w-100 text-start dropdown-toggle" data-bs-toggle="dropdown">
-              <i class="bi bi-person-circle me-2"></i>Layan A.
+              <i class="bi bi-person-circle me-2"></i><span id="userName"></span>
             </button>
             <ul class="dropdown-menu">
               <li><a class="dropdown-item" href="account.html">Account settings</a></li>
-              <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="index.html">Log out</a></li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <li><a class="dropdown-item" href="index.html" id="logoutLink">Log out</a></li>
             </ul>
           </div>
 
@@ -106,29 +110,29 @@
           </div>
 
 
-          <!-- 2: summary numbers (they match the table below: 1 + 1 + 3 + 1 = 6) -->
+          <!-- 2: summary numbers (counted from the requests table by the summary route) -->
           <div class="row mb-4">
             <div class="col-6 col-lg-3 mb-3">
               <div class="bg-white p-4 h-100">
-                <h2 class="text-gradient" id="waitingCount">0</h2>
+                <h2 class="text-gradient" id="waitingCount"></h2>
                 <p class="text-gray mb-0">Waiting for HUMAIN</p>
               </div>
             </div>
             <div class="col-6 col-lg-3 mb-3">
               <div class="bg-white p-4 h-100">
-                <h2 class="text-gradient" id="progressCount">0</h2>
+                <h2 class="text-gradient" id="progressCount"></h2>
                 <p class="text-gray mb-0">In progress</p>
               </div>
             </div>
             <div class="col-6 col-lg-3 mb-3">
               <div class="bg-white p-4 h-100">
-                <h2 class="text-gradient" id="doneCount">0</h2>
+                <h2 class="text-gradient" id="doneCount"></h2>
                 <p class="text-gray mb-0">Approved or done</p>
               </div>
             </div>
             <div class="col-6 col-lg-3 mb-3">
               <div class="bg-white p-4 h-100">
-                <h2 class="text-gradient" id="declinedCount">0</h2>
+                <h2 class="text-gradient" id="declinedCount"></h2>
                 <p class="text-gray mb-0">Declined</p>
               </div>
             </div>
@@ -149,7 +153,11 @@
                     <th>Latest update</th>
                   </tr>
                 </thead>
-                         <tbody id="requestsBody"></tbody>
+                <tbody id="requestsBody">
+                  <tr>
+                    <td colspan="6" class="text-gray">Loading requests...</td>
+                  </tr>
+                </tbody>
               </table>
             </div>
           </div>
@@ -159,7 +167,7 @@
           <!-- There is only 1 page for now, so Previous and Next are "disabled".
                We use <span> instead of <a> because there is no other page to link to yet -->
           <div class="d-flex justify-content-between align-items-center mt-4">
-          <p class="text-gray mb-0" id="showingText">Showing 0 requests</p>
+            <p class="text-gray mb-0" id="showingText">Showing 0 requests</p>
             <ul class="pagination mb-0">
               <li class="page-item disabled"><span class="page-link">Previous</span></li>
               <li class="page-item active"><span class="page-link">1</span></li>
@@ -172,13 +180,15 @@
       </div>
     </div>
   </div>
+
+  <!-- Bootstrap JavaScript -->
+  <script src="js/bootstrap.bundle.min.js"></script>
+
+  <!-- Get the logged-in user's information -->
   <script src="js/session.js"></script>
-  <script>
-    // who is logged in
-    const user = JSON.parse(localStorage.getItem("user"));
-    if (!user) {
-      window.location.href = "login.html";
-    }
+    <script>
+    // the logged-in user (currentUser comes from session.js)
+    const user = currentUser;
 
     // pick the badge color for each status
     function statusBadge(status) {
@@ -188,27 +198,52 @@
       return `<span class="badge bg-teal">${status}</span>`;   // Approved, Done
     }
 
-    // PART 1: the 4 summary numbers
-    fetch("/data/requests/" + user.org_id + "/summary")
-      .then(res => res.json())
-      .then(result => {
+    // when the page opens: load the numbers and the table
+    document.addEventListener("DOMContentLoaded", () => {
+      loadSummary();
+      loadRequests();
+    });
+
+    // PART 1 (SELECT): the 4 summary numbers
+    async function loadSummary() {
+      try {
+        const response = await fetch("/data/requests/" + user.org_id + "/summary");
+        const result = await response.json();
+
+        if (!result.success) {
+          console.log(result.message);
+          return;
+        }
+
         document.getElementById("waitingCount").textContent = result.data.waiting;
         document.getElementById("progressCount").textContent = result.data.in_progress;
         document.getElementById("doneCount").textContent = result.data.approved_or_done;
         document.getElementById("declinedCount").textContent = result.data.declined;
-      });
+      } catch (error) {
+        console.log(error);
+      }
+    }
 
-    // PART 2: the requests table
-    fetch("/data/requests/" + user.org_id)
-      .then(res => res.json())
-      .then(result => {
-        const body = document.getElementById("requestsBody");
-        body.innerHTML = "";
+    // PART 2 (SELECT): the requests table
+    async function loadRequests() {
+      const body = document.getElementById("requestsBody");
+
+      try {
+        const response = await fetch("/data/requests/" + user.org_id);
+        const result = await response.json();
+
+        if (!result.success) {
+          body.innerHTML = `<tr><td colspan="6" class="text-gray">${result.message}</td></tr>`;
+          return;
+        }
 
         if (result.data.length == 0) {
           body.innerHTML = `<tr><td colspan="6" class="text-center text-gray">No requests yet</td></tr>`;
+          document.getElementById("showingText").textContent = "Showing 0 requests";
+          return;
         }
 
+        body.innerHTML = "";
         result.data.forEach(r => {
           const date = new Date(r.created_at).toLocaleDateString("en-GB", {
             day: "numeric", month: "short", year: "numeric"
@@ -227,11 +262,14 @@
 
         document.getElementById("showingText").textContent =
           "Showing " + result.data.length + " requests";
-      });
+
+      } catch (error) {
+        console.log(error);
+        body.innerHTML = `<tr><td colspan="6" class="text-gray">Could not load requests.</td></tr>`;
+      }
+    }
   </script>
 
-  <!-- Bootstrap JavaScript -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 
