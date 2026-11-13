@@ -1,5 +1,5 @@
-<!-- Page 5: Catalog (Stage 4: Discover more) -->
 <!DOCTYPE html>
+<!-- Page 5: Catalog (Stage 4: Discover more) -->
 <html lang="en">
 
 <head>
@@ -10,7 +10,7 @@
   <!-- small icon in the browser tab -->
   <link rel="icon" type="image/webp" href="images/humain-favicon.webp">
   <!-- Bootstrap 5.3.2 CSS -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
   <!-- Bootstrap Icons (the small icons in the sidebar and buttons) -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   <!-- Google Font: Readex Pro -->
@@ -47,8 +47,8 @@
           <!-- organization box: which client is logged in -->
           <div class="section-light p-3 my-4">
             <p class="label-small mb-1">Organization</p>
-            <p class="fw-semibold mb-0" id="orgName">Najd Bank</p>
-            <p class="text-gray small mb-0" id="orgPlan">Growth plan</p>
+            <p class="fw-semibold mb-0" id="orgName"></p>
+            <p class="text-gray small mb-0" id="orgPlan"></p>
           </div>
 
           <!-- nav pills -->
@@ -87,7 +87,7 @@
               <li>
                 <hr class="dropdown-divider">
               </li>
-              <li><a class="dropdown-item" href="index.html">Log out</a></li>
+              <li><a class="dropdown-item" href="index.html" id="logoutLink">Log out</a></li>
             </ul>
           </div>
 
@@ -109,12 +109,11 @@
 
 
           <!-- 2: featured banner (the feature we recommend most) -->
-          <section class="section-black p-4 p-lg-5 mt-4 mb-4">
-            <p class="label-small text-gradient mb-3">Recommended for banks</p>
-            <h2 class="display-6 text-gradient">Fraud detection</h2>
-            <p class="text-gray mb-4">Flags unusual transactions using the banking data you already connected. Used by 7
-              of 10 banking clients.</p>
-            <a href="feature-details.html?feature_id=4" class="btn btn-lime">Request this</a>
+          <section class="section-black p-4 p-lg-5 mt-4 mb-4 d-none" id="featuredBanner">
+            <p class="label-small text-gradient mb-3">Recommended for you</p>
+            <h2 class="display-6 text-gradient" id="featuredName"></h2>
+            <p class="text-gray mb-4" id="featuredText"></p>            
+            <a href="#" class="btn btn-lime" id="featuredLink">Request this</a>
           </section>
 
 
@@ -131,15 +130,34 @@
 
 
   <!-- Bootstrap JavaScript -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/bootstrap.bundle.min.js"></script>
 
   <!-- Get the logged-in user's information -->
   <script src="js/session.js"></script>
 
   <script>
+        // Get this client's recommended feature for the banner
+    async function loadFeatured() {
+      try {
+        var orgId = currentUser.org_id;
+
+        var response = await fetch("/data/featured/" + orgId);
+        var featured = await response.json();
+
+        // only show the banner if this client has a "New feature" suggestion
+        if (featured.length > 0) {
+          document.getElementById("featuredName").textContent = featured[0].feature_name;
+          document.getElementById("featuredText").textContent = featured[0].details;
+          document.getElementById("featuredLink").href = "feature-details.html?feature_id=" + featured[0].feature_id;
+          document.getElementById("featuredBanner").classList.remove("d-none");
+        }
+
+      } catch (error) {
+        console.log("Featured banner error:", error);
+      }
+    }
     // Get the features from the database
     async function loadFeatures() {
-      console.log("loadFeatures is running");
 
       try {
         // Ask Node.js for the features
@@ -153,11 +171,11 @@
 
         var pendingResponse = await fetch("/data/pending-features/" + orgId);
         var pendingFeatures = await pendingResponse.json();
-        console.log(features);
+        
 
         // Find the area for the feature cards
         var featureCards = document.getElementById("featureCards");
-        console.log(featureCards);
+        
 
         // Remove the loading message
         featureCards.innerHTML = "";
@@ -167,24 +185,25 @@
 
           var feature = features[i];
 
-          // Check whether this feature was already requested
-          var isPending = false;
+                  
+          // Check whether this feature already has an open request
+          var requestStatus = "";
 
           for (var j = 0; j < pendingFeatures.length; j++) {
             if (pendingFeatures[j].feature_id === feature.feature_id) {
-              isPending = true;
+              requestStatus = pendingFeatures[j].status;
             }
           }
 
           var requestButton = "";
 
-          if (isPending) {
-            requestButton = `<span class="badge bg-secondary">Requested · Pending</span>`;
+          if (requestStatus != "") {
+            requestButton = `<span class="badge bg-secondary">Requested · ${requestStatus}</span>`;
           } else {
             requestButton = `<a href="feature-details.html?feature_id=${feature.feature_id}"
                       class="btn btn-dark">Request this</a>`;
           }
-          console.log("Creating card for:", feature.feature_name);
+          
 
           featureCards.innerHTML += `
                     <div class="col-md-6 col-xl-4 mb-3">
@@ -202,8 +221,7 @@
                     </div>
                 `;
         }
-        console.log("Cards added:", featureCards.children.length);
-        console.log("Card text:", featureCards.innerText);
+        
 
       } catch (error) {
         console.log(error);
@@ -213,7 +231,8 @@
     }
 
     // Run the function when the page opens
-    loadFeatures();
+     loadFeatured();
+     loadFeatures();
   </script>
 
 

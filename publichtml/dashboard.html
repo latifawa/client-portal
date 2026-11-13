@@ -1,5 +1,5 @@
-<!-- Page 3: Overview dashboard (Stage 3) -->
 <!DOCTYPE html>
+<!-- Page 3: Overview dashboard (Stage 3) -->
 <html lang="en">
 
 <head>
@@ -10,11 +10,12 @@
   <!-- small icon in the browser tab -->
   <link rel="icon" type="image/webp" href="images/humain-favicon.webp">
   <!-- Bootstrap 5.3.2 CSS -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
   <!-- Bootstrap Icons (the small icons in the sidebar and buttons) -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   <!-- Google Font: Readex Pro -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@200;300;400;500;600&display=swap">
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@200;300;400;500;600&display=swap">
   <!-- our own CSS -->
   <link rel="stylesheet" href="css/style.css">
 </head>
@@ -35,7 +36,8 @@
             <span class="brand-sub">Fabric</span>
           </a>
 
-          <button class="btn btn-outline-light btn-sm d-md-none" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu">
+          <button class="btn btn-outline-light btn-sm d-md-none" type="button" data-bs-toggle="collapse"
+            data-bs-target="#sidebarMenu">
             <i class="bi bi-list"></i>
           </button>
         </div>
@@ -82,8 +84,10 @@
             </button>
             <ul class="dropdown-menu">
               <li><a class="dropdown-item" href="account.html">Account settings</a></li>
-              <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="index.html">Log out</a></li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <li><a class="dropdown-item" href="index.html" id="logoutLink">Log out</a></li>
             </ul>
           </div>
 
@@ -107,25 +111,25 @@
             <div class="col-6 col-md-3 mb-3">
               <div class="bg-white p-3">
                 <p class="text-gray">Data queries this month</p>
-                <h3 class="text-gradient" id="monthlyQueries">128,400</h3>
+                <h3 class="text-gradient" id="monthlyQueries"></h3>
               </div>
             </div>
             <div class="col-6 col-md-3 mb-3">
               <div class="bg-white p-3">
                 <p class="text-gray">Active users</p>
-                <h3 class="text-gradient" id="activeUsers">64</h3>
+                <h3 class="text-gradient" id="activeUsers"></h3>
               </div>
             </div>
             <div class="col-6 col-md-3 mb-3">
               <div class="bg-white p-3">
                 <p class="text-gray">Data sources</p>
-                <h3 class="text-gradient" id="dataSources">3</h3>
+                <h3 class="text-gradient" id="dataSources"></h3>
               </div>
             </div>
             <div class="col-6 col-md-3 mb-3">
               <div class="bg-white p-3">
                 <p class="text-gray">Features in use</p>
-                <h3 class="text-gradient" id="featuresCount">4</h3>
+                <h3 class="text-gradient" id="featuresCount"></h3>
               </div>
             </div>
           </div>
@@ -144,27 +148,25 @@
               </div>
             </div>
 
-<!-- setup progress -->
-<div class="col-lg-4 mb-3">
-    <div class="bg-white p-4 h-100">
-        <h5>Setup progress</h5>
+            <!-- setup progress -->
+            <div class="col-lg-4 mb-3">
+              <div class="bg-white p-4 h-100">
+                <h5>Setup progress</h5>
 
-        <p class="text-gray" id="setupText">Loading progress...</p>
+                <p class="text-gray" id="setupText">Loading progress...</p>
 
-        <div class="progress mb-3">
-            <div class="progress-bar bg-teal"
-                 id="setupBar"
-                 style="width:0%">0%</div>
-        </div>
+                <div class="progress mb-3">
+                  <div class="progress-bar bg-teal" id="setupBar" style="width:0%">0%</div>
+                </div>
 
-        <p class="small mb-4">
-            <strong>Next step:</strong>
-            <span id="nextStep">Loading...</span>
-        </p>
+                <p class="small mb-4">
+                  <strong>Next step:</strong>
+                  <span id="nextStep">Loading...</span>
+                </p>
 
-        <a href="setup.html" class="btn btn-lime">Continue setup</a>
-    </div>
-</div>
+                <a href="setup.html" class="btn btn-lime">Continue setup</a>
+              </div>
+            </div>
 
           </div>
 
@@ -187,10 +189,10 @@
                   </tr>
                 </thead>
                 <tbody id="featuresTable">
-               <tr>
-               <td colspan="5">Loading features...</td>
-               </tr>
-              </tbody>
+                  <tr>
+                    <td colspan="5">Loading features...</td>
+                  </tr>
+                </tbody>
               </table>
             </div>
           </section>
@@ -201,9 +203,9 @@
             <h5>Suggested for you</h5>
             <p class="text-gray">Explore features that may help your team.</p>
 
-          <div class="row" id="suggestionCards">
-          <p class="text-gray">Loading suggestions...</p>
-          </div>
+            <div class="row" id="suggestionCards">
+              <p class="text-gray">Loading suggestions...</p>
+            </div>
           </section>
 
         </main>
@@ -216,225 +218,228 @@
   <script src="js/session.js"></script>
 
   <!-- Bootstrap JavaScript -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-
+  <script src="js/bootstrap.bundle.min.js"></script>
   <!-- Chart.js library (draws the line chart) -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.js"></script>
 
   <!-- Our line chart: drawn inside <canvas id="apiChart"> -->
-    <script>
+  <script>
     // Get weekly usage data from MySQL
     async function loadWeeklyChart() {
-        try {
-            var orgId = currentUser.org_id;
+      try {
+        var orgId = currentUser.org_id;
 
-            var response = await fetch("/data/weekly-usage/" + orgId);
-            var weeks = await response.json();
+        var response = await fetch("/data/weekly-usage/" + orgId);
+        var weeks = await response.json();
 
-            var weekLabels = [];
-            var usageNumbers = [];
+        var weekLabels = [];
+        var usageNumbers = [];
 
-            for (var i = 0; i < weeks.length; i++) {
-                weekLabels.push("Week " + (i + 1));
-                usageNumbers.push(weeks[i].usage_count);
-            }
-
-            // Draw the chart using the database values
-            new Chart(document.getElementById("apiChart"), {
-                type: "line",
-                data: {
-                    labels: weekLabels,
-                    datasets: [{
-                        label: "Data queries",
-                        data: usageNumbers,
-                        borderColor: "#3A869D"
-                    }]
-                }
-            });
-
-        } catch (error) {
-            console.log("Weekly chart error:", error);
+        for (var i = 0; i < weeks.length; i++) {
+          weekLabels.push("Week " + (i + 1));
+          usageNumbers.push(weeks[i].usage_count);
         }
+
+        // Draw the chart using the database values
+        new Chart(document.getElementById("apiChart"), {
+          type: "line",
+          data: {
+            labels: weekLabels,
+            datasets: [{
+              label: "Data queries",
+              data: usageNumbers,
+              borderColor: "#3A869D"
+            }]
+          }
+        });
+
+      } catch (error) {
+        console.log("Weekly chart error:", error);
+      }
     }
 
     loadWeeklyChart();
-</script>
+  </script>
 
   <script>
     // Display the logged-in user's first name
     document.getElementById("greetingName").textContent =
-    currentUser.full_name.split(" ")[0];
-    
+      currentUser.full_name.split(" ")[0];
+
     // Get Dashboard numbers from MySQL
     async function loadDashboardNumbers() {
-        try {
-            var orgId = currentUser.org_id;
+      try {
+        var orgId = currentUser.org_id;
 
-            var response = await fetch("/data/dashboard/" + orgId);
-            var data = await response.json();
+        var response = await fetch("/data/dashboard/" + orgId);
+        var data = await response.json();
 
-            document.getElementById("activeUsers").textContent = data.fabric_users;
+        document.getElementById("activeUsers").textContent = data.fabric_users;
 
-            document.getElementById("dataSources").textContent = data.data_sources;
+        document.getElementById("dataSources").textContent = data.data_sources;
 
-            // Display this month's data queries
-            document.getElementById("monthlyQueries").textContent = Number(data.monthly_queries).toLocaleString();
+        // Display this month's data queries
+        document.getElementById("monthlyQueries").textContent = Number(data.monthly_queries).toLocaleString();
 
-            // Get the number of features in use
-            var featureResponse = await fetch("/data/feature-count/" + orgId);
-            var featureData = await featureResponse.json();
+        // Get the number of features in use
+        var featureResponse = await fetch("/data/feature-count/" + orgId);
+        var featureData = await featureResponse.json();
 
-            document.getElementById("featuresCount").textContent = featureData.total;
+        document.getElementById("featuresCount").textContent = featureData.total;
 
-        } catch (error) {
-            console.log("Dashboard error:", error);
-        }
+      } catch (error) {
+        console.log("Dashboard error:", error);
+      }
     }
 
     loadDashboardNumbers();
-</script>
+  </script>
 
-<script>
+  <script>
     // Get the organization's features from MySQL
     async function loadOrgFeatures() {
-        try {
-            var orgId = currentUser.org_id;
+      try {
+        var orgId = currentUser.org_id;
 
-            var response = await fetch("/data/org-features/" + orgId);
-            var features = await response.json();
+        var response = await fetch("/data/org-features/" + orgId);
+        var features = await response.json();
 
-            var table = document.getElementById("featuresTable");
+        var table = document.getElementById("featuresTable");
 
-            table.innerHTML = "";
+        table.innerHTML = "";
 
-            for (var i = 0; i < features.length; i++) {
-                table.innerHTML += `
+        for (var i = 0; i < features.length; i++) {
+          var percent = Math.round((features[i].usage_this_month / features[i].plan_limit) * 100);
+          var badgeColor = "bg-teal";
+          if (features[i].status == "Low use") badgeColor = "bg-secondary";
+          table.innerHTML += `
                     <tr>
                         <td>${features[i].feature_name}</td>
-                        <td><span class="badge bg-teal">Active</span></td>
-                        <td>—</td>
-                        <td>—</td>
-                        <td>—</td>
+                        <td><span class="badge ${badgeColor}">${features[i].status}</span></td>
+                        <td>${features[i].usage_this_month.toLocaleString()} ${features[i].unit}</td>
+                        <td>${features[i].plan_limit.toLocaleString()}</td>
+                        <td><div class="progress"><div class="progress-bar bg-teal" style="width:${percent}%">${percent}%</div></div></td>
                     </tr>
                 `;
-            }
+        }
 
-            if (features.length === 0) {
-                table.innerHTML = `
+        if (features.length === 0) {
+          table.innerHTML = `
                     <tr>
                         <td colspan="5">No features in use yet.</td>
                     </tr>
                 `;
-            }
-
-        } catch (error) {
-            console.log("Features table error:", error);
         }
+
+      } catch (error) {
+        console.log("Features table error:", error);
+      }
     }
 
     loadOrgFeatures();
-</script>
+  </script>
 
-<script>
+  <script>
     // Get setup progress from MySQL
     async function loadSetupProgress() {
-        try {
-            var orgId = currentUser.org_id;
+      try {
+        var orgId = currentUser.org_id;
 
-            var response = await fetch("/data/setup-progress/" + orgId);
-            var steps = await response.json();
+        var response = await fetch("/data/setup-progress/" + orgId);
+        var steps = await response.json();
 
-            var totalSteps = steps.length;
-            var completedSteps = 0;
-            var nextStep = "All steps completed!";
+        var totalSteps = steps.length;
+        var completedSteps = 0;
+        var nextStep = "All steps completed!";
 
-            for (var i = 0; i < steps.length; i++) {
-                if (steps[i].status === "Done") {
-                    completedSteps++;
-                } else if (nextStep === "All steps completed!") {
-                    nextStep = steps[i].step_name;
-                }
-            }
-
-            var percentage = 0;
-
-            if (totalSteps > 0) {
-                percentage = Math.round((completedSteps / totalSteps) * 100);
-            }
-
-            document.getElementById("setupText").textContent =
-                completedSteps + " of " + totalSteps + " steps done.";
-
-            document.getElementById("setupBar").style.width =
-                percentage + "%";
-
-            document.getElementById("setupBar").textContent =
-                percentage + "%";
-
-            document.getElementById("nextStep").textContent =
-                nextStep;
-
-        } catch (error) {
-            console.log("Setup progress error:", error);
+        for (var i = 0; i < steps.length; i++) {
+          if (steps[i].status === "Done") {
+            completedSteps++;
+          } else if (nextStep === "All steps completed!") {
+            nextStep = steps[i].step_name;
+          }
         }
+
+        var percentage = 0;
+
+        if (totalSteps > 0) {
+          percentage = Math.round((completedSteps / totalSteps) * 100);
+        }
+
+        document.getElementById("setupText").textContent =
+          completedSteps + " of " + totalSteps + " steps done.";
+
+        document.getElementById("setupBar").style.width =
+          percentage + "%";
+
+        document.getElementById("setupBar").textContent =
+          percentage + "%";
+
+        document.getElementById("nextStep").textContent =
+          nextStep;
+
+      } catch (error) {
+        console.log("Setup progress error:", error);
+      }
     }
 
     loadSetupProgress();
-</script>
+  </script>
 
-<script>
+  <script>
     // Get Dashboard suggestions from MySQL
     async function loadDashboardSuggestions() {
-        try {
-            var orgId = currentUser.org_id;
+      try {
+        var orgId = currentUser.org_id;
 
-            var response = await fetch("/data/dashboard-suggestions/" + orgId);
-            var suggestions = await response.json();
+        var response = await fetch("/data/dashboard-suggestions/" + orgId);
+        var suggestions = await response.json();
 
-            var cards = document.getElementById("suggestionCards");
-            cards.innerHTML = "";
+        var cards = document.getElementById("suggestionCards");
+        cards.innerHTML = "";
 
-            for (var i = 0; i < suggestions.length; i++) {
-                var suggestion = suggestions[i];
+        for (var i = 0; i < suggestions.length; i++) {
+          var suggestion = suggestions[i];
 
-                var card = document.createElement("div");
-                card.className = "col-md-6 mb-3";
+          var card = document.createElement("div");
+          card.className = "col-md-6 mb-3";
 
-                var content = document.createElement("div");
-                content.className = "bg-white p-4 h-100";
+          var content = document.createElement("div");
+          content.className = "bg-white p-4 h-100";
 
-                var title = document.createElement("h5");
-                title.textContent = suggestion.title;
+          var title = document.createElement("h5");
+          title.textContent = suggestion.title;
 
-                var details = document.createElement("p");
-                details.className = "text-gray";
-                details.textContent = suggestion.details;
+          var details = document.createElement("p");
+          details.className = "text-gray";
+          details.textContent = suggestion.details;
 
-                var link = document.createElement("a");
-                link.className = "btn btn-outline-dark";
-                link.href = suggestion.link_page;
-                link.textContent = "View suggestion";
+          var link = document.createElement("a");
+          link.className = "btn btn-outline-dark";
+          link.href = suggestion.link_page;
+          link.textContent = "View suggestion";
 
-                content.appendChild(title);
-                content.appendChild(details);
-                content.appendChild(link);
-                card.appendChild(content);
-                cards.appendChild(card);
-            }
-
-            if (suggestions.length === 0) {
-                cards.textContent = "No suggestions available.";
-            }
-
-        } catch (error) {
-            console.log("Dashboard suggestions error:", error);
-            document.getElementById("suggestionCards").textContent =
-                "Could not load suggestions.";
+          content.appendChild(title);
+          content.appendChild(details);
+          content.appendChild(link);
+          card.appendChild(content);
+          cards.appendChild(card);
         }
+
+        if (suggestions.length === 0) {
+          cards.textContent = "No suggestions available.";
+        }
+
+      } catch (error) {
+        console.log("Dashboard suggestions error:", error);
+        document.getElementById("suggestionCards").textContent =
+          "Could not load suggestions.";
+      }
     }
 
     loadDashboardSuggestions();
-</script>
+  </script>
 
 </body>
+
 </html>

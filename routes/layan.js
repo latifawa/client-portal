@@ -1,15 +1,6 @@
 // Routes for: login, account, admin, index
 module.exports = function (app, dbCon) {
 
-  // get all organizations
-  app.get("/data/organizations", (req, res) => {
-    let sqlQuery = "SELECT * FROM organizations";
-    dbCon.query(sqlQuery, (error, results) => {
-      if (error) throw error;
-      res.send(results);
-    });
-  });
-
   // LOGIN: check the email and password in the users table
   app.post("/data/login", (req, res) => {
     // validation: both fields must be filled
@@ -21,7 +12,7 @@ module.exports = function (app, dbCon) {
                            organizations.name AS org_name, organizations.plan
                     FROM users
                     LEFT JOIN organizations ON users.org_id = organizations.org_id
-                    WHERE users.email = ? AND users.password = ?`;
+                    WHERE users.email = ? AND BINARY users.password = ?`;
     dbCon.query(sqlQuery, [req.body.email, req.body.password], (error, results) => {
       if (error) {
         return res.status(500).send({ success: false, message: "Internal Server Error.." });
@@ -30,16 +21,18 @@ module.exports = function (app, dbCon) {
       if (results.length == 0) {
         return res.status(401).send({ success: false, message: "Wrong email or password" });
       }
-    
+
       // remember when this person last logged in
-      dbCon.query("UPDATE users SET last_active = CURDATE() WHERE user_id = ?", [results[0].user_id]);
+      dbCon.query("UPDATE users SET last_active = CURDATE() WHERE user_id = ?", [results[0].user_id], (error) => {
+        if (error) console.log(error);
+      });
       // found: send back who logged in (without the password)
       res.status(200).send({ success: true, data: results[0] });
     });
   });
 
 
-    // ACCOUNT: get one user's profile + their organization
+  // ACCOUNT: get one user's profile + their organization
   app.get("/data/account/:userId", (req, res) => {
     let sqlQuery = `SELECT users.full_name, users.email, users.job_title, users.phone,
                            organizations.name AS org_name, organizations.sector,
@@ -60,7 +53,7 @@ module.exports = function (app, dbCon) {
 
   // ACCOUNT: get all team members of one organization
   app.get("/data/team/:orgId", (req, res) => {
-    let sqlQuery = "SELECT full_name, email, role, last_active FROM users WHERE org_id = ?";
+    let sqlQuery = "SELECT full_name, email, role, last_active FROM users WHERE org_id = ? ORDER BY user_id";
     dbCon.query(sqlQuery, [req.params.orgId], (error, results) => {
       if (error) {
         return res.status(500).send({ success: false, message: "Internal Server Error.." });
@@ -72,16 +65,15 @@ module.exports = function (app, dbCon) {
   // ACCOUNT: save the profile (UPDATE)
   app.put("/data/account/:userId", (req, res) => {
     // validation
-    if (!req.body.full_name || req.body.full_name.length < 3) {
+    if (!req.body.full_name || req.body.full_name.trim().length < 3) {
       return res.status(400).send({ success: false, message: "Full name must be at least 3 characters" });
     }
-    if (!req.body.email) {
-      return res.status(400).send({ success: false, message: "Work email is required" });
+    if (!req.body.email || !req.body.email.includes("@")) {
+      return res.status(400).send({ success: false, message: "Please enter a valid work email" });
     }
 
     let sqlQuery = "UPDATE users SET full_name = ?, email = ?, job_title = ?, phone = ? WHERE user_id = ?";
-    let values = [req.body.full_name, req.body.email, req.body.job_title, req.body.phone, req.params.userId];
-
+    let values = [req.body.full_name.trim(), req.body.email.trim(), req.body.job_title, req.body.phone, req.params.userId];
     dbCon.query(sqlQuery, values, (error, results) => {
       if (error) {
         // the email column is UNIQUE: two people can't have the same email
@@ -90,11 +82,15 @@ module.exports = function (app, dbCon) {
         }
         return res.status(500).send({ success: false, message: "Internal Server Error.." });
       }
+      // nothing changed = no user with this id
+      if (results.affectedRows == 0) {
+        return res.status(404).send({ success: false, message: "User not found" });
+      }
       res.status(200).send({ success: true, message: "Your profile was saved" });
     });
   });
 
-    // ADMIN → CLIENTS: every organization + how many setup steps are done
+  // ADMIN → CLIENTS: every organization + how many setup steps are done
   app.get("/data/admin/clients", (req, res) => {
     let sqlQuery = `SELECT organizations.org_id, organizations.name, organizations.plan,
                       (SELECT COUNT(*) FROM setup_steps
@@ -111,7 +107,7 @@ module.exports = function (app, dbCon) {
     });
   });
 
-    // ADMIN → CLIENTS: mark a client's next setup step as done
+  // ADMIN → CLIENTS: mark a client's next setup step as done
   app.put("/data/admin/clients/:orgId/next-step", (req, res) => {
     let sqlQuery = `UPDATE setup_steps SET status = 'Done', completed_at = CURDATE()
                     WHERE org_id = ? AND status != 'Done'
@@ -129,12 +125,16 @@ module.exports = function (app, dbCon) {
       let nextQuery = `UPDATE setup_steps SET status = 'In progress'
                        WHERE org_id = ? AND status = 'Not started'
                        ORDER BY step_number LIMIT 1`;
-      dbCon.query(nextQuery, [req.params.orgId], () => {
+      dbCon.query(nextQuery, [req.params.orgId], (error) => {
+        if (error) {
+          return res.status(500).send({ success: false, message: "Internal Server Error.." });
+        }
         res.status(200).send({ success: true, message: "Step marked as done" });
       });
     });
   });
-    // ADMIN → REQUESTS: requests that still need a decision
+
+  // ADMIN → REQUESTS: requests that still need a decision
   app.get("/data/admin/requests", (req, res) => {
     let sqlQuery = `SELECT requests.request_id, organizations.name AS org_name,
                            requests.title, requests.created_at, requests.status
@@ -173,7 +173,7 @@ module.exports = function (app, dbCon) {
     });
   });
 
-    // ADMIN → MESSAGES: all messages, newest first, with the client and sender names
+  // ADMIN → MESSAGES: all messages, newest first, with the client and sender names
   app.get("/data/admin/messages", (req, res) => {
     let sqlQuery = `SELECT messages.message_id, messages.org_id, organizations.name AS org_name,
                            users.full_name AS sender_name, users.role AS sender_role,
@@ -211,7 +211,7 @@ module.exports = function (app, dbCon) {
     });
   });
 
-    // ADMIN → TICKETS: all tickets, newest first, with the client's name
+  // ADMIN → TICKETS: all tickets, newest first, with the client's name
   app.get("/data/admin/tickets", (req, res) => {
     let sqlQuery = `SELECT tickets.ticket_id, organizations.name AS org_name,
                            tickets.subject, tickets.status, tickets.created_at

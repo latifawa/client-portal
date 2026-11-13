@@ -17,6 +17,7 @@ if (currentUser && currentUser.role != "Staff" && onAdminPage) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+  if (!currentUser) return;
   // 3. fill the sidebar (only on pages that have these ids)
   if (document.getElementById("orgName")) {
     document.getElementById("orgName").textContent = currentUser.org_name;
@@ -24,8 +25,9 @@ document.addEventListener("DOMContentLoaded", () => {
   if (document.getElementById("orgPlan")) {
     document.getElementById("orgPlan").textContent = currentUser.plan + " plan";
   }
-  if (document.getElementById("userName")) {
-    document.getElementById("userName").textContent = currentUser.full_name;
+    if (document.getElementById("userName")) {
+    // first name only, the sidebar is narrow
+    document.getElementById("userName").textContent = currentUser.full_name.split(" ")[0];
   }
 
   // 4. log out: forget the user, then the link goes to index.html

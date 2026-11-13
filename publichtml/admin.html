@@ -1,5 +1,5 @@
-<!-- Page 11: Admin portal (for HUMAIN staff only) -->
 <!DOCTYPE html>
+<!-- Page 11: Admin portal (for HUMAIN staff only) -->
 <html lang="en">
 
 <head>
@@ -10,9 +10,10 @@
   <!-- small icon in the browser tab -->
   <link rel="icon" type="image/webp" href="images/humain-favicon.webp">
   <!-- Bootstrap 5.3.2 CSS -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
   <!-- Google Font: Readex Pro -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@200;300;400;500;600&display=swap">
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@200;300;400;500;600&display=swap">
   <!-- our own CSS -->
   <link rel="stylesheet" href="css/style.css">
 </head>
@@ -50,25 +51,25 @@
       <div class="row mb-4">
         <div class="col-6 col-lg-3 mb-3">
           <div class="bg-white p-4 h-100">
-            <h2 class="text-gradient" id="statRequestsToReview">3</h2>
+            <h2 class="text-gradient" id="statRequestsToReview"></h2>
             <p class="text-gray mb-0">Requests to review</p>
           </div>
         </div>
         <div class="col-6 col-lg-3 mb-3">
           <div class="bg-white p-4 h-100">
-            <h2 class="text-gradient" id="statNewMessages">1</h2>
-            <p class="text-gray mb-0">New message</p>
+            <h2 class="text-gradient" id="statNewMessages"></h2>
+            <p class="text-gray mb-0">New messages</p>
           </div>
         </div>
         <div class="col-6 col-lg-3 mb-3">
           <div class="bg-white p-4 h-100">
-            <h2 class="text-gradient" id="statOpenTickets">2</h2>
+            <h2 class="text-gradient" id="statOpenTickets"></h2>
             <p class="text-gray mb-0">Open tickets</p>
           </div>
         </div>
         <div class="col-6 col-lg-3 mb-3">
           <div class="bg-white p-4 h-100">
-            <h2 class="text-gradient" id="statClientsInSetup">2</h2>
+            <h2 class="text-gradient" id="statClientsInSetup"></h2>
             <p class="text-gray mb-0">Clients in setup</p>
           </div>
         </div>
@@ -96,9 +97,8 @@
         <!-- tab content -->
         <div class="tab-content">
 
-          <!-- TAB 1: REQUESTS (sent from the Catalog "Request this" form and from Suggestions) -->
+          <!-- TAB 1: REQUESTS (sent from the feature-details request form and from Suggestions) -->
           <div class="tab-pane fade show active" id="requests">
-
             <h2 class="h5">Requests waiting for a decision</h2>
             <p class="text-gray">Clients see your decision and note in My requests.</p>
 
@@ -114,13 +114,14 @@
                   </tr>
                 </thead>
                 <tbody id="requestsTableBody">
-                  
-                  
+                  <tr>
+                    <td colspan="5" class="text-gray">Loading...</td>
+                  </tr>
                 </tbody>
               </table>
             </div>
 
-                        
+
             <h3 class="h6 mb-3">Review a request</h3>
 
             <form id="requestForm">
@@ -142,7 +143,8 @@
               </div>
               <div class="mb-3">
                 <label for="requestNote" class="form-label">Note for the client</label>
-                <input type="text" class="form-control" id="requestNote" name="requestNote" placeholder="For example: Live from 1 Nov" required>
+                <input type="text" class="form-control" id="requestNote" name="requestNote"
+                  placeholder="For example: Live from 1 Nov" required minlength="3">
               </div>
               <button type="submit" class="btn btn-dark">Save decision</button>
             </form>
@@ -168,12 +170,14 @@
                   </tr>
                 </thead>
                 <tbody id="messagesTableBody">
-                  
+                  <tr>
+                    <td colspan="5" class="text-gray">Loading...</td>
+                  </tr>
                 </tbody>
               </table>
             </div>
 
-                        
+
             <h3 class="h6 mb-3">Reply to a client</h3>
 
             <form id="replyForm">
@@ -184,7 +188,8 @@
               </div>
               <div class="mb-3">
                 <label for="replyText" class="form-label">Your reply</label>
-                <textarea class="form-control" id="replyText" name="replyText" rows="3" placeholder="Write your reply here..." required></textarea>
+                <textarea class="form-control" id="replyText" name="replyText" rows="3"
+                  placeholder="Write your reply here..." required minlength="2"></textarea>
               </div>
               <button type="submit" class="btn btn-dark">Send reply</button>
             </form>
@@ -210,12 +215,14 @@
                   </tr>
                 </thead>
                 <tbody id="ticketsTableBody">
-                  
+                  <tr>
+                    <td colspan="5" class="text-gray">Loading...</td>
+                  </tr>
                 </tbody>
               </table>
             </div>
 
-                        
+
             <h3 class="h6 mb-3">Update a ticket</h3>
 
             <form id="ticketForm">
@@ -257,12 +264,14 @@
                   </tr>
                 </thead>
                 <tbody id="clientsTableBody">
-                  
+                  <tr>
+                    <td colspan="4" class="text-gray">Loading...</td>
+                  </tr>
                 </tbody>
               </table>
             </div>
 
-                        
+
             <h3 class="h6 mb-3">Mark a setup step as done</h3>
 
             <form id="setupForm">
@@ -289,68 +298,74 @@
 
 
   <!-- Bootstrap JavaScript -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/bootstrap.bundle.min.js"></script>
 
   <script src="js/session.js"></script>
 
   <script>
-  const API_BASE_URL = "http://localhost:3000/data";
+    const API_BASE_URL = "http://localhost:3000/data";
 
-  function showAlert(message, type) {
-    const alertDiv = document.createElement("div");
-    alertDiv.className = `alert alert-${type} alert-dismissible fade show position-fixed top-0 end-0 m-3`;
-    alertDiv.style.zIndex = "9999";
-    alertDiv.innerHTML = `${message}<button type="button" class="btn-close" data-bs-dismiss="alert"></button>`;
-    document.body.appendChild(alertDiv);
-    setTimeout(() => alertDiv.remove(), 3000);
-  }
+    function showAlert(message, type) {
+      const alertDiv = document.createElement("div");
+      alertDiv.className = `alert alert-${type} alert-dismissible fade show position-fixed top-0 end-0 m-3`;
+      alertDiv.style.zIndex = "9999";
+      alertDiv.innerHTML = `${message}<button type="button" class="btn-close" data-bs-dismiss="alert"></button>`;
+      document.body.appendChild(alertDiv);
+      setTimeout(() => alertDiv.remove(), 3000);
+    }
     // turns "2026-09-24T07:30:00.000Z" into "24 Sep 2026"
-  function formatDate(date) {
-    return new Date(date).toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" });
-  }
+    function formatDate(date) {
+      return new Date(date).toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" });
+    }
 
-  // the right Bootstrap badge colour for each status word
-  function statusBadge(status) {
-    let colour = "bg-secondary";                                       // Pending, Open, New
-    if (status == "In progress") colour = "bg-dark";
-    if (status == "Approved" || status == "Done" || status == "Resolved" || status == "Replied") colour = "bg-teal";
-    if (status == "Declined") colour = "bg-light text-dark";
-    return `<span class="badge ${colour}">${status}</span>`;
-  }
+    // the right Bootstrap badge colour for each status word
+    function statusBadge(status) {
+      let colour = "bg-secondary";                                       // Pending, Open, New
+      if (status == "In progress") colour = "bg-dark";
+      if (status == "Approved" || status == "Done" || status == "Resolved" || status == "Replied") colour = "bg-teal";
+      if (status == "Declined") colour = "bg-light text-dark";
+      return `<span class="badge ${colour}">${status}</span>`;
+    }
 
     document.addEventListener("DOMContentLoaded", () => {
-    // Clients tab
-    loadClients();
-    document.getElementById("setupForm").addEventListener("submit", markNextStep);
+      // Clients tab
+      loadClients();
+      document.getElementById("setupForm").addEventListener("submit", markNextStep);
 
-    // Requests tab
-    loadRequests();
-    document.getElementById("requestForm").addEventListener("submit", saveDecision);
+      // Requests tab
+      loadRequests();
+      document.getElementById("requestForm").addEventListener("submit", saveDecision);
 
-    // Messages tab
-    loadMessages();
-    document.getElementById("replyForm").addEventListener("submit", sendReply);
-    
-    // Tickets tab
-    loadTickets();
-    document.getElementById("ticketForm").addEventListener("submit", updateTicket);
-  });
+      // Messages tab
+      loadMessages();
+      document.getElementById("replyForm").addEventListener("submit", sendReply);
 
-  // ===== CLIENTS TAB =====
+      // Tickets tab
+      loadTickets();
+      document.getElementById("ticketForm").addEventListener("submit", updateTicket);
+    });
 
-  // SELECT: fill the table, the dropdown and the summary card
-  async function loadClients() {
-    try {
-      const response = await fetch(`${API_BASE_URL}/admin/clients`);
-      const result = await response.json();
-      const clients = result.data;
+    // ===== CLIENTS TAB =====
 
-      // the table
-      document.getElementById("clientsTableBody").innerHTML = clients
-        .map((c) => {
-          const percent = Math.round((c.steps_done / c.total_steps) * 100);
-          const isActive = c.steps_done == c.total_steps;
-          return `
+    // SELECT: fill the table, the dropdown and the summary card
+    async function loadClients() {
+      try {
+        const response = await fetch(`${API_BASE_URL}/admin/clients`);
+        const result = await response.json();
+
+        if (!result.success) {
+          showAlert(result.message, "danger");
+          return;
+        }
+
+        const clients = result.data;
+
+        // the table
+        document.getElementById("clientsTableBody").innerHTML = clients
+          .map((c) => {
+            const percent = Math.round((c.steps_done / c.total_steps) * 100);
+            const isActive = c.steps_done == c.total_steps;
+            return `
             <tr>
               <td>${c.name}</td>
               <td>${c.plan}</td>
@@ -363,55 +378,61 @@
                 ? '<span class="badge bg-teal">Active</span>'
                 : '<span class="badge bg-dark">In setup</span>'}</td>
             </tr>`;
-        })
-        .join("");
+          })
+          .join("");
 
-      // the dropdown: only clients that are still in setup
-      const inSetup = clients.filter((c) => c.steps_done < c.total_steps);
-      document.getElementById("setupClient").innerHTML = inSetup
-        .map((c) => `<option value="${c.org_id}">${c.name} (${c.steps_done} of ${c.total_steps} done)</option>`)
-        .join("");
+        // the dropdown: only clients that are still in setup
+        const inSetup = clients.filter((c) => c.steps_done < c.total_steps);
+        document.getElementById("setupClient").innerHTML = inSetup
+          .map((c) => `<option value="${c.org_id}">${c.name} (${c.steps_done} of ${c.total_steps} done)</option>`)
+          .join("");
 
-      // the summary card
-      document.getElementById("statClientsInSetup").textContent = inSetup.length;
-    } catch (error) {
-      showAlert("Error loading clients: " + error.message, "danger");
-    }
-  }
-
-  // UPDATE: mark the chosen client's next step as done
-  async function markNextStep(event) {
-    event.preventDefault();
-    const orgId = document.getElementById("setupClient").value;
-
-    try {
-      const response = await fetch(`${API_BASE_URL}/admin/clients/${orgId}/next-step`, {
-        method: "PUT",
-      });
-      const result = await response.json();
-
-      if (result.success) {
-        showAlert(result.message, "success");
-        loadClients();   // refresh the table, dropdown and card
-      } else {
-        showAlert(result.message, "danger");
+        // the summary card
+        document.getElementById("statClientsInSetup").textContent = inSetup.length;
+      } catch (error) {
+        showAlert("Error loading clients: " + error.message, "danger");
       }
-    } catch (error) {
-      showAlert("Error: " + error.message, "danger");
     }
-  }
+
+    // UPDATE: mark the chosen client's next step as done
+    async function markNextStep(event) {
+      event.preventDefault();
+      const orgId = document.getElementById("setupClient").value;
+
+      try {
+        const response = await fetch(`${API_BASE_URL}/admin/clients/${orgId}/next-step`, {
+          method: "PUT",
+        });
+        const result = await response.json();
+
+        if (result.success) {
+          showAlert(result.message, "success");
+          loadClients();   // refresh the table, dropdown and card
+        } else {
+          showAlert(result.message, "danger");
+        }
+      } catch (error) {
+        showAlert("Error: " + error.message, "danger");
+      }
+    }
     // ===== REQUESTS TAB =====
 
-  // SELECT: fill the table, the dropdown and the summary card
-  async function loadRequests() {
-    try {
-      const response = await fetch(`${API_BASE_URL}/admin/requests`);
-      const result = await response.json();
-      const requests = result.data;
+    // SELECT: fill the table, the dropdown and the summary card
+    async function loadRequests() {
+      try {
+        const response = await fetch(`${API_BASE_URL}/admin/requests`);
+        const result = await response.json();
 
-      // the table
-      document.getElementById("requestsTableBody").innerHTML = requests
-        .map((r) => `
+        if (!result.success) {
+          showAlert(result.message, "danger");
+          return;
+        }
+
+        const requests = result.data;
+
+        // the table
+        document.getElementById("requestsTableBody").innerHTML = requests
+          .map((r) => `
           <tr>
             <td>R-${r.request_id}</td>
             <td>${r.org_name}</td>
@@ -419,72 +440,78 @@
             <td>${formatDate(r.created_at)}</td>
             <td>${statusBadge(r.status)}</td>
           </tr>`)
-        .join("");
+          .join("");
 
-      // the dropdown
-      document.getElementById("requestId").innerHTML = requests
-        .map((r) => `<option value="${r.request_id}">R-${r.request_id} · ${r.org_name} · ${r.title}</option>`)
-        .join("");
+        // the dropdown
+        document.getElementById("requestId").innerHTML = requests
+          .map((r) => `<option value="${r.request_id}">R-${r.request_id} · ${r.org_name} · ${r.title}</option>`)
+          .join("");
 
-      // the summary card: only the ones nobody has looked at yet
-      document.getElementById("statRequestsToReview").textContent =
-        requests.filter((r) => r.status == "Pending").length;
-    } catch (error) {
-      showAlert("Error loading requests: " + error.message, "danger");
-    }
-  }
-
-  // UPDATE: save Ruba's decision
-  async function saveDecision(event) {
-    event.preventDefault();
-    const requestId = document.getElementById("requestId").value;
-
-    const decisionData = {
-      status: document.getElementById("decision").value,
-      note: document.getElementById("requestNote").value.trim(),
-    };
-
-    try {
-      const response = await fetch(`${API_BASE_URL}/admin/requests/${requestId}`, {
-        method: "PUT",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(decisionData),
-      });
-      const result = await response.json();
-
-      if (result.success) {
-        showAlert(result.message, "success");
-        document.getElementById("requestForm").reset();   // empty the form
-        loadRequests();                                   // refresh the table
-      } else {
-        showAlert(result.message, "danger");
+        // the summary card: only the ones nobody has looked at yet
+        document.getElementById("statRequestsToReview").textContent =
+          requests.filter((r) => r.status == "Pending").length;
+      } catch (error) {
+        showAlert("Error loading requests: " + error.message, "danger");
       }
-    } catch (error) {
-      showAlert("Error: " + error.message, "danger");
     }
-  }
+
+    // UPDATE: save Ruba's decision
+    async function saveDecision(event) {
+      event.preventDefault();
+      const requestId = document.getElementById("requestId").value;
+
+      const decisionData = {
+        status: document.getElementById("decision").value,
+        note: document.getElementById("requestNote").value.trim(),
+      };
+
+      try {
+        const response = await fetch(`${API_BASE_URL}/admin/requests/${requestId}`, {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(decisionData),
+        });
+        const result = await response.json();
+
+        if (result.success) {
+          showAlert(result.message, "success");
+          document.getElementById("requestForm").reset();   // empty the form
+          loadRequests();                                   // refresh the table
+        } else {
+          showAlert(result.message, "danger");
+        }
+      } catch (error) {
+        showAlert("Error: " + error.message, "danger");
+      }
+    }
 
     // ===== MESSAGES TAB =====
 
-  // SELECT: one row per client conversation (its latest message)
-  async function loadMessages() {
-    try {
-      const response = await fetch(`${API_BASE_URL}/admin/messages`);
-      const result = await response.json();
-      const messages = result.data;
+    // SELECT: one row per client conversation (its latest message)
+    async function loadMessages() {
+      try {
+        const response = await fetch(`${API_BASE_URL}/admin/messages`);
+        const result = await response.json();
 
-      // the messages arrive newest first, so the FIRST one we meet
-      // for each client is that client's latest message
-      const latest = [];
-      messages.forEach((m) => {
-        if (!latest.find((x) => x.org_id == m.org_id)) {
-          latest.push(m);
+        if (!result.success) {
+          showAlert(result.message, "danger");
+          return;
         }
-      });
 
-      // the table
-      document.getElementById("messagesTableBody").innerHTML = latest
-        .map((m) => `
+        const messages = result.data;
+
+        // the messages arrive newest first, so the FIRST one we meet
+        // for each client is that client's latest message
+        const latest = [];
+        messages.forEach((m) => {
+          if (!latest.find((x) => x.org_id == m.org_id)) {
+            latest.push(m);
+          }
+        });
+
+        // the table
+        document.getElementById("messagesTableBody").innerHTML = latest
+          .map((m) => `
           <tr>
             <td>${m.org_name}</td>
             <td>${m.sender_name}</td>
@@ -492,62 +519,68 @@
             <td>${formatDate(m.created_at)}</td>
             <td>${statusBadge(m.sender_role == "Staff" ? "Replied" : "New")}</td>
           </tr>`)
-        .join("");
+          .join("");
 
-      // the dropdown: one option per client
-      document.getElementById("replyClient").innerHTML = latest
-        .map((m) => `<option value="${m.org_id}">${m.org_name}</option>`)
-        .join("");
+        // the dropdown: one option per client
+        document.getElementById("replyClient").innerHTML = latest
+          .map((m) => `<option value="${m.org_id}">${m.org_name}</option>`)
+          .join("");
 
-      // the summary card: conversations waiting for HUMAIN
-      document.getElementById("statNewMessages").textContent =
-        latest.filter((m) => m.sender_role != "Staff").length;
-    } catch (error) {
-      showAlert("Error loading messages: " + error.message, "danger");
-    }
-  }
-
-  // INSERT: Ruba sends a reply
-  async function sendReply(event) {
-    event.preventDefault();
-
-    const replyData = {
-      user_id: currentUser.user_id,                               // Ruba (from session.js)
-      org_id: document.getElementById("replyClient").value,      // which client
-      message: document.getElementById("replyText").value.trim(),
-    };
-
-    try {
-      const response = await fetch(`${API_BASE_URL}/admin/messages`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(replyData),
-      });
-      const result = await response.json();
-
-      if (result.success) {
-        showAlert(result.message, "success");
-        document.getElementById("replyForm").reset();
-        loadMessages();   // refresh: that client becomes "Replied"
-      } else {
-        showAlert(result.message, "danger");
+        // the summary card: conversations waiting for HUMAIN
+        document.getElementById("statNewMessages").textContent =
+          latest.filter((m) => m.sender_role != "Staff").length;
+      } catch (error) {
+        showAlert("Error loading messages: " + error.message, "danger");
       }
-    } catch (error) {
-      showAlert("Error: " + error.message, "danger");
     }
-  }
+
+    // INSERT: Ruba sends a reply
+    async function sendReply(event) {
+      event.preventDefault();
+
+      const replyData = {
+        user_id: currentUser.user_id,                               // Ruba (from session.js)
+        org_id: document.getElementById("replyClient").value,      // which client
+        message: document.getElementById("replyText").value.trim(),
+      };
+
+      try {
+        const response = await fetch(`${API_BASE_URL}/admin/messages`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(replyData),
+        });
+        const result = await response.json();
+
+        if (result.success) {
+          showAlert(result.message, "success");
+          document.getElementById("replyForm").reset();
+          loadMessages();   // refresh: that client becomes "Replied"
+        } else {
+          showAlert(result.message, "danger");
+        }
+      } catch (error) {
+        showAlert("Error: " + error.message, "danger");
+      }
+    }
     // ===== TICKETS TAB =====
 
-  // SELECT: fill the table, the dropdown and the summary card
-  async function loadTickets() {
-    try {
-      const response = await fetch(`${API_BASE_URL}/admin/tickets`);
-      const result = await response.json();
-      const tickets = result.data;
+    // SELECT: fill the table, the dropdown and the summary card
+    async function loadTickets() {
+      try {
+        const response = await fetch(`${API_BASE_URL}/admin/tickets`);
+        const result = await response.json();
 
-      // the table: every ticket
-      document.getElementById("ticketsTableBody").innerHTML = tickets
-        .map((t) => `
+        if (!result.success) {
+          showAlert(result.message, "danger");
+          return;
+        }
+
+        const tickets = result.data;
+
+        // the table: every ticket
+        document.getElementById("ticketsTableBody").innerHTML = tickets
+          .map((t) => `
           <tr>
             <td>T-${t.ticket_id}</td>
             <td>${t.org_name}</td>
@@ -555,47 +588,48 @@
             <td>${formatDate(t.created_at)}</td>
             <td>${statusBadge(t.status)}</td>
           </tr>`)
-        .join("");
+          .join("");
 
-      // only tickets that still need work
-      const notResolved = tickets.filter((t) => t.status != "Resolved");
+        // only tickets that still need work
+        const notResolved = tickets.filter((t) => t.status != "Resolved");
 
-      // the dropdown
-      document.getElementById("ticketId").innerHTML = notResolved
-        .map((t) => `<option value="${t.ticket_id}">T-${t.ticket_id} · ${t.org_name} · ${t.subject}</option>`)
-        .join("");
+        // the dropdown
+        document.getElementById("ticketId").innerHTML = notResolved
+          .map((t) => `<option value="${t.ticket_id}">T-${t.ticket_id} · ${t.org_name} · ${t.subject}</option>`)
+          .join("");
 
-      // the summary card
-      document.getElementById("statOpenTickets").textContent = notResolved.length;
-    } catch (error) {
-      showAlert("Error loading tickets: " + error.message, "danger");
-    }
-  }
-
-  // UPDATE: change the chosen ticket's status
-  async function updateTicket(event) {
-    event.preventDefault();
-    const ticketId = document.getElementById("ticketId").value;
-
-    try {
-      const response = await fetch(`${API_BASE_URL}/admin/tickets/${ticketId}`, {
-        method: "PUT",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ status: document.getElementById("ticketStatus").value }),
-      });
-      const result = await response.json();
-
-      if (result.success) {
-        showAlert(result.message, "success");
-        loadTickets();   // refresh the table, dropdown and card
-      } else {
-        showAlert(result.message, "danger");
+        // the summary card: tickets nobody has started yet
+        document.getElementById("statOpenTickets").textContent =
+          tickets.filter((t) => t.status == "Open").length;
+      } catch (error) {
+        showAlert("Error loading tickets: " + error.message, "danger");
       }
-    } catch (error) {
-      showAlert("Error: " + error.message, "danger");
     }
-  }
-</script>
+
+    // UPDATE: change the chosen ticket's status
+    async function updateTicket(event) {
+      event.preventDefault();
+      const ticketId = document.getElementById("ticketId").value;
+
+      try {
+        const response = await fetch(`${API_BASE_URL}/admin/tickets/${ticketId}`, {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ status: document.getElementById("ticketStatus").value }),
+        });
+        const result = await response.json();
+
+        if (result.success) {
+          showAlert(result.message, "success");
+          loadTickets();   // refresh the table, dropdown and card
+        } else {
+          showAlert(result.message, "danger");
+        }
+      } catch (error) {
+        showAlert("Error: " + error.message, "danger");
+      }
+    }
+  </script>
 </body>
 
 </html>

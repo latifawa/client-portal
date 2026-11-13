@@ -2,8 +2,8 @@
 module.exports = function (app, dbCon) {
 
   // get support tickets 
-  app.get("/api/tickets/:org_id", (req, res) => {
-    const sql = "SELECT * FROM tickets WHERE org_id = ?"; 
+  app.get("/data/tickets/:org_id", (req, res) => {
+    const sql = "SELECT * FROM tickets WHERE org_id = ? ORDER BY created_at DESC";    
     dbCon.query(sql, [req.params.org_id], (err, results) => {
       if (err) {
         return res.status(500).send("Database error");
@@ -13,7 +13,7 @@ module.exports = function (app, dbCon) {
   });
 
   // get messsages for an organization
-  app.get("/api/messages/:org_id", (req, res) => {
+  app.get("/data/messages/:org_id", (req, res) => {
     const sql = `SELECT messages.*, users.full_name AS sender_name, users.role AS sender_role
                   FROM messages
                   LEFT JOIN users ON messages.user_id = users.user_id
@@ -29,7 +29,7 @@ module.exports = function (app, dbCon) {
   });
 
   // get the account manager for an organization
-  app.get("/api/account-manager/:org_id", (req, res) => {
+  app.get("/data/account-manager/:org_id", (req, res) => {
     const sql = ` SELECT users.full_name
                   FROM organizations
                   JOIN users ON organizations.manager_id = users.user_id
@@ -47,10 +47,9 @@ module.exports = function (app, dbCon) {
   });
 
   // send a new message
-  app.post("/api/messages", (req, res) => {
+  app.post("/data/messages", (req, res) => {
     const { user_id, org_id, message } = req.body;
 
-    console.log("Recieved message:", req.body);
 
     if (!user_id || !org_id || !message || !message.trim()) {
       return res.status(400).json({ error: "All fields are required" });
@@ -66,10 +65,13 @@ module.exports = function (app, dbCon) {
   });
 
   // create a support ticket
-  app.post("/api/tickets", (req, res) => {
+  app.post("/data/tickets", (req, res) => {
     const { org_id, subject } = req.body;
     if (!org_id || !subject || !subject.trim()) {
       return res.status(400).json({ error: "All fields are required" });
+    }
+        if (subject.trim().length > 150) {
+      return res.status(400).json({ error: "Please keep the problem under 150 characters" });
     }
     const sql = `INSERT INTO tickets (org_id, subject, status, created_at) VALUES (?, ?, 'Open', NOW())`;
 
@@ -82,7 +84,7 @@ module.exports = function (app, dbCon) {
   });
 
   // get setup steps for the logged-in organization
-  app.get("/api/setup-steps/:org_id", (req, res) => {
+  app.get("/data/setup-steps/:org_id", (req, res) => {
     const org_id = req.params.org_id;
     const sql = "SELECT * FROM setup_steps WHERE org_id = ? ORDER BY step_number ASC";
     dbCon.query(sql, [org_id], (err, results) => {
@@ -93,58 +95,41 @@ module.exports = function (app, dbCon) {
     });
   });
 
-  // get organization details for the logged-in user
-  app.get("/api/organization/:org_id", (req, res) => {
-    const org_id = req.params.org_id;
-
-    const sql = "SELECT name, plan FROM organizations WHERE org_id = ?";
-
-    dbCon.query(sql, [org_id], (err, results) => {
-      if (err) {
-        return res.status(500).json({ error: "Database error" });
-      }
-      if (results.length === 0) {
-        return res.status(404).json({ error: "Organization not found" });
-      }
-      res.json(results[0]);
-    });
-  });
-
   // update a support ticket subject
-  app.put("/api/tickets/:ticket_id", (req, res) => {
+  app.put("/data/tickets/:ticket_id", (req, res) => {
     const ticket_id = req.params.ticket_id;
     const { org_id, subject } = req.body;
     if (!org_id || !subject || !subject.trim()) {
       return res.status(400).json({ error: "All fields are required" });
     }
-    const sql = `UPDATE tickets SET subject = ? WHERE ticket_id = ? AND org_id = ?`; 
-
+    if (subject.trim().length > 150) {
+      return res.status(400).json({ error: "Please keep the problem under 150 characters" });
+    }
+    const sql = `UPDATE tickets SET subject = ? WHERE ticket_id = ? AND org_id = ? AND status = 'Open'`;
     dbCon.query(sql, [subject.trim(), ticket_id, org_id], (err, result) => {
       if (err) {
         return res.status(500).json({ error: "Database error"});
       }
       if (result.affectedRows === 0) {
-        return res.status(404).json({ error: "Ticket not found" });
-      }
+        return res.status(404).json({ error: "Ticket not found or already being handled by HUMAIN" });      }
       res.json({ message: "Ticket updated successfully" });
     });
   });
 
   // delete a support ticket
-  app.delete("/api/tickets/:ticket_id", (req, res) => {
+  app.delete("/data/tickets/:ticket_id", (req, res) => {
     const ticket_id = req.params.ticket_id;
     const { org_id } = req.body;
     if (!org_id) {
       return res.status(400).json({ error: "Organization ID is required" });
     }
-    const sql = `DELETE FROM tickets WHERE ticket_id = ? AND org_id = ?`;
-
+    const sql = `DELETE FROM tickets WHERE ticket_id = ? AND org_id = ? AND status = 'Open'`;
     dbCon.query(sql, [ticket_id, org_id], (err, result) => {
       if (err) {
         return res.status(500).json({ error: "Database error"});
       }
       if (result.affectedRows === 0) {
-        return res.status(404).json({ error: "Ticket not found" });
+        return res.status(404).json({ error: "Ticket not found or already being handled by HUMAIN" });      
       }
       res.json({ message: "Ticket deleted successfully" });
     });

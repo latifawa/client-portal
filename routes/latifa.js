@@ -32,8 +32,6 @@ module.exports = function (app, dbCon) {
             SELECT COALESCE(SUM(usage_count), 0)
             FROM weekly_usage
             WHERE weekly_usage.org_id = organizations.org_id
-            AND YEAR(week_start) = YEAR(CURDATE())
-            AND MONTH(week_start) = MONTH(CURDATE())
         ) AS monthly_queries
     FROM organizations
     WHERE organizations.org_id = ?
@@ -93,7 +91,10 @@ module.exports = function (app, dbCon) {
     let orgId = req.params.org_id;
 
     let sqlQuery = `
-        SELECT features.feature_name
+        SELECT features.feature_name, 
+        org_features.status, 
+        org_features.usage_this_month, 
+        org_features.unit, org_features.plan_limit
         FROM org_features
         JOIN features
         ON org_features.feature_id = features.feature_id
@@ -158,16 +159,16 @@ module.exports = function (app, dbCon) {
     });
   });
 
-  // Get pending feature requests for one organization
+  // Get this organization's open feature requests (Pending, Approved, In progress)
   app.get("/data/pending-features/:org_id", (req, res) => {
 
     let orgId = req.params.org_id;
 
     let sqlQuery = `
-        SELECT feature_id
+        SELECT feature_id, status
         FROM requests
         WHERE org_id = ?
-        AND status = 'Pending'
+        AND status IN ('Pending', 'Approved', 'In progress')
         AND feature_id IS NOT NULL
     `;
 
@@ -182,4 +183,29 @@ module.exports = function (app, dbCon) {
     });
   });
 
+    // Get the "New feature" suggestion for the catalog banner
+  app.get("/data/featured/:org_id", (req, res) => {
+
+    let orgId = req.params.org_id;
+
+    let sqlQuery = `
+        SELECT features.feature_id, features.feature_name, suggestions.details
+        FROM suggestions
+        JOIN features
+        ON suggestions.feature_id = features.feature_id
+        WHERE suggestions.org_id = ?
+        AND suggestions.type = 'New feature'
+        LIMIT 1
+    `;
+
+    dbCon.query(sqlQuery, [orgId], (error, results) => {
+
+      if (error) {
+        console.log(error);
+        return res.status(500).send("Database error");
+      }
+
+      res.send(results);
+    });
+  });
 };
