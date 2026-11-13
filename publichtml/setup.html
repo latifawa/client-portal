@@ -45,8 +45,8 @@
           <!-- organization box: which client is logged in -->
           <div class="section-light p-3 my-4">
             <p class="label-small mb-1">Organization</p>
-            <p class="fw-semibold mb-0" id="organizationName">Loading...</p>
-            <p class="text-gray small mb-0" id="organizationPlan">Loading...</p>
+            <p class="fw-semibold mb-0" id="orgName"></p>
+            <p class="text-gray small mb-0" id="orgPlan"></p>
           </div>
 
           <!-- nav Pills -->
@@ -78,12 +78,12 @@
           <div class="dropup mt-4">
 
             <button type="button" class="btn btn-dark-soft w-100 text-start dropdown-toggle" data-bs-toggle="dropdown">
-              <i class="bi bi-person-circle me-2"></i><span id="sideBarUserName">Loading...</span>
+              <i class="bi bi-person-circle me-2"></i><span id="userName"></span>
             </button>
             <ul class="dropdown-menu">
               <li><a class="dropdown-item" href="account.html">Account settings</a></li>
               <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="index.html">Log out</a></li>
+              <li><a class="dropdown-item" href="index.html" id="logoutLink">Log out</a></li>
             </ul>
           </div>
 
@@ -105,18 +105,17 @@
           <section class="bg-white p-4 mb-4">
             <div class="row align-items-center">
               <div class="col-lg-3 mb-3 mb-lg-0">
-                <h2 class="display-4 text-gradient mb-0" id="setupPercentage">60%</h2>
+                <h2 class="display-4 text-gradient mb-0" id="setupPercentage"></h2>
                 <p class="text-gray small mb-0">of your setup is done</p>
               </div>
               <div class="col-lg-9">
 
                 <div class="d-flex justify-content-between mb-2 small">
-                  <span id="setupProgressText">3 of 5 steps complete</span>
-                  <span class="text-gray">Estimated go-live · 1 Nov 2026</span>
+                  <span id="setupProgressText"></span>
                 </div>
                 <!-- progress Bar -->
                 <div class="progress">
-                  <div class="progress-bar bg-teal" id="setupProgressBar" style="width:60%">60%</div>
+                  <div class="progress-bar bg-teal" id="setupProgressBar"></div>
                 </div>
               </div>
             </div>
@@ -146,17 +145,13 @@
 
               <section class="bg-white p-4 mb-4">
                 <p class="label-small mb-2">Your account manager</p>
-                <h5 class="mb-1" id="setupAccountManager">Loading...</h5>
-                <p class="text-gray small">Replies within 1 working day</p>
+                <h5 class="mb-1" id="setupAccountManager"></h5>
                 <a class="btn btn-lime w-100" href="support.html">Message account manager &rarr;</a>
               </section>
 
               <div class="bg-white p-4">
                 <p class="label-small mb-3">Recent activity</p>
                 <ul class="list-unstyled small mb-0" id="recentActivityList">
-                  <li class="mb-3">Reminder: Finish access rules<br><span class="text-gray">25 Sep · automatic</span></li>
-                  <li class="mb-3">2 access roles added<br><span class="text-gray">18 Sep · Noura M.</span></li>
-                  <li>HUMAIN verified your data connection<br><span class="text-gray">12 Sep · HUMAIN Support</span></li>
                 </ul>
               </div>
 
@@ -177,15 +172,10 @@
   <!-- Get the logged-in user's information -->
   <script src="js/session.js"></script>
   <script>
-    const user = JSON.parse(localStorage.getItem("user"));
+    // the logged-in user (currentUser comes from session.js)
+    const user = currentUser;
 
     
-
-    // display the logged-in user's name in the sidebar
-    if(user) {
-      document.getElementById("sideBarUserName").textContent = user.full_name;
-    }
-
     // display the account manager for the logged-in organization
     async function loadSetupAccountManager() {
       if(user && user.org_id) {
@@ -202,24 +192,6 @@
       }
     }
     loadSetupAccountManager();
-
-    // display the organization details for the logged-in user
-  async function loadOrganization() {
-    if (user && user.org_id) {
-    try {
-      const response = await fetch(`/data/organization/${user.org_id}`);
-      if (!response.ok) {
-        throw new Error("Failed to load organization");
-      }
-      const organization = await response.json();
-      document.getElementById("organizationName").textContent = organization.name;
-      document.getElementById("organizationPlan").textContent = organization.plan;
-    } catch (error) {
-      console.error("Error loading organization: ", error);
-    }
-  }
-}
-loadOrganization();
 
 
     // load setup steps for the logged-in organization
