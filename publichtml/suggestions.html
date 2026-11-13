@@ -45,8 +45,8 @@
           <!-- organization box: which client is logged in -->
           <div class="section-light p-3 my-4">
             <p class="label-small mb-1">Organization</p>
-            <p class="fw-semibold mb-0">Najd Bank</p>
-            <p class="text-gray small mb-0">Growth plan</p>
+            <p class="fw-semibold mb-0" id="orgName">Najd Bank</p>
+            <p class="text-gray small mb-0" id="orgPlan">Growth plan</p>
           </div>
 
           <!-- nav pills -->
@@ -75,14 +75,14 @@
           </ul>
 
           <!-- dropup: the user menu -->
-          <div class="dropup mt-4">
+          <div class="dropup mt-4">                        
             <button type="button" class="btn btn-dark-soft w-100 text-start dropdown-toggle" data-bs-toggle="dropdown">
-              <i class="bi bi-person-circle me-2"></i>
+              <i class="bi bi-person-circle me-2"></i><span id="userName"></span>
             </button>
             <ul class="dropdown-menu">
               <li><a class="dropdown-item" href="account.html">Account settings</a></li>
-              <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="index.html">Log out</a></li>
+              <li><hr class="dropdown-divider"></li>                            
+              <li><a class="dropdown-item" href="index.html" id="logoutLink">Log out</a></li>
             </ul>
           </div>
 
@@ -98,8 +98,7 @@
           <!-- 1: heading -->
           <p class="label-small">Stage 5</p>
           <h1>Smart suggestions</h1>
-          <p class="text-gray">Based on how Najd Bank used HUMAIN Fabric in the last 30 days.</p>
-
+          <p class="text-gray">Based on how <span id="suggestOrgName">your organization</span> used HUMAIN Fabric in the last 30 days.</p>
 
           <div class="row mt-4">
 
@@ -182,7 +181,8 @@
     const user = JSON.parse(localStorage.getItem("user"));
     if (!user) {
       window.location.href = "login.html";
-    }
+    }        
+    document.getElementById("suggestOrgName").textContent = user.org_name;
 
     // the button text for each type of suggestion (the table has no button column)
     const buttonText = {
